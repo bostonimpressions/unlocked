@@ -1,9 +1,9 @@
 <template>
   <header
-    class="base-header relative w-full flex justify-between items-center px-4 py-3 text-white z-50"
+    class="base-header relative w-full flex justify-between items-center text-white z-50"
   >
     <!-- Logo -->
-    <div class="logo font-bold text-xl drop-shadow-md">Unlocked</div>
+    <div class="logo font-bold text-xl"><img src="/logo.png" alt="Unlocked"></div>
 
     <!-- Hamburger Button -->
     <button
@@ -77,6 +77,20 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .base-header {
+    padding: 45px 0;
   background-color: transparent;
+}
+
+.logo {
+    display: flex;
+    width: 439px;
+    height: 127px;
+    padding: 16px 23px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    /* img {
+        height: 103px;
+    } */
 }
 </style>

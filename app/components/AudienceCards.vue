@@ -1,6 +1,5 @@
 <template>
-  <div class="grid gap-6 mt-10 px-4 
-              grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
     <AudienceCard
       icon="agents"
       title="Real Estate Agents"
@@ -15,3 +14,10 @@
     />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.grid {
+  gap: 70px;
+  padding: 20px 45px;
+}
+</style>

@@ -15,7 +15,7 @@
     <!-- Black overlay -->
     <div class="absolute inset-0 bg-black/70"></div>
 
-    <div class="relative z-10">
+    <div class="relative mx-auto z-10 max-w-[1728px]">
       <BaseHeader /> 
       <slot />
     </div>
