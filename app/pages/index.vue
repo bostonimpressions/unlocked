@@ -9,7 +9,7 @@ const { data: intro } = await useAsyncData(() =>
 <template>
   <div>
     <HeroSection>
-      <section class="text-center py-16 text-white">
+      <section class="max-w-[1088px] mx-auto text-center py-16 text-white">
         <h1 class="text-4xl font-bold text-sky-400">
           UNLOCKED HOME PROJECT IS <br />
           REVOLUTIONIZING REAL ESTATE.
@@ -18,15 +18,22 @@ const { data: intro } = await useAsyncData(() =>
           EXPERIENCED. KNOWLEDGEABLE. TRUSTWORTHY.
         </p>
 
-        <!-- I want the content from content/home/intro.md here -->
-        <div class="mt-8 max-w-3xl mx-auto text-left text-black bg-white/80 p-6 rounded-xl">
+        <!-- Intro content -->
+        <div
+          class="mt-8 mx-auto text-left text-white 
+                font-montserrat text-[20px] leading-[38px] tracking-[0.04em]"
+        >
           <ContentRenderer v-if="intro" :value="intro" />
           <p v-else>Intro content not found.</p>
         </div>
+
+
+        <CallToAction />
+        <AudienceCards />
       </section>
 
-      <CallToAction />
-      <AudienceCards />
+      
     </HeroSection>
   </div>
 </template>
+

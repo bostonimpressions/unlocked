@@ -31,7 +31,7 @@
       :class="drawerOpen ? 'translate-x-0' : 'translate-x-full'"
     >
       <div class="p-4 flex justify-between items-center border-b border-gray-200">
-        <h2 class="text-lg font-semibold">Menu</h2>
+        <h2 class="sr-only">Menu</h2>
         <button @click="closeDrawer" aria-label="Close menu" class="p-2 hover:bg-gray-100 rounded-full">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
