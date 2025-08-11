@@ -7,6 +7,5 @@
     <p class="mt-4 text-orange-400 font-semibold">
       EXPERIENCED. KNOWLEDGEABLE. TRUSTWORTHY.
     </p>
-    test
   </section>
 </template>
