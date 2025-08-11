@@ -1,7 +1,8 @@
 [build]
   command = "npm ci && npm run build"
-  publish = ".output/public"
+  publish = ".output"
 
 [build.environment]
   NODE_VERSION = "22"
+  # Force building the native binary on the Netlify runner
   NPM_CONFIG_BUILD_FROM_SOURCE = "better-sqlite3"

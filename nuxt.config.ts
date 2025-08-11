@@ -1,3 +1,4 @@
+// nuxt.config.ts
 export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
@@ -14,6 +15,10 @@ export default defineNuxtConfig({
   },
 
   content: {
-    database: false // disables DB mode entirely
+    // explicit sqlite config so types check and Content uses sqlite DB
+    database: {
+      type: 'sqlite',
+      filename: './contents.sqlite'
+    }
   }
 })
