@@ -3,22 +3,25 @@
     class="base-header relative w-full flex justify-between items-center text-white z-50"
   >
     <!-- Logo -->
-    <div class="logo font-bold text-xl"><img src="/logo.png" alt="Unlocked"></div>
+    <div class="logo font-bold text-xl">
+      <img src="/logo.png" alt="Unlocked">
+    </div>
 
-    <!-- Hamburger Button -->
-    <button
-      @click="openDrawer"
-      class="p-2 rounded-md bg-transparent hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-sky-500"
-      aria-label="Open menu"
+    <!-- Hamburger / Close Button -->
+
+    <div 
+        @click="toggleDrawer" 
+        class="hamburger"
+        :class="drawerOpen ? 'is-active' : ''"
+        aria-label="Toggle menu"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
 
-    <!-- Slightly dark overlay -->
+
+    <!-- Overlay -->
     <div
       v-show="drawerOpen"
       @click="closeDrawer"
@@ -27,24 +30,13 @@
 
     <!-- Drawer -->
     <aside
-      class="fixed top-0 right-0 h-full w-64 bg-white/95 shadow-lg z-50 transform transition-transform duration-300"
+      class="fixed top-0 right-0 h-full w-64 shadow-lg z-50 transform transition-transform duration-300"
       :class="drawerOpen ? 'translate-x-0' : 'translate-x-full'"
     >
-      <div class="p-4 flex justify-between items-center border-b border-gray-200">
-        <h2 class="sr-only">Menu</h2>
-        <button @click="closeDrawer" aria-label="Close menu" class="p-2 hover:bg-gray-100 rounded-full">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-
       <nav class="p-4 space-y-3">
-        <a href="#" class="block text-gray-800 hover:text-sky-500">Home</a>
-        <a href="#" class="block text-gray-800 hover:text-sky-500">About</a>
-        <a href="#" class="block text-gray-800 hover:text-sky-500">Contact</a>
+        <a href="#" class="link">Home</a>
+        <a href="#" class="link">About</a>
+        <a href="#" class="link">Contact</a>
       </nav>
     </aside>
   </header>
@@ -55,8 +47,8 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const drawerOpen = ref(false)
 
-function openDrawer() {
-  drawerOpen.value = true
+function toggleDrawer() {
+  drawerOpen.value = !drawerOpen.value
 }
 
 function closeDrawer() {
@@ -75,22 +67,80 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .base-header {
-    padding: 45px 0;
+  padding: 45px 0;
   background-color: transparent;
 }
 
 .logo {
-    display: flex;
-    width: 439px;
-    height: 127px;
-    padding: 16px 23px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    /* img {
-        height: 103px;
-    } */
+  display: flex;
+  width: 439px;
+  height: 127px;
+  padding: 16px 23px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
+
+aside {
+    width: 300px;
+    background-color: var(--DarkBlue);
+}
+
+nav {
+    .link {
+        color: var(--Copper);
+        font-size: 33px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 26px; /* 78.788% */
+        letter-spacing: 3.96px;
+        text-transform: uppercase;
+        margin: 0 0 85px;
+
+        &:hover {
+            opacity: .85;
+        }
+    }
+}
+
+.hamburger {
+    z-index: 100;
+
+    &.is-active .line:nth-child(2) {
+        opacity: 0;
+    }
+
+    &.is-active .line:nth-child(1) {
+        -webkit-transform: translateY(13px) rotate(45deg);
+        -ms-transform: translateY(13px) rotate(45deg);
+        -o-transform: translateY(13px) rotate(45deg);
+        transform: translateY(13px) rotate(45deg);
+    }
+
+    &.is-active .line:nth-child(3) {
+        -webkit-transform: translateY(-13px) rotate(-45deg);
+        -ms-transform: translateY(-13px) rotate(-45deg);
+        -o-transform: translateY(-13px) rotate(-45deg);
+        transform: translateY(-13px) rotate(-45deg);
+    }
+}
+
+.hamburger .line {
+  width: 50px;
+  height: 5px;
+  background-color: var(--Copper);
+  display: block;
+  margin: 8px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger:hover {
+  cursor: pointer;
+}
+
+
 </style>

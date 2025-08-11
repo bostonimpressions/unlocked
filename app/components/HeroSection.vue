@@ -15,7 +15,7 @@
     <!-- Black overlay -->
     <div class="absolute inset-0 bg-black/70"></div>
 
-    <div class="relative mx-auto z-10 max-w-[1728px]">
+    <div class="hero-content">
       <BaseHeader /> 
       <slot />
     </div>
@@ -23,6 +23,13 @@
 </template>
 
 <style scoped>
+.hero-content {
+  position: relative;
+  padding: 0 60px;
+  margin: 0 auto;
+  max-width: 1608px;
+  z-index: 10;
+}
 section {
   min-height: 60vh;
 }
