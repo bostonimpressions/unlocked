@@ -8,5 +8,9 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@nuxt/content'
-  ]
+  ],
+
+  nitro: {
+    preset: 'netlify'
+  }
 })
