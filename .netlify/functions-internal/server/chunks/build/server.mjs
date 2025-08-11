@@ -15,8 +15,6 @@ import 'node:crypto';
 import '@iconify/utils';
 import 'consola';
 import 'better-sqlite3';
-import 'node:url';
-import 'ipx';
 import 'vue-bundle-renderer/runtime';
 import 'unhead/server';
 import 'devalue';
@@ -754,7 +752,7 @@ const LazyProseH4 = defineAsyncComponent(() => import('./ProseH4-TSBqf2qz.mjs').
 const LazyProseH5 = defineAsyncComponent(() => import('./ProseH5-Ce5YyBz6.mjs').then((r) => r["default"] || r.default || r));
 const LazyProseH6 = defineAsyncComponent(() => import('./ProseH6-UieDQjwh.mjs').then((r) => r["default"] || r.default || r));
 const LazyProseHr = defineAsyncComponent(() => import('./ProseHr-Dh1VTly1.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseImg = defineAsyncComponent(() => import('./ProseImg-CH1FyqCh.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseImg = defineAsyncComponent(() => import('./ProseImg-DHu-4L-N.mjs').then((r) => r["default"] || r.default || r));
 const LazyProseLi = defineAsyncComponent(() => import('./ProseLi-g1-DDs74.mjs').then((r) => r["default"] || r.default || r));
 const LazyProseOl = defineAsyncComponent(() => import('./ProseOl-C_keEFje.mjs').then((r) => r["default"] || r.default || r));
 const LazyProseP = defineAsyncComponent(() => import('./ProseP-CPB5a_w4.mjs').then((r) => r["default"] || r.default || r));
