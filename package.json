@@ -17,8 +17,10 @@
     "@nuxt/content": "^3.6.3",
     "@nuxt/image": "^1.11.0",
     "@nuxt/ui": "^3.3.0",
+    "@tailwindcss/vite": "^4.1.11",
     "better-sqlite3": "^12.2.0",
     "nuxt": "^4.0.1",
+    "tailwindcss": "^4.1.11",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },

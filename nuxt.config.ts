@@ -1,11 +1,15 @@
-// nuxt.config.ts
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-13",
   future: { compatibilityVersion: 4 },
   ssr: true,
   devtools: { enabled: true },
-
+  css: ['~/assets/css/main.css'],
   vite: {
+    plugins: [
+      tailwindcss(),
+    ],
     server: {
       watch: {
         usePolling: true,
@@ -32,3 +36,4 @@ export default defineNuxtConfig({
     }
   }
 })
+
