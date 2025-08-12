@@ -8,7 +8,7 @@ const { data: intro } = await useAsyncData(() =>
 
 <template>
   <div>
-    <HeroSection>
+    <SectionHero>
       <section class="home-intro">
         <h1 class="heading">
           UNLOCKED HOME PROJECT IS <br />
@@ -29,9 +29,8 @@ const { data: intro } = await useAsyncData(() =>
         </p>
         <AudienceCards />
       </section>
-
-      
-    </HeroSection>
+    </SectionHero>
+    <SectionContactForm />
   </div>
 </template>
 
