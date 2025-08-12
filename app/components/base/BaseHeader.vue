@@ -1,25 +1,11 @@
 <template>
   <header
-    class="base-header relative w-full flex justify-between items-center text-white z-50"
+    class="base-header relative w-full flex items-center text-white z-50"
   >
     <!-- Logo -->
     <div class="logo font-bold text-xl">
       <img src="/logo.png" alt="Unlocked">
     </div>
-
-    <!-- Hamburger / Close Button -->
-
-    <div 
-        @click="toggleDrawer" 
-        class="hamburger"
-        :class="drawerOpen ? 'is-active' : ''"
-        aria-label="Toggle menu"
-    >
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-    </div>
-
 
     <!-- Overlay -->
     <div
@@ -33,18 +19,56 @@
       class="fixed top-0 right-0 h-full w-64 shadow-lg z-50 transform transition-transform duration-300"
       :class="drawerOpen ? 'translate-x-0' : 'translate-x-full'"
     >
-      <nav class="p-4 space-y-3">
-        <a href="#" class="link">Home</a>
-        <a href="#" class="link">About</a>
-        <a href="#" class="link">Contact</a>
+      <nav>
+        <ul>
+          <li class="top-links">
+            <a href="#" class="link inline">Home</a>
+            <a href="#" class="link inline">About</a>
+          </li>
+        
+       
+          <li>
+             <a href="#" class="link">Real Estate Agents</a>
+          </li>
+          <li>
+             <a href="#" class="link">Relief Division</a>
+          </li>
+          <li>
+             <a href="#" class="link">Homeowners</a>
+          </li>
+          <li>
+             <a href="#" class="link">Real Estate Investors</a>
+          </li>
+          <li>
+             <a href="#" class="link">Land Division</a>
+          </li>
+          <li>
+             <a href="#" class="link">Contact</a>
+          </li>
+          
+        </ul>
       </nav>
     </aside>
   </header>
+
+  <!-- Hamburger / Close Button -->
+  <div
+    ref="hamburger"
+    @click="toggleDrawer" 
+    class="hamburger"
+    :class="{ 'is-active': drawerOpen, 'opacity-0 pointer-events-none': hideHamburger }"
+    aria-label="Toggle menu"
+  >
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
+const hideHamburger = ref(false)
 const drawerOpen = ref(false)
 
 function toggleDrawer() {
@@ -59,12 +83,20 @@ function handleKey(e: KeyboardEvent) {
   if (e.key === 'Escape') closeDrawer()
 }
 
+function onScroll() {
+  hideHamburger.value = window.scrollY > 100
+}
+
 onMounted(() => {
+  window.addEventListener('scroll', onScroll)
   window.addEventListener('keydown', handleKey)
 })
+
 onBeforeUnmount(() => {
+  window.removeEventListener('scroll', onScroll)
   window.removeEventListener('keydown', handleKey)
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -75,72 +107,105 @@ onBeforeUnmount(() => {
 
 .logo {
   display: flex;
-  width: 439px;
-  height: 127px;
-  padding: 16px 23px;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
+  width: 200px;
+  height: auto;
+  padding: 0;
+
 }
 
 aside {
-    width: 300px;
-    background-color: var(--DarkBlue);
+  padding: 120px 40px;
+  width: 300px;
+  background-color: var(--DarkBlue);
 }
 
 nav {
+  .top-links {
     .link {
-        color: var(--Copper);
-        font-size: 33px;
-        font-style: normal;
-        font-weight: 800;
-        line-height: 26px; /* 78.788% */
-        letter-spacing: 3.96px;
-        text-transform: uppercase;
-        margin: 0 0 85px;
-
-        &:hover {
-            opacity: .85;
-        }
+      color: var(--OffWhite);
+      margin: 0 2rem 0 0;
     }
+  }
+  li {
+    margin: 0 0 60px;
+  }
+  .link {
+    color: var(--Copper);
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 3.96px;
+    text-transform: uppercase;
+
+    &:hover {
+      opacity: .85;
+    }
+  }
 }
 
 .hamburger {
-    z-index: 100;
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  z-index: 100;
+  transition: opacity 0.3s ease; /* transition-opacity duration-300 */
 
-    &.is-active .line:nth-child(2) {
-        opacity: 0;
+  &.opacity-0 {
+    opacity: 0;
+  }
+
+  &.pointer-events-none {
+    pointer-events: none;
+  }
+
+  .line {
+    width: 35px;
+    height: 3px;
+    background-color: var(--Copper);
+    display: block;
+    margin: 8px auto;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.is-active .line:nth-child(2) {
+    opacity: 0;
+  }
+
+  &.is-active .line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  &.is-active .line:nth-child(3) {
+    transform: translateY(-12px) rotate(-45deg);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .logo {
+    width: 439px;
+    height: 127px;
+    padding: 16px 23px;
+  }
+
+  .hamburger {
+    .line {
+      width: 50px;
+      height: 5px;
     }
-
     &.is-active .line:nth-child(1) {
-        -webkit-transform: translateY(13px) rotate(45deg);
-        -ms-transform: translateY(13px) rotate(45deg);
-        -o-transform: translateY(13px) rotate(45deg);
-        transform: translateY(13px) rotate(45deg);
+      transform: translateY(13px) rotate(45deg);
     }
 
     &.is-active .line:nth-child(3) {
-        -webkit-transform: translateY(-13px) rotate(-45deg);
-        -ms-transform: translateY(-13px) rotate(-45deg);
-        -o-transform: translateY(-13px) rotate(-45deg);
-        transform: translateY(-13px) rotate(-45deg);
+      transform: translateY(-13px) rotate(-45deg);
     }
+  }
 }
-
-.hamburger .line {
-  width: 50px;
-  height: 5px;
-  background-color: var(--Copper);
-  display: block;
-  margin: 8px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-.hamburger:hover {
-  cursor: pointer;
-}
-
-
 </style>

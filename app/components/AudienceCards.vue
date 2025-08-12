@@ -17,7 +17,14 @@
 
 <style lang="scss" scoped>
 .grid {
-  gap: 70px;
-  padding: 20px 45px;
+  gap: 35px;
+  padding: 20px 0 0;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    gap: 70px;
+    padding: 20px 45px;
+  }
 }
 </style>

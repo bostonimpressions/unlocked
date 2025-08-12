@@ -38,47 +38,74 @@ const { data: intro } = await useAsyncData(() =>
 <style lang="scss" scoped>
 .home-intro {
   display: flex;
-  max-width: 1088px;
-  padding: 55px 0 91px 0;
   margin: 0 auto;
   flex-direction: column;
   align-items: flex-start;
-  gap: 33px;
+  max-width: 1088px;
+  padding: 15px 0 91px 0;
+  gap: 20px;
 }
 .heading {
   color: var(--Blue);
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 122.631%; /* 58.863px */
   letter-spacing: 2.4px;
   text-transform: uppercase;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 122.631%; /* 58.863px */
+  
 }
 .subheading {
   color: var(--Copper);
-  font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: 1.68px;
   text-transform: uppercase;
+  font-size: 22px;
 }
 .intro-text {
-  color: #EFEFEF;
-  font-size: 20px;
+  color: var(--OffWhite);
   font-style: normal;
   font-weight: 400;
-  line-height: 38px; /* 190% */
+  line-height: 28px;
   letter-spacing: 0.8px;
+  font-size: 18px;
 }
 .cta {
   color: var(--Copper);
-  font-size: 20px;
   font-style: normal;
   font-weight: 600;
-  line-height: 32px; /* 160% */
+  line-height: normal;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  max-width: 874px;;
+  max-width: 874px;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .home-intro {
+    max-width: 1088px;
+    padding: 55px 0 91px 0;
+    gap: 33px;
+  }
+  .heading {
+    font-size: 48px;
+  }
+  .subheading {
+    font-size: 24px;
+    line-height: 32px;
+
+  }
+  .intro-text {
+    font-size: 20px;
+    line-height: 38px; /* 190% */
+  }
+  .cta {
+    font-size: 20px;
+    line-height: 30px;
+
+    max-width: 874px;
+  }
 }
 </style>

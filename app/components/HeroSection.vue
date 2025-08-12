@@ -25,7 +25,7 @@
 <style scoped>
 .hero-content {
   position: relative;
-  padding: 0 60px;
+  padding: 0 30px;
   margin: 0 auto;
   max-width: 1608px;
   z-index: 10;
@@ -35,6 +35,9 @@ section {
 }
 
 @media (min-width: 768px) {
+  .hero-content {
+    padding: 0 60px;
+  }
   section {
     min-height: 80vh;
   }
