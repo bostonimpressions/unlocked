@@ -60,7 +60,7 @@ const activeFormComponent = computed(() => {
 
 <style scoped lang="scss">
 .form-section {
-    margin: 0 auto;
+    margin: 0 15px;
     text-align: left;
 
     &.dark {
@@ -77,10 +77,11 @@ const activeFormComponent = computed(() => {
 }
 
 .section-title {
-    font-size: 32px;
+    text-align: center;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
-    line-height: 122.631%; /* 39.242px */
+    line-height: 122.631%;
     letter-spacing: 2.24px;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
@@ -88,7 +89,7 @@ const activeFormComponent = computed(() => {
 
 .role-buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
     margin-bottom: 2rem;
 }
@@ -102,17 +103,19 @@ const activeFormComponent = computed(() => {
     cursor: pointer;
     text-transform: uppercase;
     transition: all 0.18s ease;
-    white-space: normal; /* allow wrapping */
+    white-space: normal;
     text-align: center;
-    width: 100%; /* fills column space */
+    width: 100%;
+    font-size: 14px;
+    
 
     &.active {
-    background-color: var(--Copper);
+      background-color: var(--Copper);
     }
 
     &:hover {
-    opacity: 0.92;
-    transform: translateY(-1px);
+      opacity: 0.92;
+      transform: translateY(-1px);
     }
 }
 
@@ -120,5 +123,39 @@ const activeFormComponent = computed(() => {
 .form-wrapper {
     max-width: 600px;
     margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .form-section {
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .section-title {
+    text-align: left;
+    font-size: 32px;
+  }
+
+  .role-buttons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .role-btn {
+    font-size: 18px;
+
+  }
+
+
+  .form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .role-btn {
+    font-size: 22px;
+
+  }
 }
 </style>

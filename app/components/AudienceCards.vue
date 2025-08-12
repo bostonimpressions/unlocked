@@ -19,6 +19,7 @@
 .grid {
   gap: 35px;
   padding: 20px 0 0;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {

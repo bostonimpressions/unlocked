@@ -4,10 +4,10 @@
     <main>
       <slot /> 
     </main>
-    <BaseFooter />
+    <!-- <BaseFooter /> -->
   </div>
 </template>
 
 <script setup>
-import BaseFooter from '~/components/base/BaseFooter.vue'
+//import BaseFooter from '~/components/base/BaseFooter.vue'
 </script>
