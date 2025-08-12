@@ -84,6 +84,7 @@ const props = defineProps({
 
 h2 {
     text-align: center;
+    padding: 0 0 30px;
     margin: 30px 0;
     font-size: 22px;
     font-style: normal;
@@ -91,6 +92,7 @@ h2 {
     line-height: 122.631%;
     letter-spacing: 2.4px;
     text-transform: uppercase;
+    border-bottom: 1px solid var(--Blue);
 
     .highlight {
         color: var(--Copper);
