@@ -386,7 +386,6 @@
   @media (min-width: 900px) {
     .container {
       max-width: 1088px;
-      padding: 70px 0;
     }
     h3 {
       margin: 0 0 24px;
@@ -403,7 +402,7 @@
     }
 
     .contact-links {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .social-links {
