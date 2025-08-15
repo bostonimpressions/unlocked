@@ -39,6 +39,7 @@
   }
   ul {
     display: flex;
+    padding: 0 12px;
   }
   li {
     display: flex;
@@ -49,6 +50,7 @@
     align-items: center;
     gap: 10px;
     flex: 1 0 0;
+    margin: 0 -12px;
     aspect-ratio: 1/1;
     border-radius: 128.653px;
     color: var(--OffWhite);
