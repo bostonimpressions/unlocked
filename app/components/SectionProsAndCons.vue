@@ -115,6 +115,12 @@
           </div>
         </div>
       </div>
+
+      <NuxtLink to="/contact" class="contact-btn">
+        <span>Contact us to learn more</span> about these innovative approaches,
+        take your skillset to the next level, and sell more listings
+        <span>✓</span>
+      </NuxtLink>
     </div>
   </section>
 </template>
@@ -256,6 +262,47 @@
     }
   }
 
+  .contact-btn {
+    display: block;
+    padding: 7px 18px;
+    margin: 20px auto 0;
+    max-width: 755px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 7px;
+    background: rgba(103, 185, 223, 0.22);
+    color: var(--OffWhite);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 33px;
+    letter-spacing: 0.8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      transform 0.2s ease;
+
+    span {
+      color: var(--Blue);
+
+      &:last-child {
+        font-weight: bold;
+      }
+    }
+
+    &:hover {
+      background: rgba(103, 185, 223, 0.4);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
   @media (min-width: 1120px) {
     .pros-and-cons {
       padding: 60px 0 70px;
@@ -285,6 +332,9 @@
         font-size: 20px;
         line-height: 31px;
       }
+    }
+    .contact-btn {
+      font-size: 20px;
     }
   }
 </style>
