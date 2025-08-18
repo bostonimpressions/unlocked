@@ -45,7 +45,7 @@
   h2 {
     text-align: center;
     color: var(--OffWhite);
-    font-size: 28px;
+    font-size: clamp(28px, 4vw, 45px);
     font-style: normal;
     font-weight: 600;
     line-height: 167%;
@@ -53,12 +53,6 @@
     text-transform: uppercase;
     span {
       color: var(--Copper);
-    }
-  }
-
-  @media (min-width: 500px) {
-    h2 {
-      font-size: 45px;
     }
   }
 
@@ -70,22 +64,12 @@
     }
     h2 {
       text-align: left;
-      font-size: 28px;
     }
   }
 
   @media (min-width: 880px) {
     .real-people {
       padding: 121px 0 143px 0;
-    }
-    h2 {
-      font-size: 38px;
-    }
-  }
-
-  @media (min-width: 1100px) {
-    h2 {
-      font-size: 45px;
     }
   }
 </style>
