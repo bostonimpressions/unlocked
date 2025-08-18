@@ -29,6 +29,7 @@
     </SectionHero>
     <SectionCoreValues />
     <SectionContactForm />
+    <SectionRealPeople />
   </div>
 </template>
 
