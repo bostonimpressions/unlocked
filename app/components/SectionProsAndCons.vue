@@ -11,7 +11,7 @@
         'Close in under <b>4 weeks</b>',
       ],
       cons: [
-        '<b>Lower</b> Offer Price',
+        'Lower Offer Price',
         'Potential Higher Tax Liability (capital gains)',
       ],
     },
@@ -30,12 +30,10 @@
         'Get <b>cash-in-hand</b> at closing',
       ],
       cons: [
-        'Buyer <b>assumes</b> mortgage liability',
+        'Buyer assumes mortgage liability',
         'Possible <b>longer</b> paperwork process',
-        'Mortgage Debt included in DTI',
-        'Potential Risk of Due on Sale',
-        'Performance Risk / non-payment',
       ],
+      hasConsHeader: true,
     },
     {
       title: 'Owner Equity Financing',
@@ -52,6 +50,11 @@
         '<b>Customized</b> Options to the Seller',
       ],
       cons: ['Performance risk from buyer'],
+      subcons: [
+        'We will provide you with a Proof of Performance with references from many agents, sellers, and attorneys we’ve worked with in the past. We have closed on over 32 creative deals and there have never been any missed payments by us or our partners!',
+        'Use of a third party servicing company or ACH payments ensure that payments are made automatically on time each month.',
+      ],
+      hasConsHeader: true,
     },
   ])
 
@@ -61,7 +64,7 @@
 </script>
 
 <template>
-  <section class="core-values">
+  <section class="pros-and-cons">
     <div class="container">
       <h2>Get offers for your clients <span>quickly</span></h2>
       <p class="subheading">
@@ -89,15 +92,26 @@
           </div>
 
           <div class="panel">
-            <transition name="fade-slide" mode="out-in">
-              <ul :key="offer.active" :class="offer.active">
-                <li
-                  v-for="(item, j) in offer[offer.active]"
-                  :key="j"
-                  v-html="item"
-                ></li>
-              </ul>
-            </transition>
+            <!-- Show special header above CONS list if defined -->
+            <a
+              v-if="offer.active === 'cons' && offer.hasConsHeader"
+              href="#"
+              class="cons-header"
+            >
+              click here to learn HOW WE TURN TYPICAL “CONS” INTO WINS
+            </a>
+
+            <ul :class="offer.active">
+              <li
+                v-for="(item, j) in offer[offer.active]"
+                :key="j"
+                v-html="item"
+              ></li>
+            </ul>
+
+            <ul v-if="offer.active === 'cons' && offer.subcons" class="subcons">
+              <li v-for="(sub, k) in offer.subcons" :key="k" v-html="sub"></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -106,8 +120,8 @@
 </template>
 
 <style lang="scss" scoped>
-  .core-values {
-    padding: 60px 0 70px;
+  .pros-and-cons {
+    padding: 50px 0;
     background-color: var(--DarkBlue);
     border-top: 6px solid #e38c3b;
   }
@@ -118,33 +132,30 @@
   }
   h2 {
     color: var(--OffWhite);
-    font-size: 40px;
+    font-size: 32px;
     font-style: normal;
     font-weight: 500;
     line-height: 122.631%;
     letter-spacing: 4px;
     text-transform: uppercase;
+    margin: 0 0 20px;
     span {
       color: var(--Copper);
     }
   }
-
   .subheading {
     color: var(--OffWhite);
-    font-size: 20px;
-    font-style: normal;
+    font-size: 16px;
     font-weight: 600;
-    line-height: 35px;
+    line-height: 30px;
     letter-spacing: 0.8px;
     text-transform: uppercase;
   }
-
   .three-col-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
     margin: 30px auto 60px;
-
     .grid-item {
       padding: 10px;
       text-align: left;
@@ -154,39 +165,30 @@
         background-color: transparent;
       }
     }
-
     h4 {
       color: var(--Copper);
       padding: 10px 18px;
-      font-size: 28px;
-      font-style: normal;
+      font-size: 22px;
       font-weight: 500;
       line-height: 122.631%;
       letter-spacing: 2.8px;
       text-transform: uppercase;
     }
   }
-
   .two-col-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    width: 100%;
-    text-align: left;
     margin: 0 0 15px;
-
     button {
       display: flex;
       padding: 3px 18px;
       align-items: center;
       gap: 10px;
-      flex: 1 0 0;
-      text-align: left;
+      flex: 1;
       border-radius: 27px;
       color: var(--OffWhite);
-      font-family: Montserrat;
-      font-size: 20px;
-      font-style: normal;
+      font-size: 18px;
       font-weight: 600;
       line-height: 35px;
       letter-spacing: 0.8px;
@@ -194,37 +196,41 @@
       border: 1px solid var(--Copper);
       background: rgba(227, 140, 59, 0.21);
       &.active {
-        border: 1px solid var(--Copper);
         background: rgba(227, 140, 59, 0.7);
       }
     }
   }
-
   .panel {
-    display: flex;
     padding: 10px 18px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    color: var(--OffWhite);
     border-radius: 15px;
     border: 1px solid var(--Copper);
+    color: var(--OffWhite);
+
+    .cons-header {
+      display: block;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--Copper);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--Copper);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
 
     ul {
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 31px;
-      letter-spacing: 0.8px;
       list-style: none;
+      margin: 0 0 10px;
       padding: 0;
-      margin: 0;
+      font-size: 16px;
+      line-height: 24px;
+
+      letter-spacing: 0.8px;
 
       li {
         position: relative;
         padding-left: 28px;
         margin-bottom: 12px;
-        color: var(--OffWhite);
-
         &::before {
           position: absolute;
           left: 0;
@@ -232,47 +238,52 @@
           font-weight: bold;
         }
       }
-
       &.pros li::before {
         content: '✓';
         color: #5dbf67;
       }
-
       &.cons li::before {
         content: '✗';
         color: #ce4a4a;
       }
+      &.subcons {
+        margin-left: 20px;
+        li::before {
+          content: '✓';
+          color: #5dbf67;
+        }
+      }
     }
-  }
-
-  .fade-slide-enter-active,
-  .fade-slide-leave-active {
-    transition: all 0.3s ease;
-  }
-  .fade-slide-enter-from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  .fade-slide-leave-to {
-    opacity: 0;
-    transform: translateY(-10px);
   }
 
   @media (min-width: 1120px) {
-    .core-values {
-      padding: 121px 0 143px;
+    .pros-and-cons {
+      padding: 60px 0 70px;
     }
-    .container {
-      max-width: 1088px;
-      margin: 0 auto;
-      padding: 0 15px;
+    h2 {
+      font-size: 40px;
+      line-height: 122.631%;
     }
-
+    .subheading {
+      font-size: 20px;
+      line-height: 35px;
+    }
     .three-col-grid {
       grid-template-columns: repeat(3, 1fr);
-
       h4 {
+        font-size: 28px;
         min-height: 95px;
+      }
+    }
+    .two-col-grid {
+      button {
+        font-size: 20px;
+      }
+    }
+    .panel {
+      ul {
+        font-size: 20px;
+        line-height: 31px;
       }
     }
   }
