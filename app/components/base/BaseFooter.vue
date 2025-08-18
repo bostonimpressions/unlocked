@@ -6,11 +6,15 @@
         <div class="quick-links">
           <h3>QUICK LINKS</h3>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Real Estate Agents</a></li>
-            <li><a href="#">Homeowners</a></li>
-            <li><a href="#">Real Estate Investors</a></li>
+            <li><NuxtLink to="/">Home</NuxtLink></li>
+            <li><NuxtLink to="/about">About</NuxtLink></li>
+            <li><NuxtLink to="/agents">Real Estate Agents</NuxtLink></li>
+            <li><NuxtLink to="/homeowners">Homeowners</NuxtLink></li>
+            <li>
+              <NuxtLink to="/real-estate-investors"
+                >Real Estate Investors</NuxtLink
+              >
+            </li>
           </ul>
         </div>
 
