@@ -192,6 +192,7 @@
       align-items: center;
       gap: 10px;
       flex: 1;
+      cursor: pointer;
       border-radius: 27px;
       color: var(--OffWhite);
       font-size: 18px;
