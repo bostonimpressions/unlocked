@@ -15,12 +15,13 @@
 
 <style lang="scss" scoped>
   .core-values {
-    padding: 121px 0 143px;
+    padding: 60px 0 70px;
     background-color: var(--DarkBlue);
   }
   .container {
     max-width: 1088px;
     margin: 0 auto;
+    padding: 0 20px;
   }
   h2 {
     color: var(--OffWhite);
@@ -31,6 +32,7 @@
     letter-spacing: 2.4px;
     text-transform: uppercase;
     margin: 0 0 40px;
+    text-align: center;
 
     span {
       color: var(--Copper);
@@ -39,19 +41,16 @@
   }
   ul {
     display: flex;
-    padding: 0 12px;
+    flex-direction: column;
+    justify-self: center;
+    padding: 12px 0;
+    margin: 0 auto;
   }
   li {
-    display: flex;
-    height: 233.6px;
+    margin: -12px 0;
     padding: 86px 17px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex: 1 0 0;
-    margin: 0 -12px;
     aspect-ratio: 1/1;
+    height: 233.6px;
     border-radius: 128.653px;
     color: var(--OffWhite);
     text-align: center;
@@ -68,6 +67,31 @@
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1120px) {
+    .core-values {
+      padding: 121px 0 143px;
+    }
+    .container {
+      max-width: 1088px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    h2 {
+      text-align: left;
+    }
+    ul {
+      display: flex;
+      flex-direction: row;
+      padding: 0 12px;
+    }
+    li {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex: 1 0 0;
+      margin: 0 -12px;
+    }
   }
 </style>
