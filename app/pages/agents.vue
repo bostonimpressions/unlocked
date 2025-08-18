@@ -78,6 +78,7 @@
     </SectionHero>
     <SectionTestimonials />
     <SectionProsAndCons />
+    <SectionValue />
   </div>
 </template>
 
