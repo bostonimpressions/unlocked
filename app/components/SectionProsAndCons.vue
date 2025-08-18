@@ -1,3 +1,65 @@
+<script setup>
+  import { ref } from 'vue'
+
+  const offers = ref([
+    {
+      title: 'Cash offer',
+      active: 'pros',
+      pros: [
+        'We buy <b>as-is</b>',
+        '<b>No</b> inspections or appraisal contingencies',
+        'Close in under <b>4 weeks</b>',
+      ],
+      cons: [
+        '<b>Lower</b> Offer Price',
+        'Potential Higher Tax Liability (capital gains)',
+      ],
+    },
+    {
+      title: 'Mortgage Take-Over',
+      active: 'pros',
+      pros: [
+        '<b>Higher</b> offer amount',
+        'Close in under <b>2 weeks</b>',
+        'We buy <b>as-is</b>',
+        '<b>No</b> inspections or appraisal contingencies',
+        'Potential <b>LOWER</b> Tax Liability (Defer capital gains)',
+        'Monthly passive income options',
+        '<b>Personalized</b> seller protections',
+        'Terms <b>customized</b> to the seller’s needs',
+        'Get <b>cash-in-hand</b> at closing',
+      ],
+      cons: [
+        'Buyer <b>assumes</b> mortgage liability',
+        'Possible <b>longer</b> paperwork process',
+        'Mortgage Debt included in DTI',
+        'Potential Risk of Due on Sale',
+        'Performance Risk / non-payment',
+      ],
+    },
+    {
+      title: 'Owner Equity Financing',
+      active: 'pros',
+      pros: [
+        'Close in under <b>a week</b>',
+        'We buy <b>as-is</b>, no inspections or appraisal contingencies',
+        'Structure/<b>customize</b> how you want to sell',
+        'Potential <b>LOWER</b> Tax Liability (Defer capital gains)',
+        'Earn monthly cash flow',
+        'Get money <b>in hand</b> at closing',
+        '<b>Highest</b> Offer Amount',
+        '<b>Personalized</b> Seller Protections',
+        '<b>Customized</b> Options to the Seller',
+      ],
+      cons: ['Performance risk from buyer'],
+    },
+  ])
+
+  const togglePanel = (offer, type) => {
+    offer.active = type
+  }
+</script>
+
 <template>
   <section class="core-values">
     <div class="container">
@@ -8,69 +70,34 @@
       </p>
 
       <div class="three-col-grid">
-        <div class="grid-item">
-          <h4>Cash offer</h4>
+        <div v-for="(offer, i) in offers" :key="i" class="grid-item">
+          <h4>{{ offer.title }}</h4>
+
           <div class="two-col-grid">
-            <button class="active">PROS</button>
-            <button>CONS</button>
+            <button
+              :class="{ active: offer.active === 'pros' }"
+              @click="togglePanel(offer, 'pros')"
+            >
+              PROS
+            </button>
+            <button
+              :class="{ active: offer.active === 'cons' }"
+              @click="togglePanel(offer, 'cons')"
+            >
+              CONS
+            </button>
           </div>
-          <!-- panel -->
+
           <div class="panel">
-            <ul>
-              <li>We buy <b>as-is</b></li>
-              <li><b>No</b> inspections or appraisal contingencies </li>
-              <li>Close in under <b>4 weeks</b></li>
-              <li><b>Lower</b> Offer Price</li>
-              <li>Potential Higher Tax Liability (capital gains)</li>
-            </ul>
-          </div>
-        </div>
-        <div class="grid-item">
-          <h4>Mortgage Take-Over</h4>
-          <div class="two-col-grid">
-            <button class="active">PROS</button>
-            <button>CONS</button>
-          </div>
-          <!-- panel -->
-          <div class="panel">
-            <ul>
-              <li><b>Higher</b> offer amount</li>
-              <li>Close in under <b>2 weeks</b></li>
-              <li>We buy <b>as-is</b></li>
-              <li><b>No</b> inspections or appraisal contingencies</li>
-              <li>
-                Potential <b>LOWER</b> Tax Liability (Defer capital gains)
-              </li>
-              <li>Monthly passive income options</li>
-              <li><b>Personalized</b> seller protections</li>
-              <li>Terms <b>customized</b> to the seller’s needs</li>
-              <li>Get <b>cash-in-hand</b> at closing</li>
-            </ul>
-          </div>
-        </div>
-        <div class="grid-item">
-          <h4>Owner Equity Financing</h4>
-          <div class="two-col-grid">
-            <button class="active">PROS</button>
-            <button>CONS</button>
-          </div>
-          <!-- panel -->
-          <div class="panel">
-            <ul>
-              <li>Close in under <b>a week</b></li>
-              <li>
-                We buy <b>as-is</b>, no inspections or appraisal contingencies
-              </li>
-              <li>Structure/<b>customize</b> how you want to sell</li>
-              <li>
-                Potential <b>LOWER</b> Tax Liability (Defer capital gains)
-              </li>
-              <li>Earn monthly cash flow</li>
-              <li>Get money <b>in hand</b> at closing</li>
-              <li><b>Highest</b> Offer Amount</li>
-              <li><b>Personalized</b> Seller Protections </li>
-              <li><b>Customized</b> Options to the Seller</li>
-            </ul>
+            <transition name="fade-slide" mode="out-in">
+              <ul :key="offer.active" :class="offer.active">
+                <li
+                  v-for="(item, j) in offer[offer.active]"
+                  :key="j"
+                  v-html="item"
+                ></li>
+              </ul>
+            </transition>
           </div>
         </div>
       </div>
@@ -179,14 +206,12 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    align-self: stretch;
     color: var(--OffWhite);
     border-radius: 15px;
-    border: 1px solid var(--Copper, #e38c3b);
+    border: 1px solid var(--Copper);
 
     ul {
       font-size: 20px;
-      font-style: normal;
       font-weight: 400;
       line-height: 31px;
       letter-spacing: 0.8px;
@@ -201,15 +226,36 @@
         color: var(--OffWhite);
 
         &::before {
-          content: '✓';
           position: absolute;
           left: 0;
           top: 0;
-          color: #5dbf67;
           font-weight: bold;
         }
       }
+
+      &.pros li::before {
+        content: '✓';
+        color: #5dbf67;
+      }
+
+      &.cons li::before {
+        content: '✗';
+        color: #ce4a4a;
+      }
     }
+  }
+
+  .fade-slide-enter-active,
+  .fade-slide-leave-active {
+    transition: all 0.3s ease;
+  }
+  .fade-slide-enter-from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  .fade-slide-leave-to {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 
   @media (min-width: 1120px) {
