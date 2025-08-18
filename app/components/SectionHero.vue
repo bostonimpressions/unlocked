@@ -16,30 +16,31 @@
     <div class="absolute inset-0 bg-black/70"></div>
 
     <div class="hero-content">
-      <BaseHeader /> 
+      <BaseHeader />
       <slot />
     </div>
   </section>
 </template>
 
 <style scoped>
-.hero-content {
-  position: relative;
-  padding: 0 30px;
-  margin: 0 auto;
-  max-width: 1608px;
-  z-index: 10;
-}
-section {
-  min-height: 60vh;
-}
-
-@media (min-width: 768px) {
   .hero-content {
-    padding: 0 60px;
+    position: relative;
+    padding: 0 30px;
+    margin: 0 auto;
+    max-width: 1608px;
+    z-index: 10;
   }
   section {
-    min-height: 80vh;
+    min-height: 60vh;
+    border-bottom: 6px solid var(--Blue);
   }
-}
+
+  @media (min-width: 768px) {
+    .hero-content {
+      padding: 0 60px;
+    }
+    section {
+      min-height: 80vh;
+    }
+  }
 </style>

@@ -27,6 +27,7 @@
         <AudienceCards />
       </section>
     </SectionHero>
+    <SectionTestimonials />
     <SectionCoreValues />
     <SectionContactForm />
     <SectionRealPeople />
