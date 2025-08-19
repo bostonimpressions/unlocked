@@ -79,6 +79,7 @@
     <SectionTestimonials />
     <SectionProsAndCons />
     <SectionValue />
+    <SectionRequest />
   </div>
 </template>
 
