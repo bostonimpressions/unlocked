@@ -168,6 +168,7 @@
     grid-template-columns: 1fr;
     gap: 55px;
     margin: 0 auto 60px;
+    width: 100%;
 
     .grid-item {
       text-align: left;
