@@ -78,7 +78,7 @@
 
   .image-col {
     border-radius: 8px;
-    border: 2px solid var(--Blue, #67b9df);
+    border: 2px solid var(--Blue);
     background: url('/agents/agents-image.png') lightgray center center / cover
       no-repeat;
     width: 100%;

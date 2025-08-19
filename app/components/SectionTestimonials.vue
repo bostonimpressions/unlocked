@@ -6,7 +6,27 @@
   import 'swiper/css/pagination'
 
   import type { Testimonial } from '@/data/testimonials'
-  import { testimonials } from '@/data/testimonials'
+  import {
+    testimonials,
+    fsboTestimonials,
+    p4cTestimonials,
+  } from '@/data/testimonials'
+
+  const props = defineProps<{
+    type?: 'default' | 'fsbo' | 'p4c'
+  }>()
+
+  // Choose correct testimonial list
+  const selectedTestimonials: Testimonial[] = (() => {
+    switch (props.type) {
+      case 'fsbo':
+        return fsboTestimonials
+      case 'p4c':
+        return p4cTestimonials
+      default:
+        return testimonials
+    }
+  })()
 </script>
 
 <template>
@@ -21,11 +41,11 @@
         :loop="true"
         class="w-full"
       >
-        <SwiperSlide v-for="(testimonial, i) in testimonials" :key="i">
+        <SwiperSlide v-for="(testimonial, i) in selectedTestimonials" :key="i">
           <div class="slide">
             <!-- Left Column -->
             <div class="slide-col-left">
-              <div class="rating">
+              <div v-if="testimonial.rating !== -1" class="rating">
                 <span
                   v-for="star in 5"
                   :key="star"
@@ -35,7 +55,9 @@
                 </span>
               </div>
               <h4 class="name">{{ testimonial.name }}</h4>
-              <p class="source">{{ testimonial.source }}</p>
+              <p v-if="testimonial.source" class="source">
+                {{ testimonial.source }}
+              </p>
             </div>
             <!-- Right Column -->
             <div class="slide-col-right">
@@ -57,7 +79,7 @@
         </SwiperSlide>
       </Swiper>
 
-      <div class="controls">
+      <div class="controls" v-if="selectedTestimonials.length > 1">
         <div class="arrow custom-prev">←</div>
         <div class="custom-pagination"></div>
         <div class="arrow custom-next">→</div>

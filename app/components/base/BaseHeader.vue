@@ -2,7 +2,9 @@
   <header class="base-header relative w-full flex items-center text-white z-50">
     <!-- Logo -->
     <div class="logo font-bold text-xl">
-      <img src="/logo.png" alt="Unlocked" />
+      <NuxtLink to="/">
+        <img src="/logo.png" alt="Unlocked" />
+      </NuxtLink>
     </div>
 
     <!-- Overlay -->

@@ -1,7 +1,5 @@
-<script setup lang="ts">
-  const { data: intro } = await useAsyncData(() =>
-    queryCollection('content').path('/home/intro').first()
-  )
+<script setup>
+  import BulletPanel from '@/components/base/BulletPanel'
 </script>
 
 <template>
@@ -47,26 +45,23 @@
         <p class="callout-sub">If your client...</p>
 
         <div class="two-col-grid">
-          <div class="grid-item">
-            <p>needs to close quickly</p>
+          <div class="col">
+            <BulletPanel>needs to close quickly</BulletPanel>
+
+            <BulletPanel>is an investor</BulletPanel>
+            <BulletPanel>has low equity in the property</BulletPanel>
+            <BulletPanel>is selling a vacant home or a second home</BulletPanel>
           </div>
-          <div class="grid-item">
-            <p>is selling aproperty that is (or was) an airbnb</p>
-          </div>
-          <div class="grid-item">
-            <p>is an investor</p>
-          </div>
-          <div class="grid-item">
-            <p>has a rental property with tenants</p>
-          </div>
-          <div class="grid-item">
-            <p>has low equity in the property</p>
-          </div>
-          <div class="grid-item">
-            <p>has a challenging listing that just won't sell</p>
-          </div>
-          <div class="grid-item">
-            <p>is selling a vacant home or a second home</p>
+          <div class="col">
+            <BulletPanel
+              >is selling a property that is (or was) an airbnb</BulletPanel
+            >
+
+            <BulletPanel>has a rental property with tenants</BulletPanel>
+
+            <BulletPanel
+              >has a challenging listing that just won't sell</BulletPanel
+            >
           </div>
         </div>
 
@@ -191,27 +186,6 @@
     grid-template-columns: 1fr;
     gap: 10px;
     width: 100%;
-
-    .grid-item {
-      text-align: left;
-      padding: 12px 16px;
-      border-radius: 7px;
-      background: rgba(87, 93, 96, 0.38);
-      color: var(--OffWhite);
-    }
-
-    p {
-      &:before {
-        content: '';
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        margin-right: 10px;
-        background-color: var(--Copper);
-        border-radius: 50%;
-        vertical-align: text-bottom;
-      }
-    }
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
