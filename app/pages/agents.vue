@@ -80,6 +80,7 @@
     <SectionProsAndCons />
     <SectionValue />
     <SectionRequest />
+    <SectionReference />
   </div>
 </template>
 
