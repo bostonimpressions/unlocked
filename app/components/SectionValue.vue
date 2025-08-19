@@ -33,7 +33,7 @@
   <section class="section-value">
     <div class="container">
       <h2>We provide MASSIVE value to agents and their clients</h2>
-
+      <ImageSlider />
       <div class="three-col-grid">
         <div v-for="(item, index) in valueItems" :key="index" class="grid-item">
           <h4 v-html="item.title"></h4>
