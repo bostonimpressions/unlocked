@@ -18,6 +18,7 @@
         :space-between="30"
         :navigation="{ nextEl: '.custom-next', prevEl: '.custom-prev' }"
         :pagination="{ el: '.custom-pagination', clickable: true }"
+        :loop="true"
         class="w-full"
       >
         <SwiperSlide v-for="(testimonial, i) in testimonials" :key="i">
@@ -38,11 +39,19 @@
             </div>
             <!-- Right Column -->
             <div class="slide-col-right">
-              <p class="quote">“{{ testimonial.quote }}”</p>
-              <h3>{{ testimonial.lead }}</h3>
-              <p class="testimonial-body">
-                {{ testimonial.body }}
+              <p v-if="testimonial.quote" class="quote">
+                “{{ testimonial.quote }}”
               </p>
+              <h3>{{ testimonial.lead }}</h3>
+              <div class="testimonial-body">
+                <p
+                  v-for="(line, index) in testimonial.body.split('\n')"
+                  :key="index"
+                  class="testimonial-body-line"
+                >
+                  {{ line }}
+                </p>
+              </div>
             </div>
           </div>
         </SwiperSlide>
@@ -75,7 +84,7 @@
   .slide {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; // Tailwind gap-6 = 24px
+    gap: 1.5rem;
     padding: 35px;
     background-color: rgba(87, 93, 96, 0.06);
     color: var(--DarkBlue);
@@ -132,7 +141,7 @@
 
   .source {
     color: #575d60;
-    text-align: right;
+    text-align: center;
     font-size: 18px;
     font-style: italic;
     font-weight: 400;
@@ -158,12 +167,13 @@
     margin: 1rem 0;
   }
 
-  .testimonial-body {
+  .testimonial-body-line {
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: 27px;
     letter-spacing: 0.72px;
+    margin-bottom: 0.5rem;
   }
 
   .controls {
