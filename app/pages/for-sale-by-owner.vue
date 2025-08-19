@@ -1,5 +1,6 @@
 <script setup>
   import BulletPanel from '@/components/base/BulletPanel'
+  import SectionFSBOTestimonial from '~/components/SectionFSBOTestimonial.vue'
 </script>
 
 <template>
@@ -60,7 +61,7 @@
         </div>
       </section>
     </SectionHero>
-    <SectionTestimonials type="fsbo" />
+    <SectionFSBOTestimonial />
   </div>
 </template>
 
