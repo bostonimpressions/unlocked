@@ -62,6 +62,7 @@
       </section>
     </SectionHero>
     <SectionFSBOTestimonial />
+    <SectionFSBOMyths />
   </div>
 </template>
 
