@@ -1,7 +1,7 @@
 <template>
-  <section class="relative w-full overflow-hidden bg-black">
-    <!-- Background Video -->
+  <section class="hero-section relative w-full overflow-hidden">
     <video
+      v-if="props.backgroundType === 'video'"
       class="absolute top-0 left-0 w-full h-full object-cover"
       autoplay
       loop
@@ -12,8 +12,13 @@
       <source src="/video-home-loop.mov" type="video/quicktime" />
     </video>
 
-    <!-- Black overlay -->
-    <div class="absolute inset-0 bg-black/70"></div>
+    <div
+      v-else-if="props.backgroundType === 'image'"
+      class="hero-image"
+      :style="imageStyle"
+    ></div>
+
+    <div class="absolute inset-0" :class="overlayClass"></div>
 
     <div class="hero-content">
       <BaseHeader />
@@ -22,7 +27,45 @@
   </section>
 </template>
 
+<script setup>
+  import { computed } from 'vue'
+
+  const props = defineProps({
+    backgroundType: {
+      type: String,
+      default: 'video',
+      validator: (value) => ['video', 'image'].includes(value),
+    },
+    imageUrl: {
+      type: String,
+      default: '/default-hero-background.png',
+    },
+  })
+
+  const overlayClass = computed(() =>
+    props.backgroundType === 'video' ? 'bg-black/70' : ''
+  )
+
+  const imageStyle = computed(() => ({
+    backgroundImage: `linear-gradient(to top, var(--DarkBlue), transparent), url(${props.imageUrl})`,
+  }))
+</script>
+
 <style scoped>
+  .hero-section {
+    background-color: var(--DarkBlue);
+  }
+  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: contain;
+  }
+
   .hero-content {
     position: relative;
     padding: 0 30px;
@@ -30,6 +73,7 @@
     max-width: 1608px;
     z-index: 10;
   }
+
   section {
     min-height: 60vh;
     border-bottom: 6px solid var(--Blue);

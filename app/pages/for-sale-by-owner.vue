@@ -72,7 +72,7 @@
       </template>
 
       <template #cta>
-        <NuxtLink to="/" class="link">Get Unlocked Today</NuxtLink>
+        <NuxtLink to="/contact" class="link">Get Unlocked Today</NuxtLink>
       </template>
     </SectionRequest>
   </div>
