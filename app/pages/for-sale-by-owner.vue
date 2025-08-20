@@ -63,6 +63,18 @@
     </SectionHero>
     <SectionFSBOTestimonial />
     <SectionFSBOMyths />
+    <SectionRequest>
+      <template #text>
+        <strong
+          >Ready to sell smarter? Reach out to our team today to see if our
+          process is the right fit for you.</strong
+        >
+      </template>
+
+      <template #cta>
+        <NuxtLink to="/" class="link">Get Unlocked Today</NuxtLink>
+      </template>
+    </SectionRequest>
   </div>
 </template>
 

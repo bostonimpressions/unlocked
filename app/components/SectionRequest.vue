@@ -1,20 +1,19 @@
+<script setup></script>
+
 <template>
   <section class="section-request">
     <div class="container">
-      <h2>
-        Still unsure? For many agents, creative transactions are uncharted
-        territory.
+      <h2 v-if="$slots.heading">
+        <slot name="heading" />
       </h2>
-      <p>
-        Contact us to request a copy of our Proof of Performance which
-        highlights our track record, professionalism, credibility, and client
-        satisfaction, and includes a full list of references to local agents,
-        brokers, title companies, and attorneys that we have done business with.
-      </p>
 
-      <NuxtLink to="/" class="link">
-        Request Our Proof of Performance!
-      </NuxtLink>
+      <div v-if="$slots.text" class="text">
+        <slot name="text" />
+      </div>
+
+      <div v-if="$slots.cta" class="cta">
+        <slot name="cta" />
+      </div>
     </div>
   </section>
 </template>
@@ -58,10 +57,11 @@
     line-height: 28px;
     letter-spacing: 0.88px;
     text-transform: uppercase;
+    margin: 0 auto 27px;
   }
 
-  p {
-    margin: 27px 0;
+  .text {
+    margin: 0 0 27px;
     color: var(--OffWhite);
     text-align: center;
     font-size: 16px;
@@ -69,12 +69,20 @@
     font-weight: 400;
     line-height: 28px;
     letter-spacing: 0.8px;
+
+    :deep(strong) {
+      font-weight: 700;
+    }
   }
 
-  .link {
+  .cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  :deep(.link) {
     display: flex;
     padding: 6px 34px;
-    margin: 0 auto;
     max-width: 424px;
     justify-content: center;
     align-items: center;
@@ -86,6 +94,7 @@
       #a4e2ff 63.6%,
       #78c5e8 113.17%
     );
+    background-size: 200% auto;
     color: var(--DarkBlue);
     text-align: center;
     font-size: 14px;
@@ -94,9 +103,14 @@
     line-height: 28px;
     letter-spacing: 0.6px;
     text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   }
 
-  @media (min-width: 768px) {
+  :deep(.link:hover) {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
   }
 
   @media (min-width: 1120px) {
@@ -108,19 +122,18 @@
       padding: 40px 44px 47px;
     }
 
-    p {
+    .text {
       font-size: 20px;
       line-height: 31px;
     }
 
-    .link {
+    :deep(.link) {
       font-size: 15px;
       line-height: 34px;
     }
 
     h2 {
       max-width: 840px;
-      margin: 0 auto;
       font-size: 22px;
       line-height: 31px;
     }

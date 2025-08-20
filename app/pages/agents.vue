@@ -74,7 +74,27 @@
     <SectionTestimonials />
     <SectionProsAndCons />
     <SectionValue />
-    <SectionRequest />
+
+    <SectionRequest>
+      <template #heading>
+        Still unsure? For many agents, creative transactions are uncharted
+        territory.
+      </template>
+
+      <template #text>
+        Contact us to request a copy of our Proof of Performance which
+        highlights our track record, professionalism, credibility, and client
+        satisfaction, and includes a full list of references to local agents,
+        brokers, title companies, and attorneys that we have done business with.
+      </template>
+
+      <template #cta>
+        <NuxtLink to="/" class="link"
+          >Request Our Proof of Performance!</NuxtLink
+        >
+      </template>
+    </SectionRequest>
+
     <SectionReference />
   </div>
 </template>
