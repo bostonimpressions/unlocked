@@ -127,7 +127,7 @@
       <div class="section-row endorsement-2">
         <h4>Jessie D.</h4>
         <div class="two-col-grid">
-          <div class="grid-item bg-black"></div>
+          <div class="grid-item"></div>
           <div class="grid-item"></div>
         </div>
 
