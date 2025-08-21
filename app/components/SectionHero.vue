@@ -63,7 +63,7 @@
     height: 100%;
     background-repeat: no-repeat;
     background-position: 0 0;
-    background-size: contain;
+    background-size: initial;
   }
 
   .hero-content {

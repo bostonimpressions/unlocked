@@ -171,9 +171,55 @@
     gap: 20px;
   }
 
+  h1 {
+    color: var(--OffWhite);
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    margin: 0 0 23px;
+
+    span {
+      color: var(--Copper);
+    }
+  }
+
+  h2 {
+    color: var(--Copper);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+
+  h3 {
+    color: var(--Blue);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+
+    span {
+      color: var(--OffWhite);
+    }
+  }
+
+  p {
+    color: var(--OffWhite);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0.8px;
+
+    span {
+      color: var(--Blue);
+    }
+  }
+
   .section-one {
     display: flex;
-    padding: 30px 25px 39px 25px;
+    padding: 20px 20px 30px;
     flex-direction: column;
     align-items: flex-start;
     border-bottom: 8px solid #e38c3b;
@@ -182,7 +228,7 @@
 
   .section-two {
     display: flex;
-    padding: 167px 0 96px 0;
+    padding: 80px 0 44px 0;
     flex-direction: column;
     text-align: left;
   }
@@ -202,7 +248,7 @@
 
     .toggle-header {
       position: relative;
-      padding: 10px 13px;
+      padding: 10px 15px;
       cursor: pointer;
     }
 
@@ -227,10 +273,10 @@
 
   .section-four {
     display: grid;
-    grid-template-columns: 35% 65%;
+    grid-template-columns: repeat(1, 1fr);
     gap: 40px;
     align-items: start;
-    margin: 54px auto 30px;
+    margin: 0 auto 30px;
 
     > div {
       &:first-child {
@@ -241,8 +287,7 @@
 
   .timeline {
     position: relative;
-    margin: 40px auto;
-    padding-left: 40px;
+    margin: 0 auto;
     max-width: 600px;
     .timeline-item {
       position: relative;
@@ -307,7 +352,7 @@
 
   .five-col-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 14px;
     margin: 10px 0 0;
 
@@ -315,7 +360,7 @@
       display: flex;
       padding: 18px 14px 24px 14px;
       flex-direction: column;
-      align-items: center;
+      align-items: left;
       gap: 11px;
       flex: 1 0 0;
       align-self: stretch;
@@ -326,7 +371,7 @@
     }
 
     h4 {
-      font-size: 19px;
+      font-size: 16px;
       font-weight: 700;
       line-height: 27px;
       letter-spacing: 0.76px;
@@ -334,7 +379,7 @@
     }
 
     p {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 500;
       line-height: 30px;
       letter-spacing: 0.68px;
@@ -357,51 +402,6 @@
     opacity: 1;
   }
 
-  h1 {
-    color: var(--OffWhite);
-    font-size: 48px;
-    font-weight: 600;
-    letter-spacing: 2.4px;
-    text-transform: uppercase;
-    margin: 0 0 23px;
-
-    span {
-      color: var(--Copper);
-    }
-  }
-
-  h2 {
-    color: var(--Copper);
-    font-size: 40px;
-    font-weight: 500;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin: 0 0 10px;
-  }
-
-  h3 {
-    color: var(--Blue);
-    font-size: 28px;
-    font-weight: 500;
-    letter-spacing: 2.8px;
-    text-transform: uppercase;
-
-    span {
-      color: var(--OffWhite);
-    }
-  }
-
-  p {
-    color: var(--OffWhite);
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 33px;
-    letter-spacing: 0.8px;
-
-    span {
-      color: var(--Blue);
-    }
-  }
   @keyframes shake {
     0% {
       transform: translateX(0);
@@ -417,6 +417,68 @@
     }
     100% {
       transform: translateX(0);
+    }
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 48px;
+    }
+    h2 {
+      font-size: 40px;
+    }
+    h3 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 20px;
+      line-height: 33px;
+    }
+
+    .investors-intro {
+      padding: 15px 0 60px 0;
+    }
+
+    .section-one {
+      padding: 30px 25px 39px 25px;
+    }
+
+    .section-two {
+      padding: 167px 0 96px 0;
+    }
+
+    .section-three {
+      padding: 7px 12px;
+      margin: 0 auto 44px;
+    }
+
+    .section-four {
+      grid-template-columns: 35% 65%;
+    }
+
+    .timeline {
+      margin: 40px auto;
+      padding-left: 40px;
+    }
+
+    .five-col-grid {
+      .grid-item {
+        align-items: center;
+      }
+
+      h4 {
+        font-size: 19px;
+      }
+
+      p {
+        font-size: 17px;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .five-col-grid {
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 </style>
