@@ -142,6 +142,8 @@
       </section>
     </SectionHero>
 
+    <SectionRecentPartner />
+
     <SectionRequest>
       <template #heading> <span>Trust Us</span> to Deliver </template>
 
