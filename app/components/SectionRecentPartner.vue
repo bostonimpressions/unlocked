@@ -38,6 +38,10 @@
     '/investors/inn32_3.jpg',
     '/investors/inn32_4.jpg',
   ]
+  const propertySlides_2 = [
+    '/investors/winnipesaukee_1.jpg',
+    '/investors/winnipesaukee_2.jpg',
+  ]
 </script>
 
 <template>
@@ -128,7 +132,12 @@
         <h4>Jessie D.</h4>
         <div class="two-col-grid">
           <div class="grid-item"></div>
-          <div class="grid-item"></div>
+          <div class="grid-item">
+            <PropertySlider
+              :slides="propertySlides_2"
+              label="Lake Winnipesaukee Airbnb"
+            />
+          </div>
         </div>
 
         <div class="row-item">
