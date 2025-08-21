@@ -16,7 +16,6 @@
     { src: '/agents/slider-image3.jpg', alt: 'Provide more solutions' },
   ]
 
-  // Custom navigation refs
   const prevEl = ref(null)
   const nextEl = ref(null)
 </script>
@@ -33,7 +32,6 @@
         <img :src="slide.src" :alt="slide.alt" />
       </SwiperSlide>
 
-      <!-- Custom arrows -->
       <button ref="prevEl" class="nav-arrow left">←</button>
       <button ref="nextEl" class="nav-arrow right">→</button>
     </Swiper>

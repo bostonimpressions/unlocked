@@ -51,11 +51,7 @@
               </BulletPanel>
             </div>
             <div class="image-col">
-              <video autoplay muted loop playsinline class="video">
-                <source src="/fsbo/piggy-bank.mp4" type="video/mp4" />
-                <!-- <source src="/fsbo/piggy-bank-sm.mov" type="video/quicktime" /> -->
-                Your browser does not support the video tag.
-              </video>
+              <img src="/fsbo/piggy-bank.gif" alt="Piggy Bank" />
             </div>
           </div>
         </div>
