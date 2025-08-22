@@ -231,14 +231,12 @@
             </div>
 
             <!-- Direct Cash Plus Program -->
-            <div v-else-if="activeProgram.id === 'CASH'">
+            <div v-else-if="activeProgram.id === 'CASH'" class="mega-modal">
               <div class="modal-header">
-                <img
-                  :src="activeProgram.icon"
-                  alt="Direct Cash Plus Program"
-                  class="icon"
-                />
-                <h3>Direct Cash Plus Program</h3>
+                <h3>
+                  <div class="sub">Unlocked Direct Cash Plus Program</div>
+                  <div class="heading">Sell <span>Directly</span> To Us</div>
+                </h3>
               </div>
               <div class="cash-modal-content">
                 <!-- 💡 You can design this however you want -->
@@ -250,7 +248,7 @@
             </div>
 
             <!-- Smart Listings Program -->
-            <div v-else-if="activeProgram.id === 'SMART'">
+            <div v-else-if="activeProgram.id === 'SMART'" class="mega-modal">
               <div class="modal-header">
                 <img
                   :src="activeProgram.icon"
@@ -486,6 +484,39 @@
         height: 30px;
         path {
           stroke: var(--Copper);
+        }
+      }
+    }
+  }
+
+  .mega-modal {
+    h3 {
+      color: var(--DarkBlue);
+      .sub {
+        display: flex;
+        padding: 0 11px;
+        align-items: flex-start;
+        gap: 6px;
+        width: fit-content;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 122.631%;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        background: rgba(103, 185, 223, 0.72);
+      }
+      .heading {
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 122.631%;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin: 10px 0;
+        span {
+          color: var(--Blue);
         }
       }
     }
