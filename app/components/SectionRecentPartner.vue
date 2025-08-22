@@ -131,7 +131,12 @@
       <div class="section-row endorsement-2">
         <h4>Jessie D.</h4>
         <div class="two-col-grid">
-          <div class="grid-item"></div>
+          <div class="grid-item">
+            <video controls width="100%">
+              <source src="/investors/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
           <div class="grid-item">
             <PropertySlider
               :slides="propertySlides_2"
@@ -254,6 +259,15 @@
     .two-col-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 80px;
+      align-items: center;
+    }
+    .endorsement-2 {
+      .two-col-grid {
+        gap: 36px;
+      }
+      video {
+        height: 100%;
+      }
     }
   }
 </style>
