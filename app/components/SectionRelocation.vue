@@ -3,7 +3,7 @@
 
   const activeProgram = ref(null)
 
-  const programs = [
+  const gridPrograms = [
     {
       id: 'HOME',
       name: 'Home Search Assistance Program',
@@ -35,8 +35,28 @@
     },
   ]
 
+  const extraPrograms = {
+    CASH: {
+      id: 'CASH',
+      name: 'Direct Cash Plus Program',
+      icon: '/icon-listing.png',
+      details: `Sell your home <span>directly to us off-market</span>, quickly
+              and easily with no showings, appraisals, inspections, or
+              uncertainty of deals falling through.`,
+    },
+    SMART: {
+      id: 'SMART',
+      name: 'Smart Listings Program',
+      icon: '/icon-partner.png',
+      details: `We partner with a licensed realtor on our team who specializes
+              in financial hardship and challenging listings to help sell your
+              home on the <span>Multiple Listing Service (MLS)</span>`,
+    },
+  }
+
   const openModal = (programId) => {
-    activeProgram.value = programs.find((p) => p.id === programId)
+    activeProgram.value =
+      gridPrograms.find((p) => p.id === programId) || extraPrograms[programId]
   }
 
   const closeModal = () => {
@@ -67,13 +87,101 @@
 
       <div class="three-col-grid">
         <div
-          v-for="program in programs"
+          v-for="program in gridPrograms"
           :key="program.id"
           class="grid-item cursor-pointer transition-transform ease-in-out duration-200 hover:-translate-y-1 hover:bg-[rgba(184,115,51,0.2)]"
           @click="openModal(program.id)"
         >
           <img :src="program.icon" :alt="program.name" class="icon" />
           <p>{{ program.name }}</p>
+        </div>
+      </div>
+
+      <SlideshowRelocation />
+
+      <div class="relief-solutions">
+        <div class="row row-one">
+          <div class="two-col-grid">
+            <div class="grid-item">
+              <h2>UNLOCKED RELIEF <span>SELLING SOLUTIONS</span></h2>
+              <p>
+                Our company offers a unique and revolutionary low-stress
+                approach to providing relief in challenging situations.
+              </p>
+            </div>
+            <div class="grid-item">
+              <div class="item-group">
+                <img
+                  src="/icon-cost.png"
+                  alt="Zero out of pocket costs"
+                  class="icon"
+                />
+                <h3>Zero out of pocket costs</h3>
+              </div>
+              <div class="item-group">
+                <img
+                  src="/icon-maximize.png"
+                  alt="Maximize your cash payout"
+                  class="icon"
+                />
+                <h3>Maximize your cash payout</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-two">
+          <div class="item-group">
+            <img
+              src="/icon-strategic.png"
+              alt="STRATEGIC SELLING"
+              class="icon"
+            />
+            <div>
+              <h3>STRATEGIC <span>SELLING</span></h3>
+              <p>
+                Our goal is to maximize your proceeds so you can have more cash
+                in hand to get back on your feet. We guarantee your peace of
+                mind with top-tier, secure, high-value cash offers or
+                cutting-edge market strategies.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row row-three">
+          <div class="two-col-grid">
+            <!-- clicking opens new modal for Direct Cash Plus Program -->
+            <div class="grid-item cursor-pointer" @click="openModal('CASH')">
+              <div class="item-group">
+                <img
+                  src="/icon-listing.png"
+                  alt="Direct Cash Plus Program"
+                  class="icon"
+                />
+                <h3>UNLOCKED DIRECT CASH PLUS PROGRAM</h3>
+              </div>
+              <p>
+                Sell your home <span>directly to us off-market</span>, quickly
+                and easily with no showings, appraisals, inspections, or
+                uncertainty of deals falling through.
+              </p>
+            </div>
+            <!-- clicking opens new modal for Smart Listings Program -->
+            <div class="grid-item cursor-pointer" @click="openModal('SMART')">
+              <div class="item-group">
+                <img
+                  src="/icon-partner.png"
+                  alt="Smart Listings Program"
+                  class="icon"
+                />
+                <h3>UNLOCKED SMART LISTINGS PROGRAM</h3>
+              </div>
+              <p>
+                We partner with a licensed realtor on our team who specializes
+                in financial hardship and challenging listings to help sell your
+                home on the <span>Multiple Listing Service (MLS)</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -87,7 +195,7 @@
       >
         <transition name="slide-up">
           <div class="modal-body">
-            <button @click="closeModal">
+            <button @click="closeModal" class="close-btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="35"
@@ -105,7 +213,8 @@
               </svg>
             </button>
 
-            <div v-if="activeProgram">
+            <!-- Default programs (HOME, MOVE, JOB) -->
+            <div v-if="['HOME', 'MOVE', 'JOB'].includes(activeProgram.id)">
               <div class="modal-header">
                 <img
                   :src="activeProgram.icon"
@@ -119,6 +228,46 @@
                   {{ item }}
                 </li>
               </ul>
+            </div>
+
+            <!-- Direct Cash Plus Program -->
+            <div v-else-if="activeProgram.id === 'CASH'">
+              <div class="modal-header">
+                <img
+                  :src="activeProgram.icon"
+                  alt="Direct Cash Plus Program"
+                  class="icon"
+                />
+                <h3>Direct Cash Plus Program</h3>
+              </div>
+              <div class="cash-modal-content">
+                <!-- 💡 You can design this however you want -->
+                <p v-html="activeProgram.details"></p>
+                <div class="cta">
+                  <button class="btn-primary">Request Cash Offer</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Smart Listings Program -->
+            <div v-else-if="activeProgram.id === 'SMART'">
+              <div class="modal-header">
+                <img
+                  :src="activeProgram.icon"
+                  alt="Smart Listings Program"
+                  class="icon"
+                />
+                <h3>Smart Listings Program</h3>
+              </div>
+              <div class="smart-modal-content">
+                <!-- 💡 Fully custom design for this one -->
+                <p v-html="activeProgram.details"></p>
+                <div class="features">
+                  <div class="feature">✔ Partner with licensed realtors</div>
+                  <div class="feature">✔ Specialized hardship expertise</div>
+                  <div class="feature">✔ MLS exposure</div>
+                </div>
+              </div>
             </div>
           </div>
         </transition>
@@ -187,6 +336,91 @@
       height: 59px;
       aspect-ratio: 1/1;
     }
+  }
+
+  .two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .relief-solutions {
+    margin: 46px auto;
+    .row {
+      padding: 40px 0;
+      border-top: 1px solid var(--Copper);
+    }
+
+    .row-one {
+      .two-col-grid {
+        gap: 106px;
+      }
+      .icon {
+        width: 82px;
+        height: 82px;
+        aspect-ratio: 1/1;
+      }
+      h3 {
+        color: var(--Blue);
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 128.6%;
+        letter-spacing: 1.75px;
+        text-transform: uppercase;
+        padding: 10px 0 0 32px;
+      }
+    }
+
+    .row-two,
+    .row-three {
+      color: var(--OffWhite);
+      .icon {
+        width: 92px;
+        height: 92px;
+        aspect-ratio: 1/1;
+        margin: 0 30px 0 0;
+      }
+      h3 {
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 128.6%;
+        letter-spacing: 1.75px;
+        text-transform: uppercase;
+        margin: 0 0 17px;
+        span {
+          color: var(--Copper);
+        }
+      }
+      p {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 29px;
+        letter-spacing: 0.64px;
+        span {
+          color: var(--Blue);
+        }
+      }
+      .two-col-grid {
+        gap: 57px;
+      }
+      .grid-item {
+        display: flex;
+        padding: 13px;
+        flex-direction: column;
+        align-items: center;
+        gap: 13px;
+        flex: 1 0 0;
+        align-self: stretch;
+        border-radius: 7px;
+        background: rgba(87, 93, 96, 0.15);
+      }
+    }
+  }
+
+  .item-group {
+    display: flex;
   }
 
   .modal {
@@ -289,6 +523,16 @@
     }
     .three-col-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+    .row-one {
+      .two-col-grid {
+        grid-template-columns: 1.4fr 1fr;
+      }
+    }
+    .row-three {
+      .two-col-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     .modal {
