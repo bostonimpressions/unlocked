@@ -134,6 +134,9 @@
         padding: 77px 0 68px 0;
       }
     }
+    .container {
+      padding: 0;
+    }
     .two-col-grid {
       grid-template-columns: 1fr 1.8fr;
       align-items: stretch;
