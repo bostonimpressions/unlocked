@@ -31,6 +31,8 @@
         >
       </template>
     </SectionRequest>
+
+    <SectionRelocation />
   </div>
 </template>
 
