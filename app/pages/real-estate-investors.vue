@@ -28,7 +28,7 @@
 
 <template>
   <div>
-    <SectionHero backgroundType="image">
+    <SectionHero variant="investors">
       <section class="investors-intro">
         <div class="section-one">
           <h1>Sell Your Investment Property with <span>Confidence</span></h1>

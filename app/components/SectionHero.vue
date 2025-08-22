@@ -1,7 +1,11 @@
 <template>
-  <section class="hero-section relative w-full overflow-hidden">
+  <section
+    :class="`${variant}-hero`"
+    class="hero-section relative w-full overflow-hidden"
+  >
+    <!-- Default variant: video background -->
     <video
-      v-if="props.backgroundType === 'video'"
+      v-if="variant === 'default'"
       class="absolute top-0 left-0 w-full h-full object-cover"
       autoplay
       loop
@@ -12,14 +16,35 @@
       <source src="/video-home-loop.mov" type="video/quicktime" />
     </video>
 
+    <!-- Investors variant: image background -->
     <div
-      v-else-if="props.backgroundType === 'image'"
+      v-else-if="variant === 'investors'"
       class="hero-image"
-      :style="imageStyle"
+      style="
+        background-image:
+          linear-gradient(to top, var(--DarkBlue), transparent),
+          url('/hero-background-investors.jpg');
+      "
     ></div>
 
-    <div class="absolute inset-0" :class="overlayClass"></div>
+    <!-- Relief variant: image background -->
+    <div
+      v-else-if="variant === 'relief'"
+      class="hero-image"
+      style="
+        background-image:
+          linear-gradient(to top, var(--DarkBlue), transparent),
+          url('/hero-background-relief.jpg');
+      "
+    ></div>
 
+    <!-- Overlay (optional for video) -->
+    <div
+      v-if="variant === 'default'"
+      class="absolute inset-0 bg-black/70"
+    ></div>
+
+    <!-- Hero content (shared) -->
     <div class="hero-content">
       <BaseHeader />
       <slot />
@@ -28,30 +53,16 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
-
   const props = defineProps({
-    backgroundType: {
+    variant: {
       type: String,
-      default: 'video',
-      validator: (value) => ['video', 'image'].includes(value),
-    },
-    imageUrl: {
-      type: String,
-      default: '/default-hero-background.png',
+      default: 'default',
+      validator: (value) => ['default', 'investors', 'relief'].includes(value),
     },
   })
-
-  const overlayClass = computed(() =>
-    props.backgroundType === 'video' ? 'bg-black/70' : ''
-  )
-
-  const imageStyle = computed(() => ({
-    backgroundImage: `linear-gradient(to top, var(--DarkBlue), transparent), url(${props.imageUrl})`,
-  }))
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .hero-section {
     background-color: var(--DarkBlue);
   }
@@ -63,7 +74,13 @@
     height: 100%;
     background-repeat: no-repeat;
     background-position: 0 0;
-    background-size: initial;
+    background-size: auto;
+  }
+  .relief-hero {
+    .hero-image {
+      background-position: center;
+      background-size: cover;
+    }
   }
 
   .hero-content {
@@ -77,6 +94,11 @@
   section {
     min-height: 60vh;
     border-bottom: 6px solid var(--Blue);
+    &.relief-hero {
+      min-height: auto;
+      border-bottom: 6px solid var(--Copper);
+      padding: 0 0 60px;
+    }
   }
 
   @media (min-width: 768px) {
@@ -85,6 +107,9 @@
     }
     section {
       min-height: 80vh;
+      &.relief-hero {
+        min-height: auto;
+      }
     }
   }
 </style>
