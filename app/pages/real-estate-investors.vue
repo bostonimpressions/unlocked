@@ -159,6 +159,8 @@
         >
       </template>
     </SectionRequest>
+
+    <SectionRealPeople variant="partner" />
   </div>
 </template>
 
