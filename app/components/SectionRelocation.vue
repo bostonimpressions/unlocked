@@ -690,9 +690,24 @@
       color: var(--DarkBlue);
       background-color: var(--OffWhite);
       max-width: 1088px;
-      padding: 39px 15px;
+      padding: 50px 15px;
       align-items: flex-start;
       gap: 22px;
+    }
+
+    .title {
+      display: flex;
+      padding: 3px 7px;
+      align-items: flex-start;
+      width: fit-content;
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 122.631%;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      background: rgba(103, 185, 223, 0.72);
     }
 
     .modal-header {
@@ -763,23 +778,8 @@
     }
     h3 {
       color: var(--DarkBlue);
-      .title {
-        display: flex;
-        padding: 0 11px;
-        align-items: flex-start;
-        gap: 6px;
-        width: fit-content;
-        margin: 0 0 10px;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 122.631%;
-        letter-spacing: 1.6px;
-        text-transform: uppercase;
-        background: rgba(103, 185, 223, 0.72);
-      }
       .heading {
-        font-size: 40px;
+        font-size: 30px;
         font-style: normal;
         font-weight: 500;
         line-height: 122.631%;
@@ -992,6 +992,10 @@
         max-width: 1088px;
         padding: 39px 70px;
       }
+      .title {
+        padding: 0 11px;
+        font-size: 16px;
+      }
       .icon {
         width: 49px;
         height: 49px;
@@ -1009,6 +1013,26 @@
         svg {
           width: 35px;
           height: 35px;
+        }
+      }
+    }
+
+    .mega-modal {
+      h3 {
+        .heading {
+          font-size: 40px;
+          line-height: 122.631%;
+        }
+      }
+      .mega-modal-content {
+        font-size: 20px;
+        line-height: 120%;
+
+        .label {
+          display: flex;
+          padding: 0 7px;
+          font-size: 15px;
+          line-height: 122.631%;
         }
       }
     }
