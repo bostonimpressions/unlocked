@@ -562,6 +562,7 @@
     flex-direction: column;
     background-color: var(--DarkBlue);
     border-top: 6px solid var(--Copper);
+    border-bottom: 9px solid var(--Blue);
   }
 
   .container {
