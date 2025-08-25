@@ -33,6 +33,8 @@
     </SectionRequest>
 
     <SectionRelocation />
+
+    <SectionTestimonials type="p4c" />
   </div>
 </template>
 

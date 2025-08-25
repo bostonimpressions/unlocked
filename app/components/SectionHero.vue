@@ -65,6 +65,13 @@
 <style lang="scss" scoped>
   .hero-section {
     background-color: var(--DarkBlue);
+    min-height: 60vh;
+    border-bottom: 6px solid var(--Blue);
+    &.relief-hero {
+      min-height: auto;
+      border-bottom: 6px solid var(--Copper);
+      padding: 0 0 60px;
+    }
   }
   .hero-image {
     position: absolute;
@@ -91,21 +98,11 @@
     z-index: 10;
   }
 
-  section {
-    min-height: 60vh;
-    border-bottom: 6px solid var(--Blue);
-    &.relief-hero {
-      min-height: auto;
-      border-bottom: 6px solid var(--Copper);
-      padding: 0 0 60px;
-    }
-  }
-
   @media (min-width: 768px) {
     .hero-content {
       padding: 0 60px;
     }
-    section {
+    .hero-section {
       min-height: 80vh;
       &.relief-hero {
         min-height: auto;

@@ -92,6 +92,7 @@
   .section-testimonials {
     position: relative;
     background-color: var(--OffWhite);
+    //border-top: 6px solid var(--Blue);
     border-bottom: 6px solid var(--Copper);
     padding: 50px 0 80px;
   }

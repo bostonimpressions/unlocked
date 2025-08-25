@@ -868,7 +868,7 @@
 
   .features {
     padding: 0;
-    margin: 26px auto;
+    margin: 26px auto 0;
 
     :deep(.swiper) {
       width: 100%;
@@ -1086,6 +1086,7 @@
     }
 
     .features {
+      margin: 26px auto;
       .feature-item {
         padding: 16px 32px;
       }
