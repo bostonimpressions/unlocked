@@ -892,7 +892,7 @@
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        line-height: 29px;
+        line-height: 26px;
         letter-spacing: 0.64px;
         &:last-child {
           padding: 15px 0 0;
