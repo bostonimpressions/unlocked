@@ -30,3 +30,10 @@ html {
   min-height: 500px;
   overflow: scroll;
 }
+
+.copper {
+  color: var(--Copper);
+}
+.blue {
+  color: var(--Blue);
+}

@@ -42,76 +42,80 @@
   const extraPrograms = {
     CASH: {
       id: 'CASH',
-      name: 'Direct Cash Plus Program',
-      icon: '/icon-listing.png',
+      title: `Unlocked Direct Cash Plus Program`,
+      name: `Sell <span>Directly</span> To Us`,
+      label: `How It Works`,
       details: `Our foundational services are here to take the stress out of selling your home. Sell quickly, easily, and with maximum support and flexibility.`,
       features: [
         {
           title: 'SIMPLIFIED COORDINATING PROCESS',
-          text: `Our team of transactions coordinators (T.C's) work hand-In-hand with you and the title company, taking more off your plate and making every transaction the easiest and the most stress free as possible.`,
+          text: `Our team of transactions coordinators (T.C's) work hand-In-hand with you and the title company, taking <span>more off your plate and making every transaction the easiest</span> and the most stress free as possible.`,
         },
         {
           title: 'FLEXIBLE MOVE-OUT OPTIONS',
-          text: `For eligible sellers, we offer flexible post-sale solutions-such as extended stay options or move-out timelines-customized to your situation.`,
+          text: `For eligible sellers, we offer <span>flexible post-sale</span> solutions-such as extended stay options or move-out timelines-customized to your situation.`,
         },
         {
           title: 'CASH AND/OR CREATIVE OFFERS',
-          text: `Receive fair, all-cash offers with no delays from financing contingencies, appraisals, or inspections. If an offer is not the right fit, explore how our unique creative financing solutions can unlock even more value for your home.`,
+          text: `Receive fair, <span>all-cash offers</span> with <span>no delays</span> from financing contingencies, appraisals, or inspections. 
+            If an offer is not the right fit, explore how our <span>unique creative financing solutions</span> can unlock even more value for your home.`,
         },
         {
           title: 'NO REPAIRS/NO INSPECTIONS',
-          text: `We purchase your home in its current condition, allowing you to avoid the expense and inconvenience of repairs or renovations.`,
+          text: `We purchase your home in its <span>current condition</span>, allowing you to avoid the expense and inconvenience of repairs or renovations.`,
         },
         {
           title: 'NO CLOSING COSTS/COMMISSIONS',
-          text: `Avoid realtor fees and commissions with our direct-buy process.`,
+          text: `<span>Avoid realtor fees and commissions</span> with our direct-buy process.`,
         },
       ],
     },
     SMART: {
       id: 'SMART',
-      name: 'Smart Listings Program',
-      icon: '/icon-partner.png',
-      details: `We partner with a licensed realtor on our team who specializes in financial hardship and challenging listings.`,
+      title: `Unlocked Smart Listings Program`,
+      name: `<span>List It</span> On The Market`,
       features: [
         {
           special: true,
           title: '',
-          text: `If selling through our Direct Cash Plus Program is not the right fit for you, we can partner with a licensed realtor on our team who specializes in financial hardship and challenging listings to help sell your home on the Multiple Listing Service (MLS). During this time, you get the benefit of both our team and a dedicated realtor—essentially a 2-for-1 deal—working together to serve you. Our goal is to find a buyer who can offer more than what you'd typically receive from an off-market sale. If we succeed, you sell at a better price. If no stronger offer is found by the end of the listing period, we’ll guide you through other creative, last-resort options.`,
-          summary: `Ideal for: Sellers who want to explore the market for a better deal but need the assurance of a guaranteed solution within a specific timeframe.`,
+          text: `If selling through our Direct Cash Plus Program is not the right fit for you, we can partner with a <span>licensed realtor</span> on our team who specializes in financial hardship and challenging listings to help sell your home on the <span>Multiple Listing Service (MLS)</span>. 
+          During this time, you get the benefit of both our team and a dedicated realtor—essentially a <span>2-for-1</span> deal—working together to serve you. 
+          Our goal is to find a buyer who can offer more than what you'd typically receive from an off-market sale. If we succeed, you sell at a better price. 
+          <span class="blue">If no stronger offer is found by the end of the listing period, we’ll guide you through other creative, last-resort options.</span>`,
+          summary: `<span>Ideal for:</span> Sellers who want to explore the market for a better deal but need the assurance of a guaranteed solution within a specific timeframe.`,
         },
         {
           title: 'PARTNER WITH REALTORS WHO UNDERSTAND YOUR UNIQUE SITUATION!',
           text: ``,
           items: [
-            `Collaborate with top licensed realtors who understand your needs.`,
-            `Have advocates for your best interests throughout the process, specializing in crafting a personalized strategy for your situation.`,
+            `Collaborate with <span>top licensed realtors</span> who understand your needs.`,
+            `Have advocates for your best interests throughout the process, specializing in crafting a <span>personalized strategy</span> for your situation.`,
           ],
         },
         {
           title: 'MAXIMUM MLS EXPOSURE',
           text: ``,
           items: [
-            `Get listed on the MLS and top premiere platforms.`,
-            `Get top tier market research and listing strategies.`,
-            `Your home receives a highly custom presentation, no generic listings.`,
+            `<span>Get listed on the MLS</span> and top premiere platforms.`,
+            `<span>Get top tier market research and listing strategies.</span>`,
+            `Your home receives a <span>highly custom presentation, no generic listings.</span>`,
           ],
         },
         {
           title: 'ELEVATED STAGING & MARKETING STRATEGY',
           text: ``,
           items: [
-            `Utilize advanced marketing tools to distinguish your property.`,
-            `Access professional staging, HD photography, video tours, etc. Use the same strategies as top-producing agents to position your property.`,
+            `Utilize <span>advanced marketing tools</span> to distinguish your property.`,
+            `Access <span>professional staging</span>, HD photography, video tours, etc. Use the same strategies as top-producing agents to position your property.`,
           ],
         },
         {
           title: 'PROJECT MANAGEMENT SUPPORT',
           text: ``,
           items: [
-            `We coordinate minor cleanups, touch-ups, and contractor quotes.`,
-            `We manage timelines and prep tasks to lessen your stress.`,
-            `Consider it as "light project management" done for you.`,
+            `<span>We coordinate</span> minor cleanups, touch-ups, and contractor quotes.`,
+            `We manage timelines and prep tasks to <span>lessen your stress.</span>`,
+            `Consider it as "light project management" <span>done for you.</span>`,
           ],
         },
 
@@ -119,8 +123,8 @@
           title: 'TRUSTED GUIDANCE & FLEXIBILITY',
           text: ``,
           items: [
-            `Our TC team manages paperwork, disclosures, and deadlines.`,
-            `If listing on the MLS doesn’t yield the results you’re looking for within a certain time frame, we’ll sell for you off-market with out Direct Cash Plug Program.`,
+            `Our TC team <span>manages paperwork, disclosures, and deadlines.</span>`,
+            `If listing on the MLS doesn’t yield the results you’re looking for within a certain time frame, <span>we’ll sell for you off-market</span> with out Direct Cash Plug Program.`,
           ],
         },
       ],
@@ -150,18 +154,25 @@
 
   const featurePages = computed(() => {
     const ap = activeProgram.value
-    if (!ap || !ap.features || !ap.features.length) return []
+    if (!ap || !ap.features?.length) return { first: null, pages: [] }
+
+    // Separate special first slide (if any)
+    const first = ap.features.find((f) => f.special) || null
+    const rest = ap.features.filter((f) => !f.special)
+
+    // chunk remaining features into pages (2 items first, then 3 items)
     const sizes = [2, 3]
-    const out = []
+    const pages = []
     let i = 0,
       s = 0
-    while (i < ap.features.length) {
+    while (i < rest.length) {
       const size = sizes[s] ?? sizes[sizes.length - 1]
-      out.push(ap.features.slice(i, i + size))
+      pages.push(rest.slice(i, i + size))
       i += size
       s++
     }
-    return out
+
+    return { first, pages }
   })
 
   const swiperModules = [Navigation, A11y]
@@ -325,16 +336,17 @@
             <div v-else-if="activeProgram.id === 'CASH'" class="mega-modal">
               <div class="modal-header">
                 <h3>
-                  <div class="sub">Unlocked Direct Cash Plus Program</div>
-                  <div class="heading">Sell <span>Directly</span> To Us</div>
+                  <div class="title">{{ activeProgram.title }}</div>
+                  <div v-html="activeProgram.name" class="heading"></div>
                 </h3>
               </div>
               <div class="mega-modal-content">
-                <p v-html="activeProgram.details"></p>
+                <div class="label">{{ activeProgram.label }}</div>
+                <p v-html="activeProgram.details" class="intro-text"></p>
 
-                <!-- Stacked feature pages: first page shows 2 items, next page shows 3 -->
                 <div class="features feature-swiper">
                   <Swiper
+                    v-if="featurePages.pages.length || featurePages.first"
                     :modules="swiperModules"
                     :slides-per-view="1"
                     :autoHeight="true"
@@ -342,10 +354,24 @@
                       nextEl: '.custom-next',
                       prevEl: '.custom-prev',
                     }"
-                    class="swiper"
                   >
+                    <!-- special first slide -->
+                    <SwiperSlide v-if="featurePages.first">
+                      <div class="feature-stack special-slide">
+                        <h5 v-if="featurePages.first.title">
+                          {{ featurePages.first.title }}
+                        </h5>
+                        <p v-html="featurePages.first.text"></p>
+                        <p
+                          v-if="featurePages.first.summary"
+                          v-html="featurePages.first.summary"
+                        ></p>
+                      </div>
+                    </SwiperSlide>
+
+                    <!-- remaining pages -->
                     <SwiperSlide
-                      v-for="(page, pIdx) in featurePages"
+                      v-for="(page, pIdx) in featurePages.pages"
                       :key="pIdx"
                     >
                       <div class="feature-stack">
@@ -356,6 +382,11 @@
                         >
                           <h5>{{ feature.title }}</h5>
                           <p v-html="feature.text"></p>
+                          <ul v-if="feature.items?.length">
+                            <li v-for="(item, idx) in feature.items" :key="idx">
+                              {{ item }}
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </SwiperSlide>
@@ -400,16 +431,16 @@
             <div v-else-if="activeProgram.id === 'SMART'" class="mega-modal">
               <div class="modal-header">
                 <h3>
-                  <div class="sub">Unlocked Smart Listings Program</div>
-                  <div class="heading"><span>List It</span> On The Market</div>
+                  <div class="title">{{ activeProgram.title }}</div>
+                  <div v-html="activeProgram.name" class="heading"></div>
                 </h3>
               </div>
               <div class="mega-modal-content">
-                <p v-html="activeProgram.details"></p>
+                <p v-html="activeProgram.details" class="intro-text"></p>
 
-                <!-- Stacked feature pages: first page shows 2 items, next page shows 3 -->
                 <div class="features feature-swiper">
                   <Swiper
+                    v-if="featurePages.pages.length || featurePages.first"
                     :modules="swiperModules"
                     :slides-per-view="1"
                     :autoHeight="true"
@@ -417,10 +448,24 @@
                       nextEl: '.custom-next',
                       prevEl: '.custom-prev',
                     }"
-                    class="swiper"
                   >
+                    <!-- special first slide -->
+                    <SwiperSlide v-if="featurePages.first">
+                      <div class="feature-stack special-slide">
+                        <h5 v-if="featurePages.first.title">
+                          {{ featurePages.first.title }}
+                        </h5>
+                        <p v-html="featurePages.first.text"></p>
+                        <p
+                          v-if="featurePages.first.summary"
+                          v-html="featurePages.first.summary"
+                        ></p>
+                      </div>
+                    </SwiperSlide>
+
+                    <!-- remaining pages -->
                     <SwiperSlide
-                      v-for="(page, pIdx) in featurePages"
+                      v-for="(page, pIdx) in featurePages.pages"
                       :key="pIdx"
                     >
                       <div class="feature-stack">
@@ -431,6 +476,13 @@
                         >
                           <h5>{{ feature.title }}</h5>
                           <p v-html="feature.text"></p>
+                          <ul v-if="feature.items?.length">
+                            <li
+                              v-for="(item, idx) in feature.items"
+                              :key="idx"
+                              v-html="item"
+                            ></li>
+                          </ul>
                         </div>
                       </div>
                     </SwiperSlide>
@@ -704,7 +756,7 @@
     }
     h3 {
       color: var(--DarkBlue);
-      .sub {
+      .title {
         display: flex;
         padding: 0 11px;
         align-items: flex-start;
@@ -726,7 +778,7 @@
         line-height: 122.631%;
         letter-spacing: 4px;
         text-transform: uppercase;
-        span {
+        :deep(span) {
           color: var(--Blue);
         }
       }
@@ -738,7 +790,27 @@
       font-weight: 500;
       line-height: 120%;
       letter-spacing: 1.4px;
-      text-transform: uppercase;
+
+      .label {
+        display: flex;
+        padding: 0 7px;
+        margin: 0 0 8px;
+        align-items: flex-start;
+        gap: 6px;
+        background: var(--Copper);
+        width: fit-content;
+        color: var(--DarkBlue);
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 122.631%;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .intro-text {
+        text-transform: uppercase;
+      }
     }
     p {
       font-size: 20px;
@@ -755,6 +827,28 @@
         gap: 16px;
       }
 
+      .special-slide {
+        p {
+          color: #132129;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 29px;
+          letter-spacing: 0.64px;
+          &:last-child {
+            padding: 15px 0 0;
+            border-top: 1px solid #575d60;
+          }
+          :deep(span) {
+            color: var(--Copper);
+            font-weight: 600;
+            &.blue {
+              color: var(--Blue);
+            }
+          }
+        }
+      }
+
       .feature-item {
         display: block;
         padding: 16px 32px;
@@ -763,10 +857,10 @@
 
         p {
           font-weight: 400;
-          text-transform: capitalize;
+          text-transform: none;
         }
 
-        span {
+        :deep(span) {
           color: var(--Blue);
           font-weight: 500;
         }
@@ -782,7 +876,6 @@
       }
     }
 
-    /* nav container inside swiper */
     .nav-wrapper {
       position: absolute;
       bottom: 85px;
