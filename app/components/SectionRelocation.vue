@@ -1,11 +1,75 @@
 <script setup>
-  import { ref, computed, onMounted, onUnmounted } from 'vue'
+  import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
   import { Swiper, SwiperSlide } from 'swiper/vue'
   import { Navigation, A11y } from 'swiper/modules'
   import 'swiper/css'
   import 'swiper/css/navigation'
 
   const activeProgram = ref(null)
+  const swiperRef = ref(null)
+  const onSwiper = (s) => (swiperRef.value = s)
+
+  const openModal = async (programId) => {
+    document.body.classList.add('modal-open')
+
+    activeProgram.value =
+      gridPrograms.find((p) => p.id === programId) || extraPrograms[programId]
+
+    await nextTick()
+
+    // Re-measure once visible
+    requestAnimationFrame(() => {
+      if (swiperRef.value) {
+        swiperRef.value.updateSize()
+        swiperRef.value.updateSlides()
+        swiperRef.value.update()
+        swiperRef.value.slideTo(0, 0)
+      }
+    })
+  }
+
+  const closeModal = () => {
+    document.body.classList.remove('modal-open')
+
+    activeProgram.value = null
+  }
+
+  const handleKeydown = (e) => {
+    if (e.key === 'Escape') closeModal()
+  }
+
+  onMounted(() => {
+    window.addEventListener('keydown', handleKeydown)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('keydown', handleKeydown)
+  })
+
+  const featurePages = computed(() => {
+    const ap = activeProgram.value
+    if (!ap || !ap.features?.length) return { first: null, pages: [] }
+
+    // Separate special first slide (if any)
+    const first = ap.features.find((f) => f.special) || null
+    const rest = ap.features.filter((f) => !f.special)
+
+    // chunk remaining features into pages (2 items first, then 3 items)
+    const sizes = [2, 3]
+    const pages = []
+    let i = 0,
+      s = 0
+    while (i < rest.length) {
+      const size = sizes[s] ?? sizes[sizes.length - 1]
+      pages.push(rest.slice(i, i + size))
+      i += size
+      s++
+    }
+
+    return { first, pages }
+  })
+
+  const swiperModules = [Navigation, A11y]
 
   const gridPrograms = [
     {
@@ -130,52 +194,6 @@
       ],
     },
   }
-
-  const openModal = (programId) => {
-    activeProgram.value =
-      gridPrograms.find((p) => p.id === programId) || extraPrograms[programId]
-  }
-
-  const closeModal = () => {
-    activeProgram.value = null
-  }
-
-  const handleKeydown = (e) => {
-    if (e.key === 'Escape') closeModal()
-  }
-
-  onMounted(() => {
-    window.addEventListener('keydown', handleKeydown)
-  })
-
-  onUnmounted(() => {
-    window.removeEventListener('keydown', handleKeydown)
-  })
-
-  const featurePages = computed(() => {
-    const ap = activeProgram.value
-    if (!ap || !ap.features?.length) return { first: null, pages: [] }
-
-    // Separate special first slide (if any)
-    const first = ap.features.find((f) => f.special) || null
-    const rest = ap.features.filter((f) => !f.special)
-
-    // chunk remaining features into pages (2 items first, then 3 items)
-    const sizes = [2, 3]
-    const pages = []
-    let i = 0,
-      s = 0
-    while (i < rest.length) {
-      const size = sizes[s] ?? sizes[sizes.length - 1]
-      pages.push(rest.slice(i, i + size))
-      i += size
-      s++
-    }
-
-    return { first, pages }
-  })
-
-  const swiperModules = [Navigation, A11y]
 </script>
 
 <template>
@@ -350,6 +368,10 @@
                     :modules="swiperModules"
                     :slides-per-view="1"
                     :autoHeight="true"
+                    :observer="true"
+                    :observe-parents="true"
+                    :observe-slide-children="true"
+                    @swiper="onSwiper"
                     :navigation="{
                       nextEl: '.custom-next',
                       prevEl: '.custom-prev',
@@ -444,6 +466,10 @@
                     :modules="swiperModules"
                     :slides-per-view="1"
                     :autoHeight="true"
+                    :observer="true"
+                    :observe-parents="true"
+                    :observe-slide-children="true"
+                    @swiper="onSwiper"
                     :navigation="{
                       nextEl: '.custom-next',
                       prevEl: '.custom-prev',
@@ -689,10 +715,15 @@
       position: relative;
       color: var(--DarkBlue);
       background-color: var(--OffWhite);
+      width: 100%;
       max-width: 1088px;
       padding: 50px 15px;
       align-items: flex-start;
       gap: 22px;
+
+      max-height: 90vh; // never taller than the viewport
+      overflow-y: auto; // allow scrolling inside the modal
+      overflow-x: hidden; // prevent sideways scroll from swiper
     }
 
     .title {
@@ -779,143 +810,155 @@
     h3 {
       color: var(--DarkBlue);
       .heading {
-        font-size: 30px;
+        font-size: 26px;
         font-style: normal;
         font-weight: 500;
         line-height: 122.631%;
-        letter-spacing: 4px;
+        letter-spacing: 2px;
         text-transform: uppercase;
         :deep(span) {
           color: var(--Blue);
         }
       }
     }
-    .mega-modal-content {
+
+    p {
+      font-size: 16px;
+      line-height: 120%;
+    }
+
+    .swiper {
+      width: 100%; // container fluid
+    }
+    .swiper-slide {
+      width: auto !important; // let it shrink naturally
+      max-width: 100%; // don’t overflow screen
+      box-sizing: border-box;
+    }
+  }
+
+  .mega-modal-content {
+    color: var(--DarkBlue);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 1.4px;
+
+    .label {
+      display: flex;
+      padding: 3px 7px;
+      margin: 0 0 8px;
+      align-items: flex-start;
+      background: var(--Copper);
+      width: fit-content;
       color: var(--DarkBlue);
-      font-size: 20px;
+      font-size: 14px;
       font-style: normal;
       font-weight: 500;
-      line-height: 120%;
-      letter-spacing: 1.4px;
-
-      .label {
-        display: flex;
-        padding: 0 7px;
-        margin: 0 0 8px;
-        align-items: flex-start;
-        gap: 6px;
-        background: var(--Copper);
-        width: fit-content;
-        color: var(--DarkBlue);
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 122.631%;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-      }
-
-      .intro-text {
-        text-transform: uppercase;
-      }
-    }
-    p {
-      font-size: 20px;
-      line-height: 120%;
+      line-height: 122.631%;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
-    .features {
-      padding: 0;
-      margin: 26px auto;
+    .intro-text {
+      text-transform: uppercase;
+    }
+  }
 
-      .feature-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
+  .features {
+    padding: 0;
+    margin: 26px auto;
 
-      .special-slide {
-        p {
-          color: #132129;
-          font-size: 16px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 29px;
-          letter-spacing: 0.64px;
-          &:last-child {
-            padding: 15px 0 0;
-            border-top: 1px solid #575d60;
-          }
-          :deep(span) {
-            color: var(--Copper);
-            font-weight: 600;
-            &.blue {
-              color: var(--Blue);
-            }
-          }
-        }
-      }
-
-      .feature-item {
-        display: block;
-        padding: 16px 32px;
-        border-radius: 7px;
-        background: rgba(87, 93, 96, 0.11);
-
-        p {
-          font-weight: 400;
-          text-transform: none;
-        }
-
-        :deep(span) {
-          color: var(--Blue);
-          font-weight: 500;
-        }
-      }
-      h5 {
-        color: var(--Copper);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 35px;
-        letter-spacing: 0.8px;
-        text-transform: uppercase;
-      }
+    :deep(.swiper) {
+      width: 100%;
+      max-width: 100%;
     }
 
-    .nav-wrapper {
-      position: absolute;
-      bottom: 85px;
-      left: 0;
-      right: 0;
+    :deep(.swiper-slide) {
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+    .feature-stack {
       display: flex;
-      justify-content: space-between;
-      padding: 0 1rem;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .special-slide {
+      p {
+        color: #132129;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 29px;
+        letter-spacing: 0.64px;
+        &:last-child {
+          padding: 15px 0 0;
+          border-top: 1px solid #575d60;
+        }
+        :deep(span) {
+          color: var(--Copper);
+          font-weight: 600;
+          &.blue {
+            color: var(--Blue);
+          }
+        }
+      }
+    }
+
+    .feature-item {
+      display: block;
+      padding: 16px;
+      border-radius: 7px;
+      background: rgba(87, 93, 96, 0.11);
+
+      p {
+        font-weight: 400;
+        text-transform: none;
+      }
+
+      :deep(span) {
+        color: var(--Blue);
+        font-weight: 500;
+      }
+    }
+    h5 {
+      margin: 0 0 8px;
+      color: var(--Copper);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 22px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+  }
+
+  .nav-wrapper {
+    position: relative;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    pointer-events: none;
+
+    .nav-btn {
+      position: relative;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      pointer-events: all;
+      border: 1px solid var(--Copper);
+      border-radius: 50px;
+      padding: 5px 6px;
+    }
+
+    .swiper-button-disabled {
+      opacity: 0;
       pointer-events: none;
-
-      .nav-btn {
-        position: relative;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        pointer-events: all;
-        border: 1px solid var(--Copper);
-        border-radius: 50px;
-        padding: 5px 6px;
-      }
-
-      .swiper-button-disabled {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .custom-prev {
-        left: 8px;
-      }
-
-      .custom-next {
-        right: 8px;
-      }
     }
   }
 
@@ -1022,7 +1065,12 @@
         .heading {
           font-size: 40px;
           line-height: 122.631%;
+          letter-spacing: 4px;
         }
+      }
+      p {
+        font-size: 20px;
+        line-height: 120%;
       }
       .mega-modal-content {
         font-size: 20px;
@@ -1034,6 +1082,29 @@
           font-size: 15px;
           line-height: 122.631%;
         }
+      }
+    }
+
+    .features {
+      .feature-item {
+        padding: 16px 32px;
+      }
+      h5 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 35px;
+      }
+    }
+
+    .nav-wrapper {
+      position: absolute;
+      bottom: 85px;
+      padding: 0 16px;
+      .custom-prev {
+        left: 8px;
+      }
+      .custom-next {
+        right: 8px;
       }
     }
   }
