@@ -47,24 +47,24 @@
       details: `Our foundational services are here to take the stress out of selling your home. Sell quickly, easily, and with maximum support and flexibility.`,
       features: [
         {
-          title: 'Stress-Free Transactions',
-          text: `Our team of transaction coordinators work hand-in-hand with you and the title company, taking more off your plate and making every transaction smooth.`,
+          title: 'SIMPLIFIED COORDINATING PROCESS',
+          text: `Our team of transactions coordinators (T.C's) work hand-In-hand with you and the title company, taking more off your plate and making every transaction the easiest and the most stress free as possible.`,
         },
         {
-          title: 'Flexible Closings',
-          text: `We close on your timeline — whether you need fast cash in 7 days or want extra time to transition.`,
+          title: 'FLEXIBLE MOVE-OUT OPTIONS',
+          text: `For eligible sellers, we offer flexible post-sale solutions-such as extended stay options or move-out timelines-customized to your situation.`,
         },
         {
-          title: 'No Repairs Needed',
-          text: `Sell as-is with no repairs, upgrades, or cleanup required.`,
+          title: 'CASH AND/OR CREATIVE OFFERS',
+          text: `Receive fair, all-cash offers with no delays from financing contingencies, appraisals, or inspections. If an offer is not the right fit, explore how our unique creative financing solutions can unlock even more value for your home.`,
         },
         {
-          title: 'Guaranteed Cash Offers',
-          text: `Skip the uncertainty of deals falling through — we guarantee cash.`,
+          title: 'NO REPAIRS/NO INSPECTIONS',
+          text: `We purchase your home in its current condition, allowing you to avoid the expense and inconvenience of repairs or renovations.`,
         },
         {
-          title: 'Zero Commission',
-          text: `Keep more money in your pocket with no agent fees.`,
+          title: 'NO CLOSING COSTS/COMMISSIONS',
+          text: `Avoid realtor fees and commissions with our direct-buy process.`,
         },
       ],
     },
@@ -75,24 +75,53 @@
       details: `We partner with a licensed realtor on our team who specializes in financial hardship and challenging listings.`,
       features: [
         {
-          title: 'MLS Exposure',
-          text: `Your home gets listed on the Multiple Listing Service for maximum visibility.`,
+          special: true,
+          title: '',
+          text: `If selling through our Direct Cash Plus Program is not the right fit for you, we can partner with a licensed realtor on our team who specializes in financial hardship and challenging listings to help sell your home on the Multiple Listing Service (MLS). During this time, you get the benefit of both our team and a dedicated realtor—essentially a 2-for-1 deal—working together to serve you. Our goal is to find a buyer who can offer more than what you'd typically receive from an off-market sale. If we succeed, you sell at a better price. If no stronger offer is found by the end of the listing period, we’ll guide you through other creative, last-resort options.`,
+          summary: `Ideal for: Sellers who want to explore the market for a better deal but need the assurance of a guaranteed solution within a specific timeframe.`,
         },
         {
-          title: 'Expert Realtor Guidance',
-          text: `A licensed realtor specialized in hardship listings guides the process.`,
+          title: 'PARTNER WITH REALTORS WHO UNDERSTAND YOUR UNIQUE SITUATION!',
+          text: ``,
+          items: [
+            `Collaborate with top licensed realtors who understand your needs.`,
+            `Have advocates for your best interests throughout the process, specializing in crafting a personalized strategy for your situation.`,
+          ],
         },
         {
-          title: 'Negotiation Support',
-          text: `We negotiate offers on your behalf to maximize value.`,
+          title: 'MAXIMUM MLS EXPOSURE',
+          text: ``,
+          items: [
+            `Get listed on the MLS and top premiere platforms.`,
+            `Get top tier market research and listing strategies.`,
+            `Your home receives a highly custom presentation, no generic listings.`,
+          ],
         },
         {
-          title: 'Marketing Package',
-          text: `Professional photos, descriptions, and targeted marketing are included.`,
+          title: 'ELEVATED STAGING & MARKETING STRATEGY',
+          text: ``,
+          items: [
+            `Utilize advanced marketing tools to distinguish your property.`,
+            `Access professional staging, HD photography, video tours, etc. Use the same strategies as top-producing agents to position your property.`,
+          ],
         },
         {
-          title: 'Flexible Options',
-          text: `Choose between traditional listing or hybrid solutions depending on your needs.`,
+          title: 'PROJECT MANAGEMENT SUPPORT',
+          text: ``,
+          items: [
+            `We coordinate minor cleanups, touch-ups, and contractor quotes.`,
+            `We manage timelines and prep tasks to lessen your stress.`,
+            `Consider it as "light project management" done for you.`,
+          ],
+        },
+
+        {
+          title: 'TRUSTED GUIDANCE & FLEXIBILITY',
+          text: ``,
+          items: [
+            `Our TC team manages paperwork, disclosures, and deadlines.`,
+            `If listing on the MLS doesn’t yield the results you’re looking for within a certain time frame, we’ll sell for you off-market with out Direct Cash Plug Program.`,
+          ],
         },
       ],
     },
@@ -303,8 +332,6 @@
               <div class="mega-modal-content">
                 <p v-html="activeProgram.details"></p>
 
-                <!-- 💡 This needs to be a list of 'features' -->
-
                 <!-- Stacked feature pages: first page shows 2 items, next page shows 3 -->
                 <div class="features feature-swiper">
                   <Swiper
@@ -380,27 +407,65 @@
               <div class="mega-modal-content">
                 <p v-html="activeProgram.details"></p>
 
-                <!-- 💡 This needs to be a list of 'features' -->
-
+                <!-- Stacked feature pages: first page shows 2 items, next page shows 3 -->
                 <div class="features feature-swiper">
-                  <!-- 💡 This needs to be a list of 'features' -->
+                  <Swiper
+                    :modules="swiperModules"
+                    :slides-per-view="1"
+                    :autoHeight="true"
+                    :navigation="{
+                      nextEl: '.custom-next',
+                      prevEl: '.custom-prev',
+                    }"
+                    class="swiper"
+                  >
+                    <SwiperSlide
+                      v-for="(page, pIdx) in featurePages"
+                      :key="pIdx"
+                    >
+                      <div class="feature-stack">
+                        <div
+                          v-for="(feature, fIdx) in page"
+                          :key="fIdx"
+                          class="feature-item"
+                        >
+                          <h5>{{ feature.title }}</h5>
+                          <p v-html="feature.text"></p>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  </Swiper>
 
-                  <div class="features feature-swiper">
-                    <ul>
-                      <li class="feature-item">
-                        <h5>feature title</h5>
-                        <p>
-                          feature details Our team of transactions coordinators
-                          (T.C's) work hand-In-hand with you and the title
-                          company, taking
-                          <span
-                            >more off your plate and making every transaction
-                            the easiest</span
-                          >
-                          and the most stress free as possible.
-                        </p>
-                      </li>
-                    </ul>
+                  <div class="nav-wrapper">
+                    <button class="custom-prev nav-btn">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="16"
+                        viewBox="0 0 14 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M0.849562 7.0424C0.459037 7.43293 0.459037 8.06609 0.849562 8.45662L7.21352 14.8206C7.60405 15.2111 8.23721 15.2111 8.62774 14.8206C9.01826 14.4301 9.01826 13.7969 8.62774 13.4064L2.97088 7.74951L8.62774 2.09266C9.01826 1.70213 9.01826 1.06897 8.62774 0.678444C8.23721 0.287919 7.60405 0.287919 7.21352 0.678444L0.849562 7.0424ZM13.9424 7.74951L13.9424 6.74951L1.55667 6.74951L1.55667 7.74951L1.55667 8.74951L13.9424 8.74951L13.9424 7.74951Z"
+                          fill="#E38C3B"
+                        />
+                      </svg>
+                    </button>
+
+                    <button class="custom-next nav-btn">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="16"
+                        viewBox="0 0 14 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M13.6504 7.04265C14.041 7.43317 14.041 8.06634 13.6504 8.45686L7.28648 14.8208C6.89595 15.2113 6.26279 15.2113 5.87226 14.8208C5.48174 14.4303 5.48174 13.7971 5.87226 13.4066L11.5291 7.74976L5.87226 2.0929C5.48174 1.70238 5.48174 1.06921 5.87226 0.678688C6.26279 0.288163 6.89595 0.288163 7.28648 0.678688L13.6504 7.04265ZM0.557617 7.74976L0.557617 6.74976L12.9433 6.74976L12.9433 7.74976L12.9433 8.74976L0.557617 8.74976L0.557617 7.74976Z"
+                          fill="#E38C3B"
+                        />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
