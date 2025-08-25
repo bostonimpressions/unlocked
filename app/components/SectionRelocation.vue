@@ -1,5 +1,9 @@
 <script setup>
-  import { ref, onMounted, onUnmounted } from 'vue'
+  import { ref, computed, onMounted, onUnmounted } from 'vue'
+  import { Swiper, SwiperSlide } from 'swiper/vue'
+  import { Navigation, A11y } from 'swiper/modules'
+  import 'swiper/css'
+  import 'swiper/css/navigation'
 
   const activeProgram = ref(null)
 
@@ -40,17 +44,57 @@
       id: 'CASH',
       name: 'Direct Cash Plus Program',
       icon: '/icon-listing.png',
-      details: `Sell your home <span>directly to us off-market</span>, quickly
-              and easily with no showings, appraisals, inspections, or
-              uncertainty of deals falling through.`,
+      details: `Our foundational services are here to take the stress out of selling your home. Sell quickly, easily, and with maximum support and flexibility.`,
+      features: [
+        {
+          title: 'Stress-Free Transactions',
+          text: `Our team of transaction coordinators work hand-in-hand with you and the title company, taking more off your plate and making every transaction smooth.`,
+        },
+        {
+          title: 'Flexible Closings',
+          text: `We close on your timeline — whether you need fast cash in 7 days or want extra time to transition.`,
+        },
+        {
+          title: 'No Repairs Needed',
+          text: `Sell as-is with no repairs, upgrades, or cleanup required.`,
+        },
+        {
+          title: 'Guaranteed Cash Offers',
+          text: `Skip the uncertainty of deals falling through — we guarantee cash.`,
+        },
+        {
+          title: 'Zero Commission',
+          text: `Keep more money in your pocket with no agent fees.`,
+        },
+      ],
     },
     SMART: {
       id: 'SMART',
       name: 'Smart Listings Program',
       icon: '/icon-partner.png',
-      details: `We partner with a licensed realtor on our team who specializes
-              in financial hardship and challenging listings to help sell your
-              home on the <span>Multiple Listing Service (MLS)</span>`,
+      details: `We partner with a licensed realtor on our team who specializes in financial hardship and challenging listings.`,
+      features: [
+        {
+          title: 'MLS Exposure',
+          text: `Your home gets listed on the Multiple Listing Service for maximum visibility.`,
+        },
+        {
+          title: 'Expert Realtor Guidance',
+          text: `A licensed realtor specialized in hardship listings guides the process.`,
+        },
+        {
+          title: 'Negotiation Support',
+          text: `We negotiate offers on your behalf to maximize value.`,
+        },
+        {
+          title: 'Marketing Package',
+          text: `Professional photos, descriptions, and targeted marketing are included.`,
+        },
+        {
+          title: 'Flexible Options',
+          text: `Choose between traditional listing or hybrid solutions depending on your needs.`,
+        },
+      ],
     },
   }
 
@@ -74,6 +118,24 @@
   onUnmounted(() => {
     window.removeEventListener('keydown', handleKeydown)
   })
+
+  const featurePages = computed(() => {
+    const ap = activeProgram.value
+    if (!ap || !ap.features || !ap.features.length) return []
+    const sizes = [2, 3]
+    const out = []
+    let i = 0,
+      s = 0
+    while (i < ap.features.length) {
+      const size = sizes[s] ?? sizes[sizes.length - 1]
+      out.push(ap.features.slice(i, i + size))
+      i += size
+      s++
+    }
+    return out
+  })
+
+  const swiperModules = [Navigation, A11y]
 </script>
 
 <template>
@@ -238,11 +300,71 @@
                   <div class="heading">Sell <span>Directly</span> To Us</div>
                 </h3>
               </div>
-              <div class="cash-modal-content">
-                <!-- 💡 You can design this however you want -->
+              <div class="mega-modal-content">
                 <p v-html="activeProgram.details"></p>
-                <div class="cta">
-                  <button class="btn-primary">Request Cash Offer</button>
+
+                <!-- 💡 This needs to be a list of 'features' -->
+
+                <!-- Stacked feature pages: first page shows 2 items, next page shows 3 -->
+                <div class="features feature-swiper">
+                  <Swiper
+                    :modules="swiperModules"
+                    :slides-per-view="1"
+                    :autoHeight="true"
+                    :navigation="{
+                      nextEl: '.custom-next',
+                      prevEl: '.custom-prev',
+                    }"
+                    class="swiper"
+                  >
+                    <SwiperSlide
+                      v-for="(page, pIdx) in featurePages"
+                      :key="pIdx"
+                    >
+                      <div class="feature-stack">
+                        <div
+                          v-for="(feature, fIdx) in page"
+                          :key="fIdx"
+                          class="feature-item"
+                        >
+                          <h5>{{ feature.title }}</h5>
+                          <p v-html="feature.text"></p>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  </Swiper>
+
+                  <div class="nav-wrapper">
+                    <button class="custom-prev nav-btn">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="16"
+                        viewBox="0 0 14 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M0.849562 7.0424C0.459037 7.43293 0.459037 8.06609 0.849562 8.45662L7.21352 14.8206C7.60405 15.2111 8.23721 15.2111 8.62774 14.8206C9.01826 14.4301 9.01826 13.7969 8.62774 13.4064L2.97088 7.74951L8.62774 2.09266C9.01826 1.70213 9.01826 1.06897 8.62774 0.678444C8.23721 0.287919 7.60405 0.287919 7.21352 0.678444L0.849562 7.0424ZM13.9424 7.74951L13.9424 6.74951L1.55667 6.74951L1.55667 7.74951L1.55667 8.74951L13.9424 8.74951L13.9424 7.74951Z"
+                          fill="#E38C3B"
+                        />
+                      </svg>
+                    </button>
+
+                    <button class="custom-next nav-btn">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="16"
+                        viewBox="0 0 14 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M13.6504 7.04265C14.041 7.43317 14.041 8.06634 13.6504 8.45686L7.28648 14.8208C6.89595 15.2113 6.26279 15.2113 5.87226 14.8208C5.48174 14.4303 5.48174 13.7971 5.87226 13.4066L11.5291 7.74976L5.87226 2.0929C5.48174 1.70238 5.48174 1.06921 5.87226 0.678688C6.26279 0.288163 6.89595 0.288163 7.28648 0.678688L13.6504 7.04265ZM0.557617 7.74976L0.557617 6.74976L12.9433 6.74976L12.9433 7.74976L12.9433 8.74976L0.557617 8.74976L0.557617 7.74976Z"
+                          fill="#E38C3B"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -250,20 +372,36 @@
             <!-- Smart Listings Program -->
             <div v-else-if="activeProgram.id === 'SMART'" class="mega-modal">
               <div class="modal-header">
-                <img
-                  :src="activeProgram.icon"
-                  alt="Smart Listings Program"
-                  class="icon"
-                />
-                <h3>Smart Listings Program</h3>
+                <h3>
+                  <div class="sub">Unlocked Smart Listings Program</div>
+                  <div class="heading"><span>List It</span> On The Market</div>
+                </h3>
               </div>
-              <div class="smart-modal-content">
-                <!-- 💡 Fully custom design for this one -->
+              <div class="mega-modal-content">
                 <p v-html="activeProgram.details"></p>
-                <div class="features">
-                  <div class="feature">✔ Partner with licensed realtors</div>
-                  <div class="feature">✔ Specialized hardship expertise</div>
-                  <div class="feature">✔ MLS exposure</div>
+
+                <!-- 💡 This needs to be a list of 'features' -->
+
+                <div class="features feature-swiper">
+                  <!-- 💡 This needs to be a list of 'features' -->
+
+                  <div class="features feature-swiper">
+                    <ul>
+                      <li class="feature-item">
+                        <h5>feature title</h5>
+                        <p>
+                          feature details Our team of transactions coordinators
+                          (T.C's) work hand-In-hand with you and the title
+                          company, taking
+                          <span
+                            >more off your plate and making every transaction
+                            the easiest</span
+                          >
+                          and the most stress free as possible.
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -473,7 +611,11 @@
       }
     }
 
-    button {
+    p {
+      color: var(--DarkBlue);
+    }
+
+    .close-btn {
       position: absolute;
       right: 10px;
       top: 10px;
@@ -490,6 +632,11 @@
   }
 
   .mega-modal {
+    .modal-header {
+      border: 0;
+      padding: 0;
+      margin: 0 auto 26px;
+    }
     h3 {
       color: var(--DarkBlue);
       .sub {
@@ -498,7 +645,7 @@
         align-items: flex-start;
         gap: 6px;
         width: fit-content;
-        font-family: Montserrat;
+        margin: 0 0 10px;
         font-size: 16px;
         font-style: normal;
         font-weight: 600;
@@ -514,10 +661,95 @@
         line-height: 122.631%;
         letter-spacing: 4px;
         text-transform: uppercase;
-        margin: 10px 0;
         span {
           color: var(--Blue);
         }
+      }
+    }
+    .mega-modal-content {
+      color: var(--DarkBlue);
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 120%;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+    p {
+      font-size: 20px;
+      line-height: 120%;
+    }
+
+    .features {
+      padding: 0;
+      margin: 26px auto;
+
+      .feature-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .feature-item {
+        display: block;
+        padding: 16px 32px;
+        border-radius: 7px;
+        background: rgba(87, 93, 96, 0.11);
+
+        p {
+          font-weight: 400;
+          text-transform: capitalize;
+        }
+
+        span {
+          color: var(--Blue);
+          font-weight: 500;
+        }
+      }
+      h5 {
+        color: var(--Copper);
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 35px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+    }
+
+    /* nav container inside swiper */
+    .nav-wrapper {
+      position: absolute;
+      bottom: 85px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+      pointer-events: none;
+
+      .nav-btn {
+        position: relative;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        pointer-events: all;
+        border: 1px solid var(--Copper);
+        border-radius: 50px;
+        padding: 5px 6px;
+      }
+
+      .swiper-button-disabled {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .custom-prev {
+        left: 8px;
+      }
+
+      .custom-next {
+        right: 8px;
       }
     }
   }
@@ -582,7 +814,7 @@
       ul {
         font-size: 17px;
       }
-      button {
+      .close-btn {
         right: 20px;
         top: 15px;
 
