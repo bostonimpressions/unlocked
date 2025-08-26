@@ -220,6 +220,7 @@
     overflow: hidden;
     border-radius: 6px;
     cursor: pointer;
+    color: var(--OffWhite);
 
     img {
       width: 100%;
@@ -230,23 +231,28 @@
 
     .overlay {
       position: absolute;
-      bottom: 0;
+      top: 0;
       left: 0;
       width: 100%;
-      height: 35%; // initial height, only enough to show name+title
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
       background: linear-gradient(
         to top,
         rgba(0, 0, 0, 0.85) 0%,
         rgba(0, 0, 0, 0) 100%
       );
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 20px;
-      color: var(--OffWhite);
-      transition:
-        height 0.5s ease,
-        background 0.5s ease;
+
+      .overlay-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .always-show {
+        margin-top: auto;
+      }
 
       h3 {
         font-size: 18px;
@@ -264,31 +270,31 @@
         margin-top: 12px;
         font-size: 14px;
         line-height: 1.4;
-        opacity: 0; // hidden initially
-        max-height: 0; // collapsed
+        opacity: 0;
+        height: 0;
         overflow: hidden;
         transition:
-          opacity 0.3s ease,
-          max-height 0.3s ease;
+          height 0.2s ease,
+          opacity 0.5s ease;
       }
     }
 
-    &:hover {
-      .overlay {
-        height: 100%; // slide overlay to full height
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.85) 0%,
-          rgba(0, 0, 0, 0.3) 50%,
-          rgba(0, 0, 0, 0) 100%
-        );
+    &:hover .overlay {
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.65) 100%
+      );
+      justify-content: flex-start;
+    }
 
-        .bio {
-          opacity: 1;
-          max-height: 500px;
-          transition-delay: 0.2s;
-        }
-      }
+    &:hover .always-show {
+      margin-top: 0;
+    }
+
+    &:hover .overlay .bio {
+      opacity: 1;
+      height: 100%;
     }
   }
 
