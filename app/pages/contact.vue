@@ -65,7 +65,6 @@
     align-items: flex-start;
     max-width: 1088px;
     padding: 15px 0 91px 0;
-    gap: 20px;
   }
   h1 {
     margin: 0 auto 30px;
@@ -112,7 +111,7 @@
     img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
     }
   }
@@ -163,7 +162,6 @@
     .section-contact {
       max-width: 1088px;
       padding: 55px 0 91px 0;
-      gap: 33px;
     }
   }
 
