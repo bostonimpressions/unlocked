@@ -29,15 +29,48 @@
         <div class="three-col-grid">
           <div class="grid-item">
             <h4>How the Process works</h4>
-            <img src="/image.jpg" alt="How the Process works" />
+            <div class="video">
+              <iframe
+                width="380"
+                height="214"
+                src="https://www.youtube.com/embed/2rve51-ce38"
+                title="How the process works"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
           <div class="grid-item">
             <h4>Creative financing explained</h4>
-            <img src="/image.jpg" alt="Creative financing explained" />
+            <div class="video">
+              <iframe
+                width="380"
+                height="214"
+                src="https://www.youtube.com/embed/Ssj22oi2nkE"
+                title="Creative Financing Explained"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
           <div class="grid-item">
             <h4>Hear what agents have to say</h4>
-            <img src="/image.jpg" alt="Hear what agents have to say" />
+            <div class="video">
+              <iframe
+                width="380"
+                height="214"
+                src="https://www.youtube.com/embed/w3fjlKUknZ4"
+                title="Hear what agents have to say"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
         </div>
 
@@ -108,6 +141,24 @@
     max-width: 1088px;
     padding: 15px 0 91px 0;
     gap: 20px;
+  }
+  .video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      margin: 0 auto;
+    }
   }
   .heading {
     color: var(--OffWhite);
@@ -235,7 +286,9 @@
 
       max-width: 874px;
     }
+  }
 
+  @media (min-width: 1024px) {
     .three-col-grid {
       grid-template-columns: repeat(3, 1fr);
 
