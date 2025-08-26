@@ -102,8 +102,11 @@
               <img :src="person.image" :alt="person.name" />
               <div class="overlay">
                 <div class="overlay-content">
-                  <h3>{{ person.name }}</h3>
-                  <p class="title">{{ person.title }}</p>
+                  <div class="always-show">
+                    <h3>{{ person.name }}</h3>
+                    <p class="title">{{ person.title }}</p>
+                  </div>
+                  <!-- keep this bio off screen to the bottom. until hover -->
                   <p class="bio">
                     {{ person.bio }}
                   </p>
