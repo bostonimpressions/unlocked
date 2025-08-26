@@ -105,15 +105,34 @@
   }
 
   .slide {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 35px;
+    padding: 20px 20px 30px 30px;
     background-color: rgba(87, 93, 96, 0.06);
     color: var(--DarkBlue);
 
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      pointer-events: none;
+      background: linear-gradient(
+        to top,
+        rgba(230, 230, 231, 1) 10%,
+        rgba(230, 230, 231, 0) 100%
+      );
+    }
+
     @media (min-width: 768px) {
       flex-direction: row;
+      &::after {
+        bottom: 35px;
+      }
     }
   }
 
@@ -124,20 +143,25 @@
     justify-content: center;
     text-align: center;
     padding-right: 0;
+    z-index: 1;
 
     @media (min-width: 768px) {
       border-right: 1px solid var(--DarkBlue);
       width: 33.3333%;
-      padding-right: 1.5rem;
+      padding-right: 20px;
     }
   }
 
   .slide-col-right {
-    padding-left: 0;
+    position: relative;
+    padding: 0 15px 35px 0;
+    height: 400px;
+    max-height: 400px;
+    overflow: auto;
 
     @media (min-width: 768px) {
       width: 66.6666%;
-      padding-left: 1.5rem;
+      padding-left: 20px;
     }
   }
 
@@ -154,7 +178,7 @@
 
   .name {
     text-align: right;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 800;
     line-height: 33px;
@@ -165,10 +189,10 @@
   .source {
     color: #575d60;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     font-style: italic;
     font-weight: 400;
-    line-height: 33px;
+    line-height: 16px;
     letter-spacing: 0.72px;
   }
 
@@ -182,10 +206,10 @@
 
   h3 {
     color: var(--Copper);
-    font-size: 33px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 600;
-    line-height: 42px;
+    line-height: 34px;
     letter-spacing: 0.66px;
     margin: 1rem 0;
   }
@@ -238,5 +262,22 @@
   }
   .custom-pagination .swiper-pagination-bullet-active {
     background-color: #f97316;
+  }
+
+  @media (min-width: 768px) {
+    .slide {
+      padding: 35px 20px 35px 35px;
+    }
+    h3 {
+      font-size: 33px;
+      line-height: 42px;
+    }
+    .name {
+      font-size: 20px;
+    }
+    .source {
+      font-size: 18px;
+      line-height: 33px;
+    }
   }
 </style>

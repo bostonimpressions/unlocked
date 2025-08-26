@@ -213,7 +213,7 @@
     text-align: center;
     color: var(--OffWhite);
     button {
-      padding: 3px 15px;
+      padding: 9px 15px;
       margin: 0 0 15px;
       justify-content: center;
       align-items: center;
@@ -224,8 +224,8 @@
       font-size: 20px;
       font-style: normal;
       font-weight: 600;
-      line-height: 38px;
-      letter-spacing: 0.8px;
+      line-height: 28px;
+      letter-spacing: 0.3px;
     }
   }
 
@@ -283,8 +283,22 @@
     .cta {
       font-size: 20px;
       line-height: 30px;
-
       max-width: 874px;
+      button {
+        padding: 3px 15px;
+        margin: 0 0 15px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 7px;
+        background-color: var(--Blue);
+        color: var(--DarkBlue);
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 38px;
+        letter-spacing: 0.8px;
+      }
     }
   }
 
