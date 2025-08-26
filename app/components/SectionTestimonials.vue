@@ -118,7 +118,7 @@
       position: absolute;
       bottom: 30px;
       left: 0;
-      right: 0;
+      right: 30px;
       height: 60px;
       pointer-events: none;
       background: linear-gradient(
@@ -130,6 +130,7 @@
 
     @media (min-width: 768px) {
       flex-direction: row;
+      padding: 35px 20px 35px 35px;
       &::after {
         bottom: 35px;
       }
@@ -265,9 +266,6 @@
   }
 
   @media (min-width: 768px) {
-    .slide {
-      padding: 35px 20px 35px 35px;
-    }
     h3 {
       font-size: 33px;
       line-height: 42px;
