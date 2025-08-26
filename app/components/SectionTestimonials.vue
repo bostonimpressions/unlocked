@@ -163,6 +163,7 @@
     @media (min-width: 768px) {
       width: 66.6666%;
       padding-left: 20px;
+      align-content: center;
     }
   }
 
