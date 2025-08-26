@@ -101,8 +101,13 @@
             <div v-for="person in people" :key="person.name" class="team-card">
               <img :src="person.image" :alt="person.name" />
               <div class="overlay">
-                <h3>{{ person.name }}</h3>
-                <p>{{ person.title }}</p>
+                <div class="overlay-content">
+                  <h3>{{ person.name }}</h3>
+                  <p class="title">{{ person.title }}</p>
+                  <p class="bio">
+                    {{ person.bio }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -209,9 +214,9 @@
 
   .team-card {
     position: relative;
-    border-radius: 6px;
     overflow: hidden;
-    border: 1px solid var(--Blue);
+    border-radius: 6px;
+    cursor: pointer;
 
     img {
       width: 100%;
@@ -223,27 +228,63 @@
     .overlay {
       position: absolute;
       bottom: 0;
+      left: 0;
       width: 100%;
-      padding: 36px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+      height: 35%; // initial height, only enough to show name+title
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
       color: var(--OffWhite);
+      transition:
+        height 0.5s ease,
+        background 0.5s ease;
 
       h3 {
-        font-size: 29px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 122.631%;
-        letter-spacing: 1.45px;
-        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
       }
 
-      p {
+      .title {
         color: var(--Copper);
-        font-size: 19px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 122.631%;
-        letter-spacing: 0.95px;
+        font-size: 14px;
+        margin: 4px 0 0 0;
+      }
+
+      .bio {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.4;
+        opacity: 0; // hidden initially
+        max-height: 0; // collapsed
+        overflow: hidden;
+        transition:
+          opacity 0.3s ease,
+          max-height 0.3s ease;
+      }
+    }
+
+    &:hover {
+      .overlay {
+        height: 100%; // slide overlay to full height
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0.3) 50%,
+          rgba(0, 0, 0, 0) 100%
+        );
+
+        .bio {
+          opacity: 1;
+          max-height: 500px;
+          transition-delay: 0.2s;
+        }
       }
     }
   }
