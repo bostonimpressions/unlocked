@@ -42,7 +42,12 @@
             >
           </li>
           <li>
-            <NuxtLink to="/land-division" class="link">Land Division</NuxtLink>
+            <a
+              href="https://unlockedlandproject.com/"
+              target="_blank"
+              class="link"
+              >Land Division</a
+            >
           </li>
           <li>
             <NuxtLink to="/contact" class="link">Contact</NuxtLink>
