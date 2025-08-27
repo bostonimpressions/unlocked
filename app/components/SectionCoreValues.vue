@@ -2,15 +2,13 @@
   <section class="core-values">
     <div class="container">
       <h2>Our <span>Core</span> Values</h2>
-      <div class="wrapper">
-        <ul class="items">
-          <li>RADICAL INTEGRITY (NO B.S.)</li>
-          <li class="blue">TRANSFORMATIVE VALUE</li>
-          <li>UNLOCKED COMMUNITY</li>
-          <li class="blue">ULTIMATE ACCOUNTABILITY</li>
-          <li>UNMATCHED COMMITMENT</li>
-        </ul>
-      </div>
+      <ul class="items">
+        <li><span>RADICAL INTEGRITY (NO B.S.)</span></li>
+        <li class="blue"><span>TRANSFORMATIVE VALUE</span></li>
+        <li><span>UNLOCKED COMMUNITY</span></li>
+        <li class="blue"><span>ULTIMATE ACCOUNTABILITY</span></li>
+        <li><span>UNMATCHED COMMITMENT</span></li>
+      </ul>
     </div>
   </section>
 </template>
@@ -39,9 +37,7 @@
     margin: 0 auto;
     padding: 0 20px;
   }
-  .wrapper {
-    overflow-x: auto;
-  }
+
   h2 {
     color: var(--OffWhite);
     font-size: 48px;
@@ -62,27 +58,35 @@
     display: flex;
     flex-direction: column;
     justify-self: center;
-    padding: 12px 0;
     margin: 0 auto;
   }
   li {
-    margin: -12px 0;
-    padding: 86px 17px;
-    aspect-ratio: 1/1;
-    height: 233.6px;
-    border-radius: 128.653px;
+    display: flex;
+    align-items: center;
+    position: relative;
     color: var(--OffWhite);
-    text-align: center;
+    padding: 25px 0px 25px 70px;
     font-size: 20px;
-    font-style: normal;
     font-weight: 600;
-    line-height: 28px; /* 140% */
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    background: rgba(227, 140, 59, 0.55);
 
+    span {
+      z-index: 1;
+    }
+
+    &::before {
+      display: inline-block;
+      content: '';
+      position: absolute;
+      left: 0px;
+      background: rgba(227, 140, 59, 0.55);
+      border-radius: 50px;
+      width: 50px;
+      height: 50px;
+    }
     &.blue {
-      background: rgba(103, 185, 223, 0.41);
+      &::before {
+        background: rgba(103, 185, 223, 0.41);
+      }
     }
   }
 
@@ -104,13 +108,32 @@
       padding: 0 12px;
     }
     li {
-      display: flex;
+      &::before {
+        display: none;
+        content: none;
+      }
       flex-direction: column;
       justify-content: center;
-      align-items: center;
       gap: 10px;
       flex: 1 0 0;
       margin: 0 -12px;
+      padding: 86px 17px;
+      aspect-ratio: 1/1;
+      height: 233.6px;
+      border-radius: 128.653px;
+      color: var(--OffWhite);
+      text-align: center;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      background: rgba(227, 140, 59, 0.55);
+
+      &.blue {
+        background: rgba(103, 185, 223, 0.41);
+      }
     }
   }
 </style>
