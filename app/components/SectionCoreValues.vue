@@ -17,19 +17,15 @@
   .core-values {
     padding: 60px 0 70px;
     background-color: var(--DarkBlue);
-
     background-image:
       url('/background-lock-logo.png'), url('/background-texture-stone.jpg');
-
     background-repeat: no-repeat, repeat;
-
     background-size:
       1000px auto,
       cover;
     background-position:
       left -220px top -120px,
       center center;
-
     background-blend-mode: normal, multiply;
   }
   .container {
@@ -93,6 +89,12 @@
   @media (min-width: 1120px) {
     .core-values {
       padding: 121px 0 143px;
+      background-size:
+        1000px auto,
+        cover;
+      background-position:
+        left -220px top -120px,
+        center center;
     }
     .container {
       max-width: 1088px;
