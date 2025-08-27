@@ -90,7 +90,9 @@
                   </defs>
                 </svg>
               </span>
-              <a href="#">Write us a review!</a>
+              <a href="https://g.page/r/CZtWmmpq2E46EAI/review" target="_blank"
+                >Write us a review!</a
+              >
             </li>
             <li>
               <span>
@@ -166,7 +168,11 @@
                   </defs>
                 </svg>
               </span>
-              <a href="#">Unlocked Creative RealEstate</a>
+              <a
+                href="https://www.youtube.com/@UnlockedCreativeRealEstate/videos"
+                target="_blank"
+                >Unlocked Creative RealEstate</a
+              >
             </li>
             <li>
               <span>
@@ -183,7 +189,11 @@
                   />
                 </svg>
               </span>
-              <a href="#">Unlocked Home Project</a>
+              <a
+                href="https://www.facebook.com/people/Unlocked-Home-Project-Relief-Division/100085604926791/"
+                target="_blank"
+                >Unlocked Home Project</a
+              >
             </li>
           </ul>
         </div>
@@ -191,8 +201,8 @@
 
       <!-- Bottom Bar -->
       <div class="bottom">
-        <a href="#" class="hover:underline">PRIVACY POLICY</a>
-        <a href="#" class="hover:underline">TERMS AND CONDITIONS</a>
+        <NuxtLink to="/privacy-policy">PRIVACY POLICY</NuxtLink>
+        <NuxtLink to="/terms">TERMS AND CONDITIONS</NuxtLink>
       </div>
     </div>
   </footer>

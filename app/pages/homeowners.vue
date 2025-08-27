@@ -22,7 +22,7 @@
             Looking for a fast cash offer.
           </a>
 
-          <NuxtLink to="/relief-assistance" class="grid-item">
+          <NuxtLink to="/relief-division" class="grid-item">
             Looking for relief or assistance.
           </NuxtLink>
 

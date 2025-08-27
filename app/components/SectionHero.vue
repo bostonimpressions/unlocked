@@ -38,6 +38,9 @@
       "
     ></div>
 
+    <!-- Basic variant -->
+    <div v-else-if="variant === 'basic'" class="basic"></div>
+
     <!-- Overlay (optional for video) -->
     <div
       v-if="variant === 'default'"
@@ -68,6 +71,11 @@
     min-height: 60vh;
     border-bottom: 6px solid var(--Blue);
     &.relief-hero {
+      min-height: auto;
+      border-bottom: 6px solid var(--Copper);
+      padding: 0 0 60px;
+    }
+    &.basic-hero {
       min-height: auto;
       border-bottom: 6px solid var(--Copper);
       padding: 0 0 60px;
@@ -105,6 +113,9 @@
     .hero-section {
       min-height: 80vh;
       &.relief-hero {
+        min-height: auto;
+      }
+      &.basic-hero {
         min-height: auto;
       }
     }
