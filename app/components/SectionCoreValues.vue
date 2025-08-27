@@ -2,13 +2,15 @@
   <section class="core-values">
     <div class="container">
       <h2>Our <span>Core</span> Values</h2>
-      <ul class="items">
-        <li>RADICAL INTEGRITY (NO B.S.)</li>
-        <li class="blue">TRANSFORMATIVE VALUE</li>
-        <li>UNLOCKED COMMUNITY</li>
-        <li class="blue">ULTIMATE ACCOUNTABILITY</li>
-        <li>UNMATCHED COMMITMENT</li>
-      </ul>
+      <div class="wrapper">
+        <ul class="items">
+          <li>RADICAL INTEGRITY (NO B.S.)</li>
+          <li class="blue">TRANSFORMATIVE VALUE</li>
+          <li>UNLOCKED COMMUNITY</li>
+          <li class="blue">ULTIMATE ACCOUNTABILITY</li>
+          <li>UNMATCHED COMMITMENT</li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -17,18 +19,35 @@
   .core-values {
     padding: 60px 0 70px;
     background-color: var(--DarkBlue);
+
+    background-image:
+      url('/background-lock-logo.png'), url('/background-texture-stone.jpg');
+
+    background-repeat: no-repeat, repeat;
+
+    background-size:
+      1000px auto,
+      cover;
+    background-position:
+      left -220px top -120px,
+      center center;
+
+    background-blend-mode: normal, multiply;
   }
   .container {
     max-width: 1088px;
     margin: 0 auto;
     padding: 0 20px;
   }
+  .wrapper {
+    overflow-x: auto;
+  }
   h2 {
     color: var(--OffWhite);
     font-size: 48px;
     font-style: normal;
     font-weight: 600;
-    line-height: 122.631%; /* 58.863px */
+    line-height: 122.631%;
     letter-spacing: 2.4px;
     text-transform: uppercase;
     margin: 0 0 40px;
