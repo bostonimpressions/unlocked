@@ -21,10 +21,10 @@
       url('/background-lock-logo.png'), url('/background-texture-stone.jpg');
     background-repeat: no-repeat, repeat;
     background-size:
-      1000px auto,
+      750px auto,
       cover;
     background-position:
-      left -220px top -120px,
+      left -205px top -120px,
       center center;
     background-blend-mode: normal, multiply;
   }
