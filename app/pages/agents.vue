@@ -99,7 +99,10 @@
         </div>
 
         <div class="cta">
-          <button>Get in touch with our team!</button>
+          <NuxtLink to="/contact" class="btn">
+            Get in touch with our team!
+          </NuxtLink>
+
           <p>We specialize in helping clients in all of these situations.</p>
         </div>
       </section>
@@ -212,7 +215,8 @@
     margin: 0 auto;
     text-align: center;
     color: var(--OffWhite);
-    button {
+    .btn {
+      display: block;
       padding: 9px 15px;
       margin: 0 0 15px;
       justify-content: center;
@@ -284,20 +288,8 @@
       font-size: 20px;
       line-height: 30px;
       max-width: 874px;
-      button {
-        padding: 3px 15px;
-        margin: 0 0 15px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 7px;
-        background-color: var(--Blue);
-        color: var(--DarkBlue);
-        text-align: center;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 38px;
-        letter-spacing: 0.8px;
+      .btn {
+        padding: 15px 15px;
       }
     }
   }
