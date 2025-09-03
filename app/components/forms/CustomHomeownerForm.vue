@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   import { ref } from 'vue'
   import axios from 'axios'
   import { US_STATES } from '@/data/states'
@@ -17,7 +17,6 @@
     state: '',
     postal_code: '',
     country: 'US',
-    // Custom fields from your form
     PmkbAq6Bk7jT29s9wZ02: '',
     YN6evksdZb9Gq8G8C3Ew: '',
   })
@@ -25,6 +24,21 @@
   const submitting = ref(false)
   const success = ref(false)
   const error = ref(null)
+
+  // Toast reactive state
+  const toast = ref<{ message: string; type: 'success' | 'error' } | null>(null)
+
+  // Function to show toast
+  function showToast(
+    message: string,
+    type: 'success' | 'error' = 'success',
+    duration = 3000
+  ) {
+    toast.value = { message, type }
+    setTimeout(() => {
+      toast.value = null
+    }, duration)
+  }
 
   // reCAPTCHA setup
   async function getRecaptchaToken() {
@@ -34,13 +48,13 @@
         const s = document.createElement('script')
         s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
         s.async = true
-        s.onload = () => resolve()
+        s.onload = () => resolve(null)
         s.onerror = () => reject('Failed to load reCAPTCHA')
         document.head.appendChild(s)
       })
     }
 
-    return new Promise((resolve) => {
+    return new Promise<string>((resolve) => {
       window.grecaptcha.ready(() => {
         window.grecaptcha
           .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
@@ -84,15 +98,17 @@
 
       if (res.status === 201) {
         success.value = true
+        showToast('Form submitted successfully!', 'success')
         Object.keys(form.value).forEach(
           (k) => (form.value[k] = k === 'country' ? 'US' : '')
         )
       } else {
         throw new Error('Unexpected response from server')
       }
-    } catch (e) {
+    } catch (e: any) {
       console.error(e)
       error.value = e?.response?.data?.message || 'Submission failed.'
+      showToast(error.value, 'error')
     } finally {
       submitting.value = false
     }
@@ -178,9 +194,9 @@
 
       <div class="form-divider" tabindex="-1"></div>
 
-      <label class="form-label" for="sell-speed">
-        How quickly are you looking to sell? *
-      </label>
+      <label class="form-label" for="sell-speed"
+        >How quickly are you looking to sell? *</label
+      >
       <textarea
         id="sell-speed"
         name="sell_speed"
@@ -189,9 +205,9 @@
         required
       ></textarea>
 
-      <label class="form-label" for="sell-reason">
-        What is your reason for selling? *
-      </label>
+      <label class="form-label" for="sell-reason"
+        >What is your reason for selling? *</label
+      >
       <textarea
         id="sell-reason"
         name="sell_reason"
@@ -205,9 +221,9 @@
       <button type="submit" :disabled="submitting" class="form-button">
         {{ submitting ? 'Submitting…' : 'Submit' }}
       </button>
-
-      <p v-if="success" class="form-success">Form submitted successfully 🎉</p>
-      <p v-if="error" class="form-error">{{ error }}</p>
     </form>
+
+    <!-- Toast component -->
+    <BaseToast :toast="toast" />
   </div>
 </template>
