@@ -5,18 +5,18 @@
   import 'swiper/css'
   import 'swiper/css/navigation'
 
-  let hoverSound = null
+  //   let hoverSound = null
 
-  const playHoverSound = () => {
-    if (!hoverSound) {
-      hoverSound = new Audio('/gfy.mp3')
-      hoverSound.volume = 0.3
-    }
-    hoverSound.currentTime = 0
-    hoverSound.play().catch(() => {
-      // prevent errors if browser blocks autoplay
-    })
-  }
+  //   const playHoverSound = () => {
+  //     if (!hoverSound) {
+  //       hoverSound = new Audio('/gfy.mp3')
+  //       hoverSound.volume = 0.3
+  //     }
+  //     hoverSound.currentTime = 0
+  //     hoverSound.play().catch(() => {
+  //       // prevent errors if browser blocks autoplay
+  //     })
+  //   }
 
   const activeProgram = ref(null)
   const swiperRef = ref(null)
