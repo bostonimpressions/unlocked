@@ -1,6 +1,7 @@
 <script setup>
   import { ref } from 'vue'
   import axios from 'axios'
+  import { US_STATES } from '@/data/states'
 
   const FORM_ID = 'xzPV2jFFQnIUhfhj67pB'
   const LOCATION_ID = 'bmEOysIj5gSe0AwT3lcH'
@@ -149,12 +150,15 @@
           placeholder="City"
           class="form-input"
         />
-        <input
-          v-model="form.state"
-          name="state"
-          placeholder="State"
-          class="form-input"
-        />
+        <select v-model="form.state" name="state" class="form-input">
+          <option
+            v-for="state in US_STATES"
+            :key="state.value"
+            :value="state.value"
+          >
+            {{ state.label }}
+          </option>
+        </select>
       </div>
 
       <div class="form-row">

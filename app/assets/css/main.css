@@ -76,11 +76,11 @@ body.modal-open {
   font-style: normal;
   font-weight: 500;
   line-height: 122.631%; /* 20.847px */
-  letter-spacing: 1.36px;
+  letter-spacing: 0.5px;
 }
 .form-input::placeholder,
 .form-textarea::placeholder {
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: rgba(239, 239, 239, 0.37);
   transition: opacity 0.2s ease;
 }
