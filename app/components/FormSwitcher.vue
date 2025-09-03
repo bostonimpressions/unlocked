@@ -12,10 +12,8 @@
         {{ role.label }}
       </button>
     </div>
-
-    <div class="form-wrapper">
-      <component :is="activeFormComponent" />
-    </div>
+    <!-- form -->
+    <component :is="activeFormComponent" />
   </section>
 </template>
 
@@ -44,6 +42,7 @@
       label: 'Homeowner Looking to Sell',
       value: 'homeowner-sell',
       form: HomeownerSellForm,
+      meta: 'unlocked offers - Cash Offers Intake Form',
     },
     { label: 'Real Estate Agent', value: 'real-estate-agent', form: AgentForm },
     {
@@ -141,11 +140,6 @@
     }
   }
 
-  .form-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
   @media (min-width: 768px) {
     .form-section {
       margin: 0 auto;
@@ -164,17 +158,5 @@
     .role-btn {
       font-size: 17px;
     }
-
-    .form-wrapper {
-      max-width: 600px;
-      margin: 0 auto;
-    }
   }
-
-  // @media (min-width: 1200px) {
-  //   .role-btn {
-  //     font-size: 22px;
-
-  //   }
-  // }
 </style>

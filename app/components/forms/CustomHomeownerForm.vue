@@ -1,10 +1,10 @@
-<script setup lang="ts">
+<script setup>
   import { ref } from 'vue'
   import axios from 'axios'
 
   const FORM_ID = 'xzPV2jFFQnIUhfhj67pB'
   const LOCATION_ID = 'bmEOysIj5gSe0AwT3lcH'
-  const RECAPTCHA_SITE_KEY = '' // Plug in later
+  const RECAPTCHA_SITE_KEY = '6LeDBFwpAAAAAJe8ux9-imrqZ2ueRsEtdiWoDDpX'
 
   const form = ref({
     first_name: '',
@@ -16,34 +16,30 @@
     state: '',
     postal_code: '',
     country: 'US',
-    // Custom fields
+    // Custom fields from your form
     PmkbAq6Bk7jT29s9wZ02: '',
     YN6evksdZb9Gq8G8C3Ew: '',
   })
 
   const submitting = ref(false)
   const success = ref(false)
-  const error = ref<string | null>(null)
+  const error = ref(null)
 
-  declare global {
-    interface Window {
-      grecaptcha: any
-    }
-  }
-
-  async function getRecaptchaToken(): Promise<string> {
+  // reCAPTCHA setup
+  async function getRecaptchaToken() {
     if (!RECAPTCHA_SITE_KEY) return ''
     if (!window.grecaptcha) {
-      await new Promise<void>((resolve, reject) => {
+      await new Promise((resolve, reject) => {
         const s = document.createElement('script')
         s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
         s.async = true
         s.onload = () => resolve()
-        s.onerror = () => reject(new Error('Failed to load reCAPTCHA'))
+        s.onerror = () => reject('Failed to load reCAPTCHA')
         document.head.appendChild(s)
       })
     }
-    return new Promise<string>((resolve) => {
+
+    return new Promise((resolve) => {
       window.grecaptcha.ready(() => {
         window.grecaptcha
           .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
@@ -53,6 +49,7 @@
     })
   }
 
+  // Submit handler
   const handleSubmit = async () => {
     submitting.value = true
     success.value = false
@@ -60,9 +57,9 @@
 
     try {
       const captchaToken = await getRecaptchaToken()
+
       const fd = new FormData()
       fd.append('formId', FORM_ID)
-      fd.append('locationId', LOCATION_ID)
       if (captchaToken) fd.append('captchaV3', captchaToken)
       fd.append(
         'formData',
@@ -86,12 +83,13 @@
 
       if (res.status === 201) {
         success.value = true
-        Object.keys(form.value).forEach((k) => ((form.value as any)[k] = ''))
-        form.value.country = 'US'
+        Object.keys(form.value).forEach(
+          (k) => (form.value[k] = k === 'country' ? 'US' : '')
+        )
       } else {
-        throw new Error('Unexpected response')
+        throw new Error('Unexpected response from server')
       }
-    } catch (e: any) {
+    } catch (e) {
       console.error(e)
       error.value = e?.response?.data?.message || 'Submission failed.'
     } finally {
@@ -101,95 +99,111 @@
 </script>
 
 <template>
-  <div class="max-w-lg mx-auto p-8 bg-white/90 rounded-2xl shadow-lg">
-    <h2 class="text-2xl font-bold mb-6 text-center">Homeowner Form</h2>
+  <div class="form-wrapper">
+    <h2 class="sr-only form-title">Homeowner Form</h2>
 
-    <form @submit.prevent="handleSubmit" class="space-y-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form @submit.prevent="handleSubmit" class="form">
+      <div class="form-row">
         <input
           v-model="form.first_name"
-          class="border p-3 rounded w-full"
-          placeholder="First Name"
+          name="first_name"
+          placeholder="First Name *"
           required
+          class="form-input"
         />
         <input
           v-model="form.last_name"
-          class="border p-3 rounded w-full"
-          placeholder="Last Name"
+          name="last_name"
+          placeholder="Last Name *"
           required
+          class="form-input"
         />
       </div>
 
       <input
         v-model="form.email"
+        name="email"
         type="email"
-        class="border p-3 rounded w-full"
-        placeholder="Email"
+        placeholder="Email *"
         required
+        class="form-input"
       />
       <input
         v-model="form.phone"
+        name="phone"
         type="tel"
-        class="border p-3 rounded w-full"
         placeholder="Phone"
+        class="form-input"
       />
       <input
         v-model="form.address"
-        class="border p-3 rounded w-full"
+        name="address"
         placeholder="Address"
+        class="form-input"
       />
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="form-row">
         <input
           v-model="form.city"
-          class="border p-3 rounded w-full"
+          name="city"
           placeholder="City"
+          class="form-input"
         />
         <input
           v-model="form.state"
-          class="border p-3 rounded w-full"
+          name="state"
           placeholder="State"
+          class="form-input"
         />
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="form-row">
         <input
           v-model="form.postal_code"
-          class="border p-3 rounded w-full"
+          name="postal_code"
           placeholder="Postal Code"
+          class="form-input"
         />
         <input
           v-model="form.country"
-          class="border p-3 rounded w-full"
+          name="country"
           placeholder="Country"
+          class="form-input"
         />
       </div>
 
+      <div class="form-divider" tabindex="-1"></div>
+
+      <label class="form-label" for="sell-speed">
+        How quickly are you looking to sell? *
+      </label>
       <textarea
+        id="sell-speed"
+        name="sell_speed"
         v-model="form.PmkbAq6Bk7jT29s9wZ02"
-        class="border p-3 rounded w-full h-24"
-        placeholder="How quickly are you looking to sell? *
-"
-      ></textarea>
-      <textarea
-        v-model="form.YN6evksdZb9Gq8G8C3Ew"
-        class="border p-3 rounded w-full h-24"
-        placeholder="What is your reason for selling? *
-"
+        class="form-textarea"
+        required
       ></textarea>
 
-      <button
-        type="submit"
-        :disabled="submitting"
-        class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-      >
+      <label class="form-label" for="sell-reason">
+        What is your reason for selling? *
+      </label>
+      <textarea
+        id="sell-reason"
+        name="sell_reason"
+        v-model="form.YN6evksdZb9Gq8G8C3Ew"
+        class="form-textarea"
+        required
+      ></textarea>
+
+      <div class="form-divider" tabindex="-1"></div>
+
+      <button type="submit" :disabled="submitting" class="form-button">
         {{ submitting ? 'Submitting…' : 'Submit' }}
       </button>
 
-      <p v-if="success" class="text-green-600 mt-4 text-center">
-        Form submitted successfully 🎉
-      </p>
-      <p v-if="error" class="text-red-600 mt-4 text-center">{{ error }}</p>
+      <p v-if="success" class="form-success">Form submitted successfully 🎉</p>
+      <p v-if="error" class="form-error">{{ error }}</p>
     </form>
   </div>
 </template>

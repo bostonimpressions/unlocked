@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   :root {
-    --Blue: #67B9DF;
-    --Copper: #E38C3B;
+    --Blue: #67b9df;
+    --Copper: #e38c3b;
     --DarkBlue: #132129;
-    --OffWhite: #EFEFEF;
+    --OffWhite: #efefef;
 
-    --Copper-rgba: rgba(227,140,59,0.4);
-    --text-light: #EFEFEF;
+    --Copper-rgba: rgba(227, 140, 59, 0.4);
+    --text-light: #efefef;
     --text-dark: #0b0b0b;
   }
 
@@ -19,7 +19,6 @@
     font-family: 'Montserrat', sans-serif;
   }
 }
-
 
 html {
   font-family: 'Montserrat', sans-serif;
@@ -40,4 +39,130 @@ body.modal-open {
 }
 .blue {
   color: var(--Blue);
+}
+
+.form-wrapper {
+  border-radius: 25px;
+  background: var(--Dark-Gray, #132129);
+}
+
+.form {
+  display: flex;
+  padding: 42px 38px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 17px;
+  align-self: stretch;
+  width: 100%;
+}
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+.form-input,
+.form-textarea {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+  width: 100%;
+  min-height: 45px;
+  align-self: stretch;
+  border-radius: 7px;
+  background: rgba(87, 93, 96, 0.42);
+  color: white;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 122.631%; /* 20.847px */
+  letter-spacing: 1.36px;
+}
+.form-input::placeholder,
+.form-textarea::placeholder {
+  text-transform: uppercase;
+  color: rgba(239, 239, 239, 0.37);
+  transition: opacity 0.2s ease;
+}
+
+.form-input:focus::placeholder,
+.form-textarea:focus::placeholder {
+  opacity: 0.2; /* hides it on focus */
+}
+.form-textarea {
+  min-height: 95px;
+}
+.form-label {
+  margin-bottom: -10px;
+  color: var(--Copper);
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 122.631%; /* 20.847px */
+  letter-spacing: 1.36px;
+  text-transform: uppercase;
+}
+.form-button {
+  display: flex;
+  width: 237px;
+  padding: 16px 15px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 7px;
+  border: 1px solid var(--Blue);
+  color: var(--Copper);
+  text-align: center;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 122.631%; /* 20.847px */
+  letter-spacing: 1.36px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.form-button:hover {
+  background-color: var(--Blue);
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.form-success {
+  color: green;
+}
+.form-error {
+  color: red;
+}
+
+.form-divider {
+  width: 100%;
+  height: 1px;
+  margin: 17px 0;
+  background: var(--Blue, #67b9df);
+}
+
+.form-input-error,
+.form-textarea.form-input-error {
+  border: 2px solid var(--Copper);
+  background-color: rgba(255, 107, 107, 0.1);
+  transition: all 0.2s;
+}
+
+/* Chrome, Safari, Edge autofill fix */
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover,
+.form-input:-webkit-autofill:focus,
+.form-textarea:-webkit-autofill,
+.form-textarea:-webkit-autofill:hover,
+.form-textarea:-webkit-autofill:focus {
+  font-style: 17px;
+  -webkit-box-shadow: 0 0 0 1000px rgba(87, 93, 96, 0.42) inset !important; /* match your background */
+  -webkit-text-fill-color: white !important; /* keep text white */
+  transition: background-color 5000s ease-in-out 0s; /* prevents flicker */
 }
