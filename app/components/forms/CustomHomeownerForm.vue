@@ -23,22 +23,7 @@
 
   const submitting = ref(false)
   const success = ref(false)
-  const error = ref(null)
-
-  // Toast reactive state
-  const toast = ref<{ message: string; type: 'success' | 'error' } | null>(null)
-
-  // Function to show toast
-  function showToast(
-    message: string,
-    type: 'success' | 'error' = 'success',
-    duration = 3000
-  ) {
-    toast.value = { message, type }
-    setTimeout(() => {
-      toast.value = null
-    }, duration)
-  }
+  const error = ref<string | null>(null)
 
   // reCAPTCHA setup
   async function getRecaptchaToken() {
@@ -98,7 +83,6 @@
 
       if (res.status === 201) {
         success.value = true
-        showToast('Form submitted successfully!', 'success')
         Object.keys(form.value).forEach(
           (k) => (form.value[k] = k === 'country' ? 'US' : '')
         )
@@ -108,7 +92,6 @@
     } catch (e: any) {
       console.error(e)
       error.value = e?.response?.data?.message || 'Submission failed.'
-      showToast(error.value, 'error')
     } finally {
       submitting.value = false
     }
@@ -218,12 +201,18 @@
 
       <div class="form-divider" tabindex="-1"></div>
 
+      <div
+        class="form-message"
+        v-if="success || error"
+        :class="success ? 'form-message--success' : 'form-message--error'"
+      >
+        <span v-if="success">✅ Form submitted successfully!</span>
+        <span v-else>❌ {{ error }}</span>
+      </div>
+
       <button type="submit" :disabled="submitting" class="form-button">
         {{ submitting ? 'Submitting…' : 'Submit' }}
       </button>
     </form>
-
-    <!-- Toast component -->
-    <BaseToast :toast="toast" />
   </div>
 </template>
