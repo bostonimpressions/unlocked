@@ -22,7 +22,10 @@
           />
         </svg>
       </span>
-      <span>Submitted successfully!</span>
+      <span
+        >Thank you for your submission. A member of our team will reach out to
+        you shortly.</span
+      >
     </p>
     <p v-else-if="error" class="form-message--error">
       <span class="icon">

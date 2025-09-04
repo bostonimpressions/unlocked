@@ -23,8 +23,8 @@
   // Import form components
   //import HomeownerSellForm from '@/components/forms/HomeownerSellForm.vue'
   import HomeownerSellForm from '@/components/forms/CustomHomeownerForm.vue'
-  import AgentForm from '@/components/forms/AgentForm.vue'
-  //import AgentForm from '@/components/forms/CustomAgentForm.vue'
+  //import AgentForm from '@/components/forms/AgentForm.vue'
+  import AgentForm from '@/components/forms/CustomAgentForm.vue'
   import HardshipForm from '@/components/forms/HardshipForm.vue'
   import InvestorForm from '@/components/forms/InvestorForm.vue'
 

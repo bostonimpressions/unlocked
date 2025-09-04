@@ -2,24 +2,24 @@
   import { ref } from 'vue'
   import { useFormSubmit } from '@/composables/useFormSubmit'
   import FormMessage from '@/components/forms/FormMessage.vue'
-  import { US_STATES } from '@/data/states'
 
-  const FORM_ID = 'xzPV2jFFQnIUhfhj67pB'
-  const LOCATION_ID = 'bmEOysIj5gSe0AwT3lcH'
+  const FORM_ID = 'Zopvhm5KPhVnxgnGpsXw'
+  const LOCATION_ID = 'NKixxUw8AniSJy40EMjm'
   const RECAPTCHA_SITE_KEY = '6LeDBFwpAAAAAJe8ux9-imrqZ2ueRsEtdiWoDDpX'
+  const KEY_FAMILIARITY = 'uBqTJyjlqhRhADIyo1Te' // radio: Yes/No/Somewhat
+  const KEY_LISTING_DETAILS = 'MZottkUdiM2av5Zemk0P' // textarea: specific listing
+  const KEY_ANYTHING_ELSE = 'zB3GysV4Xsp4DKV9NQL1' // textarea: anything else
+  const KEY_BROKERAGE_NAME = 'brokerage_name'
 
-  const form = ref({
+  const form = ref<Record<string, any>>({
     first_name: '',
     last_name: '',
     email: '',
     phone: '',
-    address: '',
-    city: '',
-    state: '',
-    postal_code: '',
-    country: 'US',
-    PmkbAq6Bk7jT29s9wZ02: '',
-    YN6evksdZb9Gq8G8C3Ew: '',
+    [KEY_BROKERAGE_NAME]: '',
+    [KEY_FAMILIARITY]: '',
+    [KEY_LISTING_DETAILS]: '',
+    [KEY_ANYTHING_ELSE]: '',
   })
 
   const { submitting, success, error, submitForm } = useFormSubmit(
@@ -32,9 +32,7 @@
     const ok = await submitForm(form.value)
     if (ok) {
       // reset fields after success
-      Object.keys(form.value).forEach(
-        (k) => (form.value[k] = k === 'country' ? 'US' : '')
-      )
+      for (const k of Object.keys(form.value)) form.value[k] = ''
     }
   }
 </script>
@@ -73,71 +71,91 @@
         v-model="form.phone"
         name="phone"
         type="tel"
-        placeholder="Phone"
+        placeholder="Phone *"
+        required
         class="form-input"
       />
+
       <input
-        v-model="form.address"
-        name="address"
-        placeholder="Address"
+        v-model="form[KEY_BROKERAGE_NAME]"
+        :name="KEY_BROKERAGE_NAME"
+        placeholder="Brokerage Name"
         class="form-input"
       />
-
-      <div class="form-row">
-        <input
-          v-model="form.city"
-          name="city"
-          placeholder="City"
-          class="form-input"
-        />
-        <select v-model="form.state" name="state" class="form-input">
-          <option
-            v-for="state in US_STATES"
-            :key="state.value"
-            :value="state.value"
-          >
-            {{ state.label }}
-          </option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <input
-          v-model="form.postal_code"
-          name="postal_code"
-          placeholder="Postal Code"
-          class="form-input"
-        />
-        <input
-          v-model="form.country"
-          name="country"
-          placeholder="Country"
-          class="form-input"
-        />
-      </div>
 
       <div class="form-divider" tabindex="-1"></div>
 
-      <label class="form-label" for="sell-speed"
-        >How quickly are you looking to sell? *</label
+      <label class="form-label"
+        >Are you familiar with creative real estate strategies? *</label
       >
+      <div
+        class="form-row"
+        role="group"
+        aria-label="Creative strategies familiarity"
+      >
+        <label
+          class="form-input"
+          style="display: flex; align-items: center; gap: 8px; cursor: pointer"
+        >
+          <input
+            type="radio"
+            :name="KEY_FAMILIARITY"
+            value="Yes"
+            v-model="form[KEY_FAMILIARITY]"
+            required
+            style="width: auto; min-height: auto"
+          />
+          <span>Yes</span>
+        </label>
+        <label
+          class="form-input"
+          style="display: flex; align-items: center; gap: 8px; cursor: pointer"
+        >
+          <input
+            type="radio"
+            :name="KEY_FAMILIARITY"
+            value="No"
+            v-model="form[KEY_FAMILIARITY]"
+            required
+            style="width: auto; min-height: auto"
+          />
+          <span>No</span>
+        </label>
+        <label
+          class="form-input"
+          style="display: flex; align-items: center; gap: 8px; cursor: pointer"
+        >
+          <input
+            type="radio"
+            :name="KEY_FAMILIARITY"
+            value="Somewhat"
+            v-model="form[KEY_FAMILIARITY]"
+            required
+            style="width: auto; min-height: auto"
+          />
+          <span>Somewhat</span>
+        </label>
+      </div>
+
+      <label class="form-label" for="listing-details">
+        Is there a specific listing you would like to get in touch about? If so
+        please add relative information.
+      </label>
       <textarea
-        id="sell-speed"
-        name="sell_speed"
-        v-model="form.PmkbAq6Bk7jT29s9wZ02"
+        id="listing-details"
+        :name="KEY_LISTING_DETAILS"
+        v-model="form[KEY_LISTING_DETAILS]"
         class="form-textarea"
-        required
       ></textarea>
 
-      <label class="form-label" for="sell-reason"
-        >What is your reason for selling? *</label
+      <label class="form-label" for="anything-else"
+        >Anything else you want to discuss?</label
       >
       <textarea
-        id="sell-reason"
-        name="sell_reason"
-        v-model="form.YN6evksdZb9Gq8G8C3Ew"
+        id="anything-else"
+        :name="KEY_ANYTHING_ELSE"
+        v-model="form[KEY_ANYTHING_ELSE]"
         class="form-textarea"
-        required
       ></textarea>
 
       <div class="form-divider" tabindex="-1"></div>
