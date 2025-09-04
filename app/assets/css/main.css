@@ -55,6 +55,11 @@ body.modal-open {
   align-self: stretch;
   width: 100%;
 }
+.form .two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
 .form-row {
   display: flex;
   gap: 10px;
@@ -188,4 +193,11 @@ label {
   -webkit-box-shadow: 0 0 0 1000px rgba(87, 93, 96, 0.42) inset !important; /* match your background */
   -webkit-text-fill-color: white !important; /* keep text white */
   transition: background-color 5000s ease-in-out 0s; /* prevents flicker */
+}
+
+@media (min-width: 768px) {
+  .form .two-col-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
 }

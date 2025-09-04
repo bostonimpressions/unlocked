@@ -82,94 +82,105 @@
         class="form-input"
       />
 
-      <!-- Investor Type -->
-      <label class="form-label">What Kind of Investor Are You?</label>
-      <div class="form-row form-checkboxes">
-        <label
-          v-for="opt in [
-            'Fix & Flip',
-            'Buy & Hold',
-            'Wholesaler',
-            'Private Money Lending',
-            'Just Getting Started',
-          ]"
-          :key="opt"
-        >
-          <input
-            type="checkbox"
-            :value="opt"
-            v-model="form.J9IZ5sTpFN08BWb06kNc"
-          />
-          <span>{{ opt }}</span>
-        </label>
+      <div class="two-col-grid">
+        <div class="grid-item">
+          <!-- Investor Type -->
+          <label class="form-label">What Kind of Investor Are You?</label>
+          <div class="form-row form-checkboxes">
+            <label
+              v-for="opt in [
+                'Fix & Flip',
+                'Buy & Hold',
+                'Wholesaler',
+                'Private Money Lending',
+                'Just Getting Started',
+              ]"
+              :key="opt"
+            >
+              <input
+                type="checkbox"
+                :value="opt"
+                v-model="form.J9IZ5sTpFN08BWb06kNc"
+              />
+              <span>{{ opt }}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <!-- Property Type -->
+          <label class="form-label"
+            >What types of properties are you looking for?</label
+          >
+          <div class="form-row form-checkboxes">
+            <label
+              v-for="opt in [
+                'Single Family',
+                'Multi-Family (2-4 units)',
+                'Multi-Family (5+)',
+                'Other commercial',
+              ]"
+              :key="opt"
+            >
+              <input
+                type="checkbox"
+                :value="opt"
+                v-model="form.wixTZ0Z3PyGFlyi398tr"
+              />
+              <span>{{ opt }}</span>
+            </label>
+          </div>
+        </div>
       </div>
 
-      <!-- Property Type -->
-      <label class="form-label"
-        >What types of properties are you looking for?</label
-      >
-      <div class="form-row form-checkboxes">
-        <label
-          v-for="opt in [
-            'Single Family',
-            'Multi-Family (2-4 units)',
-            'Multi-Family (5+)',
-            'Other commercial',
-          ]"
-          :key="opt"
-        >
-          <input
-            type="checkbox"
-            :value="opt"
-            v-model="form.wixTZ0Z3PyGFlyi398tr"
-          />
-          <span>{{ opt }}</span>
-        </label>
-      </div>
+      <div class="two-col-grid">
+        <div class="grid-item">
+          <!-- States -->
+          <label class="form-label"
+            >Which States are you wanting to invest in? (Multi-Select)</label
+          >
+          <div class="form-row form-checkboxes">
+            <label
+              v-for="opt in [
+                'All - NH',
+                'All - MA',
+                'All - RI',
+                'All - ME',
+                'Southern - NH',
+                'Central - NH',
+                'Eastern - NH',
+                'Western - NH',
+                'Northern - NH',
+              ]"
+              :key="opt"
+            >
+              <input
+                type="checkbox"
+                :value="opt"
+                v-model="form.mCUf6PA9UqReQaUNqA5p"
+              />
+              <span>{{ opt }}</span>
+            </label>
+          </div>
+        </div>
 
-      <!-- Preferred Updates -->
-      <label class="form-label"
-        >How do you prefer to receive updates from us?</label
-      >
-      <div class="form-row form-checkboxes">
-        <label v-for="opt in ['Email', 'SMS/Text']" :key="opt">
-          <input
-            type="checkbox"
-            :value="opt"
-            v-model="form['4o3Kdbwdo6sYtP3jwYIS']"
-          />
-          <span>{{ opt }}</span>
-        </label>
+        <div class="grid-item">
+          <!-- Preferred Updates -->
+          <label class="form-label"
+            >How do you prefer to receive updates from us?</label
+          >
+          <div class="form-row form-checkboxes">
+            <label v-for="opt in ['Email', 'SMS/Text']" :key="opt">
+              <input
+                type="checkbox"
+                :value="opt"
+                v-model="form['4o3Kdbwdo6sYtP3jwYIS']"
+              />
+              <span>{{ opt }}</span>
+            </label>
+          </div>
+        </div>
       </div>
-
-      <!-- States -->
-      <label class="form-label"
-        >Which States are you wanting to invest in? (Multi-Select)</label
-      >
-      <div class="form-row form-checkboxes">
-        <label
-          v-for="opt in [
-            'All - NH',
-            'All - MA',
-            'All - RI',
-            'All - ME',
-            'Southern - NH',
-            'Central - NH',
-            'Eastern - NH',
-            'Western - NH',
-            'Northern - NH',
-          ]"
-          :key="opt"
-        >
-          <input
-            type="checkbox"
-            :value="opt"
-            v-model="form.mCUf6PA9UqReQaUNqA5p"
-          />
-          <span>{{ opt }}</span>
-        </label>
-      </div>
-
       <div class="form-divider" tabindex="-1"></div>
 
       <!-- Form messages -->
