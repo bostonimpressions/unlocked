@@ -25,7 +25,8 @@
   import HomeownerSellForm from '@/components/forms/CustomHomeownerForm.vue'
   //import AgentForm from '@/components/forms/AgentForm.vue'
   import AgentForm from '@/components/forms/CustomAgentForm.vue'
-  import HardshipForm from '@/components/forms/HardshipForm.vue'
+  //import HardshipForm from '@/components/forms/HardshipForm.vue'
+  import HardshipForm from '@/components/forms/CustomHardshipForm.vue'
   import InvestorForm from '@/components/forms/InvestorForm.vue'
 
   // Props
@@ -57,6 +58,8 @@
       label: 'Homeowner in Financial Hardship',
       value: 'homeowner-hardship',
       form: HardshipForm,
+      meta: 'unlocked p4c - p4c Deal Intake',
+      opendispo: `https://app.opendispo.com/v2/location/oqGRosP0mjSZKtAG1WNK/form-builder-v2/JM7T1dFqdgm1I7upHDvz`,
     },
     {
       label: 'Investor Looking to Sell',
