@@ -50,6 +50,7 @@
 
 <template>
   <div class="form-wrapper">
+    <h2 class="sr-only form-title">Investor Looking To Sell Form</h2>
     <form @submit.prevent="handleSubmit" class="form">
       <!-- Name and Contact -->
       <div class="form-row">
