@@ -10,26 +10,40 @@ export function useFormSubmit(
   const success = ref(false)
   const error = ref<string | null>(null)
 
-  async function getRecaptchaToken() {
+  async function getRecaptchaToken(): Promise<string> {
     if (!recaptchaSiteKey) return ''
+
+    // Load script if not present
     if (!window.grecaptcha) {
       await new Promise((resolve, reject) => {
         const s = document.createElement('script')
         s.src = `https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`
         s.async = true
         s.onload = () => resolve(null)
-        s.onerror = () => reject('Failed to load reCAPTCHA')
+        s.onerror = () => reject(new Error('Failed to load reCAPTCHA script'))
         document.head.appendChild(s)
       })
     }
 
-    return new Promise<string>((resolve) => {
-      window.grecaptcha.ready(() => {
-        window.grecaptcha
-          .execute(recaptchaSiteKey, { action: 'submit' })
-          .then(resolve)
-          .catch(() => resolve(''))
-      })
+    return new Promise<string>((resolve, reject) => {
+      try {
+        window.grecaptcha.ready(() => {
+          try {
+            window.grecaptcha
+              .execute(recaptchaSiteKey, { action: 'submit' })
+              .then(resolve)
+              .catch((err: any) => {
+                console.error('reCAPTCHA execute failed:', err)
+                reject(new Error('reCAPTCHA verification failed'))
+              })
+          } catch (err: any) {
+            console.error('reCAPTCHA execution error:', err)
+            reject(new Error('Invalid reCAPTCHA configuration'))
+          }
+        })
+      } catch (err: any) {
+        reject(new Error('reCAPTCHA not available'))
+      }
     })
   }
 
@@ -39,7 +53,14 @@ export function useFormSubmit(
     error.value = null
 
     try {
-      const captchaToken = await getRecaptchaToken()
+      let captchaToken = ''
+      try {
+        captchaToken = await getRecaptchaToken()
+      } catch (recaptchaError: any) {
+        throw new Error(
+          recaptchaError?.message || 'reCAPTCHA verification failed.'
+        )
+      }
 
       const fd = new FormData()
       fd.append('formId', formId)
@@ -71,8 +92,11 @@ export function useFormSubmit(
         throw new Error('Unexpected response from server')
       }
     } catch (e: any) {
-      console.error(e)
-      error.value = e?.response?.data?.message || 'Submission failed.'
+      console.error('Form submission failed:', e)
+      error.value =
+        e?.response?.data?.message ||
+        e?.message ||
+        'Submission failed. Please try again.'
       return false
     } finally {
       submitting.value = false

@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
-  import axios from 'axios'
+  import { useFormSubmit } from '@/composables/useFormSubmit'
+  import FormMessage from '@/components/forms/FormMessage.vue'
   import { US_STATES } from '@/data/states'
 
   const FORM_ID = 'xzPV2jFFQnIUhfhj67pB'
@@ -21,79 +22,19 @@
     YN6evksdZb9Gq8G8C3Ew: '',
   })
 
-  const submitting = ref(false)
-  const success = ref(false)
-  const error = ref<string | null>(null)
+  const { submitting, success, error, submitForm } = useFormSubmit(
+    FORM_ID,
+    LOCATION_ID,
+    RECAPTCHA_SITE_KEY
+  )
 
-  // reCAPTCHA setup
-  async function getRecaptchaToken() {
-    if (!RECAPTCHA_SITE_KEY) return ''
-    if (!window.grecaptcha) {
-      await new Promise((resolve, reject) => {
-        const s = document.createElement('script')
-        s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
-        s.async = true
-        s.onload = () => resolve(null)
-        s.onerror = () => reject('Failed to load reCAPTCHA')
-        document.head.appendChild(s)
-      })
-    }
-
-    return new Promise<string>((resolve) => {
-      window.grecaptcha.ready(() => {
-        window.grecaptcha
-          .execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
-          .then(resolve)
-          .catch(() => resolve(''))
-      })
-    })
-  }
-
-  // Submit handler
-  const handleSubmit = async () => {
-    submitting.value = true
-    success.value = false
-    error.value = null
-
-    try {
-      const captchaToken = await getRecaptchaToken()
-
-      const fd = new FormData()
-      fd.append('formId', FORM_ID)
-      if (captchaToken) fd.append('captchaV3', captchaToken)
-      fd.append(
-        'formData',
-        JSON.stringify({
-          ...form.value,
-          formId: FORM_ID,
-          location_id: LOCATION_ID,
-          eventData: {
-            source: 'direct',
-            page: { url: window.location.href, title: document.title },
-            timestamp: Date.now(),
-          },
-          Timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        })
+  async function handleSubmit() {
+    const ok = await submitForm(form.value)
+    if (ok) {
+      // reset fields after success
+      Object.keys(form.value).forEach(
+        (k) => (form.value[k] = k === 'country' ? 'US' : '')
       )
-
-      const res = await axios.post(
-        'https://backend.leadconnectorhq.com/forms/submit',
-        fd
-      )
-
-      if (res.status === 201) {
-        success.value = true
-        Object.keys(form.value).forEach(
-          (k) => (form.value[k] = k === 'country' ? 'US' : '')
-        )
-      } else {
-        throw new Error('Unexpected response from server')
-      }
-    } catch (e: any) {
-      console.error(e)
-      error.value = e?.response?.data?.message || 'Submission failed.'
-    } finally {
-      submitting.value = false
     }
   }
 </script>
@@ -201,14 +142,7 @@
 
       <div class="form-divider" tabindex="-1"></div>
 
-      <div
-        class="form-message"
-        v-if="success || error"
-        :class="success ? 'form-message--success' : 'form-message--error'"
-      >
-        <span v-if="success">✅ Form submitted successfully!</span>
-        <span v-else>❌ {{ error }}</span>
-      </div>
+      <FormMessage :success="success" :error="error" />
 
       <button type="submit" :disabled="submitting" class="form-button">
         {{ submitting ? 'Submitting…' : 'Submit' }}

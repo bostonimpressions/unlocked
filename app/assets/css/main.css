@@ -133,19 +133,11 @@ body.modal-open {
   transform: translateY(0) scale(0.98);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
-.form-message {
-  margin: 1rem 0;
-  font-size: 0.95rem;
-  padding: 0.75rem;
-  border-radius: 6px;
-}
-.form-message--success {
-  background: #e6f9f0;
-  color: #1a7f4c;
-}
-.form-message--error {
-  background: #fcebea;
-  color: #b91c1c;
+
+.form-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .form-divider {
