@@ -19,17 +19,11 @@
 
 <script setup>
   import { ref, computed } from 'vue'
-
-  // Import form components
-  //import HomeownerSellForm from '@/components/forms/HomeownerSellForm.vue'
   import HomeownerSellForm from '@/components/forms/CustomHomeownerForm.vue'
-  //import AgentForm from '@/components/forms/AgentForm.vue'
   import AgentForm from '@/components/forms/CustomAgentForm.vue'
-  //import HardshipForm from '@/components/forms/HardshipForm.vue'
   import HardshipForm from '@/components/forms/CustomHardshipForm.vue'
-  import InvestorForm from '@/components/forms/InvestorForm.vue'
+  import InvestorForm from '@/components/forms/CustomInvestorForm.vue'
 
-  // Props
   const props = defineProps({
     theme: {
       type: String,
@@ -38,7 +32,6 @@
     },
   })
 
-  // Role definitions with direct component references
   const roles = [
     {
       label: 'Homeowner Looking to Sell',
@@ -65,13 +58,13 @@
       label: 'Investor Looking to Sell',
       value: 'investor-sell',
       form: InvestorForm,
+      meta: 'unlocked buyers - Buyer Sign up form',
+      opendispo: `https://app.opendispo.com/v2/location/qJHGl5gtPfEjI8OTUJUF/form-builder-v2/iIEAOpoyKr7iRFINPsAH`,
     },
   ]
 
-  // State
   const activeRole = ref(roles[0].value)
 
-  // Computed: get current form component
   const activeFormComponent = computed(() => {
     const role = roles.find((r) => r.value === activeRole.value)
     return role ? role.form : null

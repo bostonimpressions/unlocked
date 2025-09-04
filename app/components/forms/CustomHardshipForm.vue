@@ -56,35 +56,35 @@
     <form @submit.prevent="handleSubmit" class="form">
       <div class="form-row">
         <input
-          v-model="form.last_name"
-          name="last_name"
-          placeholder="Last Name *"
-          required
-          class="form-input"
-        />
-        <input
           v-model="form.first_name"
           name="first_name"
           placeholder="First Name *"
           required
           class="form-input"
         />
+        <input
+          v-model="form.last_name"
+          name="last_name"
+          placeholder="Last Name *"
+          required
+          class="form-input"
+        />
       </div>
-
-      <input
-        v-model="form.phone"
-        name="phone"
-        type="tel"
-        placeholder="Phone *"
-        required
-        class="form-input"
-      />
 
       <input
         v-model="form.email"
         name="email"
         type="email"
         placeholder="Email *"
+        required
+        class="form-input"
+      />
+
+      <input
+        v-model="form.phone"
+        name="phone"
+        type="tel"
+        placeholder="Phone *"
         required
         class="form-input"
       />
