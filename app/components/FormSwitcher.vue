@@ -24,6 +24,7 @@
   //import HomeownerSellForm from '@/components/forms/HomeownerSellForm.vue'
   import HomeownerSellForm from '@/components/forms/CustomHomeownerForm.vue'
   import AgentForm from '@/components/forms/AgentForm.vue'
+  //import AgentForm from '@/components/forms/CustomAgentForm.vue'
   import HardshipForm from '@/components/forms/HardshipForm.vue'
   import InvestorForm from '@/components/forms/InvestorForm.vue'
 
@@ -43,8 +44,15 @@
       value: 'homeowner-sell',
       form: HomeownerSellForm,
       meta: 'unlocked offers - Cash Offers Intake Form',
+      opendispo: `https://app.opendispo.com/v2/location/bmEOysIj5gSe0AwT3lcH/form-builder-v2/xzPV2jFFQnIUhfhj67pB`,
     },
-    { label: 'Real Estate Agent', value: 'real-estate-agent', form: AgentForm },
+    {
+      label: 'Real Estate Agent',
+      value: 'real-estate-agent',
+      form: AgentForm,
+      meta: 'unlocked agents - Agent Intake Form',
+      opendispo: `https://app.opendispo.com/v2/location/NKixxUw8AniSJy40EMjm/form-builder-v2/Zopvhm5KPhVnxgnGpsXw`,
+    },
     {
       label: 'Homeowner in Financial Hardship',
       value: 'homeowner-hardship',
