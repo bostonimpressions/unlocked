@@ -10,7 +10,7 @@
         <div class="top-section">
           <div class="two-col-grid">
             <div class="text-col">
-              <h1 class="heading">FSBO Division</h1>
+              <h1 class="heading">For Sale By Owner Division</h1>
               <p class="text-body">
                 Welcome to Unlocked Home Project’s For Sale By Owner (FSBO)
                 Division, where empowered homeowners take control of their sale.
