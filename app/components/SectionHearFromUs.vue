@@ -6,13 +6,13 @@
       <div class="two-col-grid">
         <div class="grid-item">
           <p>
-            At Unlocked Home Project, we recognize that selling your home during
-            financial hardship is more than just a sale—it’s one of the most
-            difficult and stressful times in your life. Our goal is to provide
-            not only a quick and compassionate way to sell your home but also a
-            range of services to help you move forward with confidence and
-            security. Below, you’ll find a detailed breakdown of the value we
-            offer, including core real estate solutions and expanded support
+            At Unlocked Relief Division, we recognize that selling your home
+            during financial hardship is more than just a sale—it’s one of the
+            most difficult and stressful times in your life. Our goal is to
+            provide not only a quick and compassionate way to sell your home but
+            also a range of services to help you move forward with confidence
+            and security. Below, you’ll find a detailed breakdown of the value
+            we offer, including core real estate solutions and expanded support
             like home search, assisted living, job search, postponement
             strategies, rental advising, and packing and moving assistance.
           </p>
