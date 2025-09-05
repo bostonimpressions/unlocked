@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from 'vue'
 
-  const showBenefits = ref(false)
+  const showBenefits = ref(true)
 
   const toggleBenefits = () => {
     showBenefits.value = !showBenefits.value
@@ -246,9 +246,9 @@
     border-radius: 7px;
     background: rgba(87, 93, 96, 0.23);
 
-    &:hover {
-      animation: shake 0.4s;
-    }
+    // &:hover {
+    //   animation: shake 0.4s;
+    // }
 
     .toggle-header {
       position: relative;
@@ -448,7 +448,7 @@
     }
 
     .section-two {
-      padding: 167px 0 96px 0;
+      padding: 140px 0 44px 0;
     }
 
     .section-three {
