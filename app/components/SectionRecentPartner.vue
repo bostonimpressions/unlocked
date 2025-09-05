@@ -2,17 +2,17 @@
   import { slider } from '#build/ui'
 
   const residentialProperties = [
-    { name: 'Chandler Street - Nashua', units: 4 },
-    { name: 'Kimball Street Manchester NH', units: 2 },
-    { name: 'Emerson Street, Haverhill MA', units: 4 },
-    { name: 'Summit View Dr, Moultonborough, NH', units: null },
-    { name: 'Province Lake Rd, Wakefield, NH', units: null },
-    { name: 'Gulliver Dr, Sanford, ME', units: null },
-    { name: 'Meadow Glen Dr, Moltonborough, NH', units: null },
-    { name: 'Main St, Gorham, NH', units: null },
-    { name: 'Sullivan Dr, Hudson, NH', units: null },
-    { name: 'Cannon Dr, Nashua, NH', units: null },
-    { name: 'Berkshire Rd, Nashua, NH', units: null },
+    { name: 'Chandler Street, Nashua, NH', units: 4 },
+    { name: 'Kimball Street, Manchester, NH', units: 2 },
+    { name: 'Emerson Street, Haverhill, MA', units: 4 },
+    { name: 'Summit View Drive, Moultonborough, NH', units: null },
+    { name: 'Province Lake Road, Wakefield, NH', units: null },
+    { name: 'Gulliver Drive, Sanford, ME', units: null },
+    { name: 'Meadow Glen Drive, Moltonborough, NH', units: null },
+    { name: 'Main Street, Gorham, NH', units: null },
+    { name: 'Sullivan Drive, Hudson, NH', units: null },
+    { name: 'Cannon Drive, Nashua, NH', units: null },
+    { name: 'Berkshire Road, Nashua, NH', units: null },
   ]
 
   const commercialProperties = [
