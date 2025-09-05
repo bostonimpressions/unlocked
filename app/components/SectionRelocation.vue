@@ -767,8 +767,9 @@
     }
 
     ul {
-      list-style: inside;
-      padding: 13px 0 13px 10px;
+      list-style: outside;
+      padding-left: 25px;
+      margin: 26px 0 13px;
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
@@ -777,6 +778,10 @@
 
     li {
       margin: 0 0 10px;
+      &::marker {
+        font-size: 20px;
+        vertical-align: middle;
+      }
       &:last-child {
         margin: 0;
       }
