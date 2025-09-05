@@ -41,8 +41,8 @@
                 trusted partners through our Unlocked Direct Cash Plus Program
               </BulletPanel>
               <BulletPanel>
-                We have an email list of active buyers in New Hampshire that
-                want to buy properties
+                We have an email list of active buyers in New England that want
+                to buy properties
               </BulletPanel>
               <BulletPanel>
                 Our services provide many similar benefits to an agent, but you

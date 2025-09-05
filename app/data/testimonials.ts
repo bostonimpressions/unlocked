@@ -56,7 +56,7 @@ export const fsboTestimonials: Testimonial[] = [
     source: 'Google Review',
     rating: 5,
     quote: 'My husband and I decided it was time to sell our vacation home in NH. We were reached out by many companies about offering their services. We never felt completely comfortable with any of them. That changed when we were approached by Unlocked Home Project. From the initial outreach call and follow up call from Jonathan we decided this was the right company to do business with. Jonathan explained the various ways we could sell. We negotiated a fair price and the company set out to find an interested buyer. Jonathan now referred us to Jordan who was the coordinator. Throughout the entire process Jonathan and Jordan kept us informed.',
-    lead: `They were always available to answer question and address any concerns and clarifications that would arise.`,
+    lead: `They were always available to answer questions and address any concerns and clarifications that would arise.`,
     body: `It is obvious this is an outstanding company that goes above and beyond for their clients. I am so grateful to them for providing excellent service and support throughout the entire process.`,
   },
 ]
