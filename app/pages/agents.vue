@@ -125,7 +125,7 @@
       </template>
 
       <template #cta>
-        <NuxtLink to="/" class="link"
+        <NuxtLink to="/contact" class="link"
           >Request Our Proof of Performance!</NuxtLink
         >
       </template>
