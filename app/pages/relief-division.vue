@@ -17,18 +17,31 @@
     <SectionHearFromUs />
 
     <SectionRequest>
-      <template #heading> <span>Trust Us</span> to Deliver </template>
+      <template #heading>
+        <span
+          >Behind on your mortgage payments? Is the mortgage company giving you
+          grief?</span
+        >
+      </template>
 
       <template #text>
-        With our expertise and innovative approach, we unlock the full potential
-        of your property, guaranteeing maximum value in any market. Let us help
-        you sell with confidence and achieve your investment goals.
+        <p class="mb-5">
+          If you are worried about your home going to auction, we can help! Our
+          number one goal is to make sure that no one ends up kicked out on the
+          street. Our clients have peace of mind knowing we are protecting them
+          and advocating for them every step of the way.
+        </p>
+
+        <p>
+          We offer information, resources, and close ongoing 1 on 1 support to
+          assist you in navigating pre foreclosure situations. Our dedicated
+          team makes it as-stress free as possible to work together in finding a
+          solution for your unique circumstances.
+        </p>
       </template>
 
       <template #cta>
-        <NuxtLink to="/contact" class="link"
-          >Request Our Proof of Performance!</NuxtLink
-        >
+        <NuxtLink to="/contact" class="link">Contact us today</NuxtLink>
       </template>
     </SectionRequest>
 
