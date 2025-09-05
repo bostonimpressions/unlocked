@@ -18,9 +18,9 @@
           <img src="/unlocked-home-people.jpg" alt="Real people" />
         </div>
         <div class="text-col">
-          <h2>Real <span>People</span></h2>
-          <h2>Real <span>Support</span></h2>
-          <h2>Real <span>Solutions</span></h2>
+          <h2>Real <span>People.</span></h2>
+          <h2>Real <span>Support.</span></h2>
+          <h2>Real <span>Solutions.</span></h2>
         </div>
       </div>
 
