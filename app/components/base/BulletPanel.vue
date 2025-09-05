@@ -8,6 +8,7 @@
   .bullet-panel {
     margin: 0 0 13px;
     text-align: left;
+    align-content: center;
     padding: 12px 16px;
     border-radius: 7px;
     background: rgba(87, 93, 96, 0.38);

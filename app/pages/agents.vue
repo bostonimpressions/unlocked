@@ -259,11 +259,16 @@
   .two-col-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
     width: 100%;
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+
+      .col {
+        display: grid;
+        grid-auto-rows: 1fr;
+      }
     }
   }
 
