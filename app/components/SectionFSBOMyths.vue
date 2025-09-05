@@ -101,7 +101,6 @@
     font-weight: 400;
     line-height: clamp(30px, 3vw, 38px);
     letter-spacing: 0.8px;
-    text-transform: uppercase;
   }
 
   .top-section {
