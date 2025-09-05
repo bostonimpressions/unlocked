@@ -64,16 +64,16 @@ export const fsboTestimonials: Testimonial[] = [
 export const p4cTestimonials: Testimonial[] = [
   {
     name: 'Mike G.',
-    source: 'NH Homeowner',
+    source: ``,
     rating: 5,
     quote: `Would give more stars if possible.`,
     lead: `Jon and his team made a horrible situation much better.`,
     body: `Would recommend to anyone caught up in this situation. Thanks again!`,
   },
   {
-    name: `Jevicci`,
+    name: `John E.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: `Unlocked Home assisted me in getting the resources I needed to navigate a blindsiding family crisis. They also got us a little money out of a horrifically distressed property.`,
     lead: `They were very kind and helpful and reassuring during an exceedingly difficult and bewildering circumstance.`,
     body: `I'm really glad they found us.`,
@@ -81,7 +81,7 @@ export const p4cTestimonials: Testimonial[] = [
   {
     name: `Emilie M.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: `Unlocked Home Project has been a Godsend!  They are extremely understanding, and helpful.`,
     lead: `They went over everything and explained everything so we could make informed decisions.`,
     body: `We ended up having to make the hardest decision about our home, but Unlocked stood by us, and guided us every step of the way.  I really wish I had known about them a year ago!!`,
@@ -89,7 +89,7 @@ export const p4cTestimonials: Testimonial[] = [
   {
     name: `Sarah J.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: `Unlocked was a huge help in navigating a difficult situation. I wish I had known about Unlocked Home Project a year ago. If you are having trouble with sorting out mortgage issues, reach out to them. There's no shame in asking for help and the earlier you do it the better the outcome.`,
     lead: `I knew no matter how things went, they were going to help me find a way forward.`,
     body: ``,
@@ -97,7 +97,7 @@ export const p4cTestimonials: Testimonial[] = [
   {
     name: `John C.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: `Jonathan and the team at Unlocked Home Project were truly a lifesaver for us during a very difficult time. We were facing serious financial hardship and didn’t know where to turn. From our first conversation with Kristin she made us feel welcomed, reassured and respected. They listened without judgment and offered real solutions.\nWhat meant the most was how they helped us avoid falling into the trap of a predatory lender. Instead of pushing a quick fix, they laid out a thoughtful plan that not only protected us financially, but ended up getting us more money than we ever expected for our property.`,
     lead: `Their relocation services were outstanding—they didn’t just help us sell, they actually helped us move forward.`,
     body: `They worked with us to find and secure a new place, and even assisted with some of the costs to help us get back on our feet.\nCommunication was top-notch the entire way. We always knew what was happening and what to expect. From start to finish, their team was caring, professional, and genuinely committed to helping people. I can’t thank the staff—from top to bottom—enough for what they did for our family. If you're in a tough spot and need someone trustworthy, the entire staff at Unlocked Home Project are the people you want helping you.`,
@@ -105,7 +105,7 @@ export const p4cTestimonials: Testimonial[] = [
   {
     name: `Jade L.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: ``,
     lead: `Truly a blessing! I am SO grateful that the folks at Unlocked Home Project called me!`,
     body: `I was skeptical at first, but in a big enough bind that I really had nothing to lose than to trust them and watch them work their magic...Honestly, I have never seen so much dedication, tenacity, and creative maneuvering that helped me find a solution for my home. I am blessed to have been connected with this amazing team of people and I highly recommend anyone who is looking for support with their home to trust in Unlocked Home Project!`,
@@ -113,7 +113,7 @@ export const p4cTestimonials: Testimonial[] = [
   {
     name: `Michael B.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: ``,
     lead: `Very helpful people, definitely went out of their way to help me in a serious crisis.`,
     body: `I absolutely feel that they all did more than I could have asked. If you are in a financial bind, they may be able to help. Please give them a call they will do all they can. Also, follow-through has been top notch. I cannot ask for more.`,
@@ -121,7 +121,7 @@ export const p4cTestimonials: Testimonial[] = [
   {
     name: `Melissa S.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: ``,
     lead: `Unlocked Home Project is GREAT!`,
     body: `We fell behind on our mortgage and Jon helped get us back on our feet. Their team is very understanding and cares about your situation. They give you a small amount of homework to do and it’s not hard. Suddenly the dark clouds are parting and I will still be living in my house. We give GREAT THANKS to Unlocked!! Keep up the GREAT work.`,
@@ -129,7 +129,7 @@ export const p4cTestimonials: Testimonial[] = [
   {
     name: `Jessica B.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: ``,
     lead: `The people who do this work are a blessing!!!`,
     body: `God placed them into my life at the perfect moment. They were amazing and were always following up with me to see if I needed anything else. Without their guidance I do not believe my situation would have worked out as good as it did. I hope that more people are able to be helped like I was in the future! Thank you for everything you did to help me and my family!!!`,
@@ -137,7 +137,7 @@ export const p4cTestimonials: Testimonial[] = [
   {
     name: `Rob R.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: ``,
     lead: `I can honestly say that without the help of Unlocked Home Project, I would have been in a real bad spot.`,
     body: `My house was nearly a week away from auction and I had no idea where to turn or what to do. Jonathan, Jordan, and  their amazing team were able to buy me some time and navigate me through areas where I was completely in over my head. I’m a combat veteran with PTSD and was on the verge of giving up when Jonathan and his team stepped in and started working their magic. They were able to find a solution for the situation I was in as well as finding me a new home and some money to start over. Unlocked Home Project was the answer to my prayer when I needed it the most. Thank you for your wonderful team you guys are life savers.`,
@@ -145,7 +145,7 @@ export const p4cTestimonials: Testimonial[] = [
   {
     name: `Joseph D.`,
     source: ``,
-    rating: -1,
+    rating: 5,
     quote: `After receiving notice of foreclosure and a denied loan modification, I was contacted by Unlocked Home Project. At first I was skeptical, but quickly learned that this organization is a legitimate free service that helps people in my situation. The team was extremely knowledgeable . . . they were able to steer me in the direction necessary to stop the foreclosure process.`,
     lead: `Their team would, of their own accord, check in with me on a regular basis to inquire about the process and keep me thinking positively.`,
     body: `This was huge when dealing with such a major stressor. I don’t think I could have mentally done it without their support! I appreciate every single thing you have done even if it was just a text to check in. It all really meant the difference to me. What you and your company does is beyond words an important role to play for people in my situation. I can’t thank you enough my friend.`,
