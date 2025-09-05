@@ -281,7 +281,7 @@
     }
     .source {
       font-size: 18px;
-      line-height: 33px;
+      line-height: 24px;
     }
   }
 </style>

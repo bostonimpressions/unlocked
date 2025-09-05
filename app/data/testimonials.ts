@@ -10,7 +10,7 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     name: 'Stephanie G.',
-    source: 'Google Review',
+    source: 'Capital Partner',
     rating: 5,
     quote: 'Cannot recommend Unlocked Home Project enough!',
     lead: 'The team at this company are some of the most genuine and caring real estate professionals ever.',
@@ -18,7 +18,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: 'Beth C.',
-    source: 'Google Review',
+    source: 'Realtor, Sue Padden Real Estate',
     rating: 5,
     quote: `This was not only the fastest closing I've ever had in my career, it was also the most efficient and smoothest closing as well. The staff were friendly and got things done swiftly.`,
     lead: `Additionally, they provided a solution, to the many challenges, of my Seller's financial situation, of which didn't seem possible.`,
@@ -26,7 +26,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: 'Aaron D.',
-    source: '',
+    source: 'Realtor, Keller Williams',
     rating: 5,
     quote: '',
     lead: `Working with Jon and Unlocked Home Project was a game changer!`,
