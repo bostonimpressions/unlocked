@@ -26,7 +26,7 @@
   onMounted(() => {
     interval = setInterval(() => {
       currentSlide.value = (currentSlide.value + 1) % slides.length
-    }, 5000)
+    }, 4000)
   })
 
   onUnmounted(() => {
@@ -82,7 +82,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .slideshow {
     position: relative;
     width: 100%;
@@ -109,7 +109,7 @@
   }
   @media (min-width: 768px) {
     .layout {
-      height: 500px;
+      height: 490px;
     }
   }
 
@@ -119,6 +119,11 @@
 
   .layout-two-col {
     grid-template-columns: 1fr 1fr;
+
+    .slide-image {
+      object-fit: cover;
+      object-position: 0 center;
+    }
   }
 
   .layout-single {
@@ -128,14 +133,16 @@
   }
   @media (min-width: 768px) {
     .layout-single {
-      height: 500px;
+      height: 490px;
     }
   }
 
   .slide-image {
     width: 100%;
-    height: 100%;
+    height: auto;
+    min-height: 100%;
     object-fit: cover;
+    //object-position: top center;
     filter: grayscale(100%);
     transition: filter 0.5s ease;
   }
