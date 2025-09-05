@@ -27,7 +27,7 @@
       <!-- Partner layout -->
       <div v-else-if="variant === 'partner'" class="partner-layout">
         <h2>
-          Real <span>people</span>, real <span>partnerships</span>, real
+          Real <span>people</span>. Real <span>partnerships</span>. Real
           <span>impact</span>.
         </h2>
         <div class="two-col-grid">
